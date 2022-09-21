@@ -22,8 +22,6 @@ namespace View.Forms
             panel2.Width = flowLayoutPanel1.Width / 2 - 16;
             panel3.Width = flowLayoutPanel1.Width / 2 - 16;
 
-            UnresolvedBar.Minimum = 0;
-            UnresolvedBar.Maximum = 100;
             UnresolvedBar.Value = 25;
             UnresolvedBar.Location = new Point((panel2.Width - UnresolvedBar.Width) / 2, (panel2.Height - UnresolvedBar.Height) / 2 + 20);
 
