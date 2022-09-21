@@ -44,7 +44,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 10);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(780, 48);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(882, 48);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // button1
@@ -76,10 +76,11 @@
             // 
             // pnlChild
             // 
+            this.pnlChild.AutoScroll = true;
             this.pnlChild.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChild.Location = new System.Drawing.Point(10, 58);
             this.pnlChild.Name = "pnlChild";
-            this.pnlChild.Size = new System.Drawing.Size(780, 382);
+            this.pnlChild.Size = new System.Drawing.Size(882, 500);
             this.pnlChild.TabIndex = 1;
             // 
             // MainForm
@@ -87,12 +88,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(902, 568);
             this.Controls.Add(this.pnlChild);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Text = "Form1";
+            this.Text = "NoDesk";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
