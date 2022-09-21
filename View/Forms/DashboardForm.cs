@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,25 @@ namespace View.Forms
 {
     public partial class DashboardForm : Form
     {
+        public static HttpClient client = new HttpClient();
         public DashboardForm()
         {
             InitializeComponent();
+
+            Init();
+        }
+        private async void Init()
+        {
+            HttpClient client = new HttpClient();
+
+            await DownloadPageAsync();
+        }
+        static async Task DownloadPageAsync()
+        {
+            // Use static HttpClient to avoid exhausting system resources for network connections.
+            var result = await client.GetAsync("https://localhost:7151/WeatherForecast");
+            // Write status code.
+            Debug.WriteLine("STATUS CODE: " + result.StatusCode);
         }
     }
 }
