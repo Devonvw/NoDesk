@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
-    internal class TicketCRUDController
+    public class TicketCRUDController
     {
         private TicketCRUDDAO ticketCRUDDAO;
-        TicketCRUDController()
+        public TicketCRUDController()
         {
             ticketCRUDDAO = new TicketCRUDDAO();
         }
@@ -23,6 +23,13 @@ namespace Controller
         {
             //ticketCRUDDAO.CreateTicket();
         }
-
+        public (int resolved, int unresolved) GetUnresolvedIncidents()
+        {
+            return ticketCRUDDAO.GetUnresolvedIncidents();
+        }
+        public int GetIncidentsPastDeadline()
+        {
+            return ticketCRUDDAO.GetIncidentsPastDeadline();
+        }
     }
 }

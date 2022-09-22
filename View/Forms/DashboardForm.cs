@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,54 +10,53 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace View.Forms
 {
     public partial class DashboardForm : Form
     {
         public static HttpClient client = new HttpClient();
+        private TicketCRUDController controller;
         public DashboardForm()
         {
             InitializeComponent();
 
-            //Init();
-            panel2.Width = flowLayoutPanel1.Width / 2 - 16;
-            panel3.Width = flowLayoutPanel1.Width / 2 - 16;
+            controller = new TicketCRUDController();
 
-            UnresolvedBar.Value = 25;
-            UnresolvedBar.Location = new Point((panel2.Width - UnresolvedBar.Width) / 2, (panel2.Height - UnresolvedBar.Height) / 2 + 20);
+            pnlUnresolved.Width = flowLayoutPanel1.Width / 2 - 16;
+            pnlDeadline.Width = flowLayoutPanel1.Width / 2 - 16;
+
+            unresolvedBar.Value = 25;
+            unresolvedBar.Location = new Point((pnlUnresolved.Width - unresolvedBar.Width) / 2, (pnlUnresolved.Height - unresolvedBar.Height) / 2 + 20);
 
             deadlineBar.Value = 25;
-            deadlineBar.Location = new Point((panel3.Width - deadlineBar.Width) / 2, (panel3.Height - deadlineBar.Height) / 2 + 20);
+            deadlineBar.Location = new Point((pnlDeadline.Width - deadlineBar.Width) / 2, (pnlDeadline.Height - deadlineBar.Height) / 2 + 20);
+            Init();
 
         }
-        private async void Init()
+        private void Init()
         {
-            HttpClient client = new HttpClient();
+            (int total, int unresolved) unresolvedData = controller.GetUnresolvedIncidents();
+            int incidentsPastDeadline = controller.GetIncidentsPastDeadline();
 
-            await DownloadPageAsync();
+            unresolvedBar.Value = unresolvedData.unresolved;
+            unresolvedBar.Maximum = unresolvedData.total;
+            unresolvedBar.Text = $"{unresolvedData.unresolved}/{unresolvedData.total}";
+
+            deadlineBar.Value = incidentsPastDeadline;
+            deadlineBar.Maximum = unresolvedData.unresolved;
+            deadlineBar.Text = $"{incidentsPastDeadline}/{unresolvedData.unresolved}";
+
+
+            /*HttpClient client = new HttpClient();
+
+            await DownloadPageAsync();*/
         }
         static async Task DownloadPageAsync()
         {
-            // Use static HttpClient to avoid exhausting system resources for network connections.
             var result = await client.GetAsync("https://localhost:7151/WeatherForecast");
             // Write status code.
             Debug.WriteLine("STATUS CODE: " + result.StatusCode);
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-            ControlPaint.DrawBorder(e.Graphics, this.panel2.ClientRectangle, Color.DarkBlue, ButtonBorderStyle.Solid);
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-            ControlPaint.DrawBorder(e.Graphics, this.panel3.ClientRectangle, Color.Magenta, ButtonBorderStyle.Solid);
-
         }
     }
 }
