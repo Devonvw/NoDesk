@@ -37,19 +37,19 @@ namespace DAL
             collection.DeleteMany(filter);
         }
 
-        public (int resolved, int unresolved) GetUnresolvedIncidents()
+        public (int total, int unresolved) GetUnresolvedIncidents()
         {
             collection = db.GetCollection<BsonDocument>("Tickets");
 
             List< BsonDocument> unresolved = collection.Find(doc => doc["resolved"] != true).ToList();
-            List<BsonDocument> resolved = collection.Find(doc => doc["resolved"] == true).ToList();
+            List<BsonDocument> total = collection.Find(_ => true).ToList();
 
-            return (resolved: resolved.Count, unresolved: unresolved.Count);
+            return (total: total.Count, unresolved: unresolved.Count);
         }
         public int GetIncidentsPastDeadline()
         {
             collection = db.GetCollection<BsonDocument>("Tickets");
-            List<BsonDocument> incidents = collection.Find(doc => doc["resolved"] != true && doc["deadline"] > DateTime.Now).ToList();
+            List<BsonDocument> incidents = collection.Find(doc => doc["resolved"] != true && doc["deadline"] < DateTime.Now).ToList();
 
             return incidents.Count;
         }

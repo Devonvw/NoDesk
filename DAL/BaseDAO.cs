@@ -15,9 +15,9 @@ namespace DAL
         protected IMongoCollection<BsonDocument> collection;
         public BaseDao()
         {
-            dbClient = new MongoClient("mongodb + srv://KoenWijchers:nosql@cluster0.fb34nwv.mongodb.net/?retryWrites=true&w=majority");
-            db = dbClient.GetDatabase("");
-            db.GetCollection<BsonDocument>("");
+            dbClient = new MongoClient("mongodb+srv://KoenWijchers:nosql@cluster0.fb34nwv.mongodb.net/?retryWrites=true&w=majority");
+            db = dbClient.GetDatabase("NoDesk");
+            db.GetCollection<BsonDocument>("Tickets");
         }
     }
 }

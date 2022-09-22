@@ -32,16 +32,18 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlUnresolved = new System.Windows.Forms.Panel();
+            this.unresolvedBar = new View.ExtraControl.CircularProgressBar();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlDeadline = new System.Windows.Forms.Panel();
+            this.deadlineBar = new View.ExtraControl.CircularProgressBar();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnlUnresolved.SuspendLayout();
+            this.pnlDeadline.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -59,7 +61,7 @@
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Right;
             this.button1.Location = new System.Drawing.Point(851, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(204, 51);
             this.button1.TabIndex = 1;
@@ -81,27 +83,49 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.panel2);
-            this.flowLayoutPanel1.Controls.Add(this.panel3);
+            this.flowLayoutPanel1.Controls.Add(this.pnlUnresolved);
+            this.flowLayoutPanel1.Controls.Add(this.pnlDeadline);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 51);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1055, 1074);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // panel2
+            // pnlUnresolved
             // 
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(4, 54);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.panel2.Size = new System.Drawing.Size(449, 459);
-            this.panel2.TabIndex = 0;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.pnlUnresolved.Controls.Add(this.unresolvedBar);
+            this.pnlUnresolved.Controls.Add(this.label3);
+            this.pnlUnresolved.Controls.Add(this.label2);
+            this.pnlUnresolved.Location = new System.Drawing.Point(4, 54);
+            this.pnlUnresolved.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlUnresolved.Name = "pnlUnresolved";
+            this.pnlUnresolved.Padding = new System.Windows.Forms.Padding(5);
+            this.pnlUnresolved.Size = new System.Drawing.Size(449, 459);
+            this.pnlUnresolved.TabIndex = 0;
+            // 
+            // unresolvedBar
+            // 
+            this.unresolvedBar.BackColor = System.Drawing.SystemColors.Control;
+            this.unresolvedBar.BarColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.unresolvedBar.BarColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.unresolvedBar.BarWidth = 14F;
+            this.unresolvedBar.Font = new System.Drawing.Font("Segoe UI Black", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.unresolvedBar.ForeColor = System.Drawing.Color.Black;
+            this.unresolvedBar.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+            this.unresolvedBar.LineColor = System.Drawing.Color.DimGray;
+            this.unresolvedBar.LineWidth = 1;
+            this.unresolvedBar.Location = new System.Drawing.Point(75, 119);
+            this.unresolvedBar.Maximum = ((long)(100));
+            this.unresolvedBar.MinimumSize = new System.Drawing.Size(100, 100);
+            this.unresolvedBar.Name = "unresolvedBar";
+            this.unresolvedBar.ProgressShape = View.ExtraControl.CircularProgressBar._ProgressShape.Round;
+            this.unresolvedBar.Size = new System.Drawing.Size(285, 285);
+            this.unresolvedBar.TabIndex = 3;
+            this.unresolvedBar.Text = "57";
+            this.unresolvedBar.TextMode = View.ExtraControl.CircularProgressBar._TextMode.Custom;
+            this.unresolvedBar.Value = ((long)(57));
             // 
             // label3
             // 
@@ -126,17 +150,39 @@
             this.label2.Text = "Unresolved Incidents";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel3
+            // pnlDeadline
             // 
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(482, 54);
-            this.panel3.Margin = new System.Windows.Forms.Padding(25, 4, 4, 4);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.panel3.Size = new System.Drawing.Size(525, 459);
-            this.panel3.TabIndex = 1;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            this.pnlDeadline.Controls.Add(this.deadlineBar);
+            this.pnlDeadline.Controls.Add(this.label5);
+            this.pnlDeadline.Controls.Add(this.label4);
+            this.pnlDeadline.Location = new System.Drawing.Point(482, 54);
+            this.pnlDeadline.Margin = new System.Windows.Forms.Padding(25, 4, 4, 4);
+            this.pnlDeadline.Name = "pnlDeadline";
+            this.pnlDeadline.Padding = new System.Windows.Forms.Padding(5);
+            this.pnlDeadline.Size = new System.Drawing.Size(525, 459);
+            this.pnlDeadline.TabIndex = 1;
+            // 
+            // deadlineBar
+            // 
+            this.deadlineBar.BackColor = System.Drawing.SystemColors.Control;
+            this.deadlineBar.BarColor1 = System.Drawing.Color.Red;
+            this.deadlineBar.BarColor2 = System.Drawing.Color.Red;
+            this.deadlineBar.BarWidth = 14F;
+            this.deadlineBar.Font = new System.Drawing.Font("Segoe UI Black", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.deadlineBar.ForeColor = System.Drawing.Color.Black;
+            this.deadlineBar.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+            this.deadlineBar.LineColor = System.Drawing.Color.DimGray;
+            this.deadlineBar.LineWidth = 1;
+            this.deadlineBar.Location = new System.Drawing.Point(101, 137);
+            this.deadlineBar.Maximum = ((long)(100));
+            this.deadlineBar.MinimumSize = new System.Drawing.Size(100, 100);
+            this.deadlineBar.Name = "deadlineBar";
+            this.deadlineBar.ProgressShape = View.ExtraControl.CircularProgressBar._ProgressShape.Round;
+            this.deadlineBar.Size = new System.Drawing.Size(285, 285);
+            this.deadlineBar.TabIndex = 4;
+            this.deadlineBar.Text = "57";
+            this.deadlineBar.TextMode = View.ExtraControl.CircularProgressBar._TextMode.Custom;
+            this.deadlineBar.Value = ((long)(57));
             // 
             // label5
             // 
@@ -160,7 +206,6 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Incidents past deadline";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // DashboardForm
             // 
@@ -177,8 +222,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.pnlUnresolved.ResumeLayout(false);
+            this.pnlDeadline.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -188,13 +233,13 @@
         private Button button1;
         private Label label1;
         private FlowLayoutPanel flowLayoutPanel1;
-        private Panel panel2;
-        private Panel panel3;
+        private Panel pnlUnresolved;
+        private Panel pnlDeadline;
         private Label label3;
         private Label label2;
         private Label label5;
         private Label label4;
-        private CircularProgressBar.CircularProgressBar UnresolvedBar;
-        private CircularProgressBar.CircularProgressBar deadlineBar;
+        private ExtraControl.CircularProgressBar unresolvedBar;
+        private ExtraControl.CircularProgressBar deadlineBar;
     }
 }

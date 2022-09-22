@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
-    internal class TicketCRUDController
+    public class TicketCRUDController
     {
         private TicketCRUDDAO ticketCRUDDAO;
-        TicketCRUDController()
+        public TicketCRUDController()
         {
             ticketCRUDDAO = new TicketCRUDDAO();
         }
