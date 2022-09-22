@@ -23,6 +23,13 @@ namespace Controller
         {
             //ticketCRUDDAO.CreateTicket();
         }
-
+        public (int resolved, int unresolved) GetUnresolvedIncidents()
+        {
+            return ticketCRUDDAO.GetUnresolvedIncidents();
+        }
+        public int GetIncidentsPastDeadline()
+        {
+            return ticketCRUDDAO.GetIncidentsPastDeadline();
+        }
     }
 }

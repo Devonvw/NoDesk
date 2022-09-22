@@ -11,7 +11,7 @@ namespace DAL
     public abstract class BaseDao
     {
         private MongoClient dbClient;
-        private IMongoDatabase db;
+        protected IMongoDatabase db;
         protected IMongoCollection<BsonDocument> collection;
         public BaseDao()
         {
