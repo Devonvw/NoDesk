@@ -1,9 +1,11 @@
 ﻿using DAL;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace Controller
 {
@@ -15,13 +17,25 @@ namespace Controller
             ticketCRUDDAO = new TicketCRUDDAO();
         }
 
-        private void DeleteTicket()
+        public void DeleteTicket()
         {
             //ticketCRUDDAO.DeleteTicket();
         }
-        private void CreateTicket()
+        public void CreateTicket(DateTime dateTimeReported, IncidentType incidentType, string reportedBy, Priority priority, DateTime deadlineFollowUp, string description)
         {
-            //ticketCRUDDAO.CreateTicket();
+            
+            BsonDocument newBsonDocument = new BsonDocument
+            {
+                {"reportedDate", dateTimeReported },
+                {"subject", incidentType },
+                {"type", incidentType },
+                {"user", reportedBy },
+                {"priority", priority },
+                {"description", description },
+                {"resolved", false },
+                {"deadline", deadlineFollowUp }
+            };
+            ticketCRUDDAO.CreateTicket(newBsonDocument);
         }
         public (int resolved, int unresolved) GetUnresolvedIncidents()
         {
