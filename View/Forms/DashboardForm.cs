@@ -54,7 +54,6 @@ namespace View.Forms
         }
         static async Task DownloadPageAsync()
         {
-            // Use static HttpClient to avoid exhausting system resources for network connections.
             var result = await client.GetAsync("https://localhost:7151/WeatherForecast");
             // Write status code.
             Debug.WriteLine("STATUS CODE: " + result.StatusCode);
