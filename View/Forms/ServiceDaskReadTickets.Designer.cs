@@ -38,6 +38,7 @@
             this.Resolved = new System.Windows.Forms.ColumnHeader();
             this.deleteTicketButton = new System.Windows.Forms.Button();
             this.updateTicketButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // overviewTicketsLabel
@@ -121,11 +122,23 @@
             this.updateTicketButton.UseVisualStyleBackColor = true;
             this.updateTicketButton.Click += new System.EventHandler(this.updateTicketButton_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(105, 127);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(154, 39);
+            this.textBox1.TabIndex = 5;
+            this.textBox1.Text = "Search...";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // ServiceDaskReadTickets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 573);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.updateTicketButton);
             this.Controls.Add(this.deleteTicketButton);
             this.Controls.Add(this.listView1);
@@ -150,5 +163,6 @@
         private ColumnHeader Resolved;
         private Button deleteTicketButton;
         private Button updateTicketButton;
+        private TextBox textBox1;
     }
 }
