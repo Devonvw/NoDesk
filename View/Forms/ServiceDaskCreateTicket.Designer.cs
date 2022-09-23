@@ -1,6 +1,6 @@
 ﻿namespace View.Forms
 {
-    partial class ServiceDaskCRUDTicket
+    partial class ServiceDaskCreateTicket
     {
         /// <summary>
         /// Required designer variable.
@@ -206,6 +206,7 @@
             this.CancelButton.TabIndex = 15;
             this.CancelButton.Text = "CANCEL";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // submitTicketButton
             // 
@@ -218,7 +219,7 @@
             this.submitTicketButton.UseVisualStyleBackColor = true;
             this.submitTicketButton.Click += new System.EventHandler(this.submitTicketButton_Click);
             // 
-            // ServiceDaskCRUDTicket
+            // ServiceDaskCreateTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -241,9 +242,8 @@
             this.Controls.Add(this.dateTimeReportedLabel);
             this.Controls.Add(this.createNewIncidentTicketLable);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "ServiceDaskCRUDTicket";
+            this.Name = "ServiceDaskCreateTicket";
             this.Text = "ServiceDaskCRUDTicket";
-            this.Load += new System.EventHandler(this.ServiceDaskCRUDTicket_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -12,16 +12,15 @@ using Model;
 
 namespace View.Forms
 {
-    public partial class ServiceDaskCRUDTicket : Form
+    public partial class ServiceDaskCreateTicket : Form
     {
-        IncidentTicket incidentTicket;
-
+        MainForm mainForm;
         TicketCRUDController TicketCRUDController;
         
-        public ServiceDaskCRUDTicket()
+        public ServiceDaskCreateTicket(MainForm mainForm)
         {
+            this.mainForm = mainForm;
             TicketCRUDController = new TicketCRUDController();
-            incidentTicket = new IncidentTicket();
             InitializeComponent();
         }
 
@@ -48,7 +47,9 @@ namespace View.Forms
                     default:
                         break;
                 }
-                TicketCRUDController.CreateTicket(dateTimeReported, (IncidentType)typeOfIncidentCB.SelectedIndex, reportedByUserCB.Text, (Priority)priorityCB.SelectedIndex, deadlineFollowUpDate, descriptionTB.Text);
+                TicketCRUDController.CreateTicket(dateTimeReported, subjectOfIncidentTB.Text, typeOfIncidentCB.Text, reportedByUserCB.Text, (Priority)priorityCB.SelectedIndex, deadlineFollowUpDate, descriptionTB.Text);
+                MessageBox.Show("Ticket created successfully!");
+                mainForm.OpenChildForm(new ServiceDaskReadTickets(mainForm), sender);
             }
         }
 
@@ -62,9 +63,9 @@ namespace View.Forms
             return false;
         }
 
-        private void ServiceDaskCRUDTicket_Load(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
-
+            mainForm.OpenChildForm(new ServiceDaskReadTickets(mainForm), sender);
         }
     }
 }

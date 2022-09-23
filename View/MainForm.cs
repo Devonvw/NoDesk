@@ -30,6 +30,11 @@ namespace View
         {
             OpenChildForm(new Forms.DashboardForm(), sender);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.ServiceDaskReadTickets(this), sender);
+        }
     }
 
 }

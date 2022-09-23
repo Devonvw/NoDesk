@@ -1,11 +1,7 @@
 ﻿using DAL;
-using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Model;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace Controller
 {
@@ -16,18 +12,18 @@ namespace Controller
         {
             ticketCRUDDAO = new TicketCRUDDAO();
         }
-
-        public void DeleteTicket()
+        //632df4600765ae3dd6a4b1ad 632df4600765ae3dd6a4b1ad
+        public void DeleteTicket(string id)
         {
-            //ticketCRUDDAO.DeleteTicket();
+            ticketCRUDDAO.DeleteTicket(Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(id)));
         }
-        public void CreateTicket(DateTime dateTimeReported, IncidentType incidentType, string reportedBy, Priority priority, DateTime deadlineFollowUp, string description)
+        public void CreateTicket(DateTime dateTimeReported, string subjectOfIncident, string incidentType, string reportedBy, Priority priority, DateTime deadlineFollowUp, string description)
         {
-            
+
             BsonDocument newBsonDocument = new BsonDocument
             {
                 {"reportedDate", dateTimeReported },
-                {"subject", incidentType },
+                {"subject", subjectOfIncident },
                 {"type", incidentType },
                 {"user", reportedBy },
                 {"priority", priority },
@@ -37,6 +33,17 @@ namespace Controller
             };
             ticketCRUDDAO.CreateTicket(newBsonDocument);
         }
+
+        public List<IncidentTicket> ReadTicketList()
+        {
+            List<IncidentTicket> incidentTickets = new List<IncidentTicket>();
+            foreach (BsonDocument bsonDocument in ticketCRUDDAO.GetTicketList(Builders<BsonDocument>.Filter.Empty))
+            {
+                incidentTickets.Add(new IncidentTicket(bsonDocument));
+            }
+            return incidentTickets;
+        }
+
         public (int resolved, int unresolved) GetUnresolvedIncidents()
         {
             return ticketCRUDDAO.GetUnresolvedIncidents();
