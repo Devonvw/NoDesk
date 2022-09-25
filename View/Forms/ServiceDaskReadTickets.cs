@@ -32,9 +32,9 @@ namespace View.Forms
             foreach (IncidentTicket ticket in tickets)
             {
                 ListViewItem li = new ListViewItem(ticket.Id);
-                li.SubItems.Add(ticket.Subject);
+                li.SubItems.Add(ticket.subject);
                 li.SubItems.Add(ticket.reportedBy);
-                li.SubItems.Add(ticket.DateTimeReported.ToString("dd/MM/yyyy"));
+                li.SubItems.Add(ticket.dateTimeReported.ToString("dd/MM/yyyy"));
                 li.SubItems.Add(ticket.resolved.ToString());
                 li.Tag = ticket;
                 listView1.Items.Add(li);
@@ -43,12 +43,20 @@ namespace View.Forms
 
         private void updateTicketButton_Click(object sender, EventArgs e)
         {
-
+            if(listView1.SelectedItems.Count != 0)
+            {
+                IncidentTicket incidentTicket = (IncidentTicket)listView1.SelectedItems[0].Tag;
+                mainForm.OpenChildForm(new ServiceDaskUpdateTicket(mainForm, incidentTicket), sender);
+            }
+            else
+            {
+                MessageBox.Show("please select a ticket to update");
+            }
         }
 
         private void createIncidentButton_Click(object sender, EventArgs e)
         {
-            mainForm.OpenChildForm(new ServiceDaskCreateTicket(mainForm), sender);
+            mainForm.OpenChildForm(new ServiceDaskCreateTickets(mainForm), sender);
         }
 
         private void deleteTicketButton_Click(object sender, EventArgs e)

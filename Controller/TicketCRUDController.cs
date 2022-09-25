@@ -12,26 +12,19 @@ namespace Controller
         {
             ticketCRUDDAO = new TicketCRUDDAO();
         }
-        //632df4600765ae3dd6a4b1ad 632df4600765ae3dd6a4b1ad
+
         public void DeleteTicket(string id)
         {
             ticketCRUDDAO.DeleteTicket(Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(id)));
         }
-        public void CreateTicket(DateTime dateTimeReported, string subjectOfIncident, string incidentType, string reportedBy, Priority priority, DateTime deadlineFollowUp, string description)
+        public void CreateTicket(IncidentTicket incidentTicket)
         {
+            ticketCRUDDAO.CreateTicket(IncidentTicketToBson(incidentTicket));
+        }
 
-            BsonDocument newBsonDocument = new BsonDocument
-            {
-                {"reportedDate", dateTimeReported },
-                {"subject", subjectOfIncident },
-                {"type", incidentType },
-                {"user", reportedBy },
-                {"priority", priority },
-                {"description", description },
-                {"resolved", false },
-                {"deadline", deadlineFollowUp }
-            };
-            ticketCRUDDAO.CreateTicket(newBsonDocument);
+        public void UpdateTicket(IncidentTicket incidentTicket)
+        {
+            ticketCRUDDAO.UpdateTicket(IncidentTicketToBson(incidentTicket), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket.Id)));
         }
 
         public List<IncidentTicket> ReadTicketList()
@@ -51,6 +44,22 @@ namespace Controller
         public int GetIncidentsPastDeadline()
         {
             return ticketCRUDDAO.GetIncidentsPastDeadline();
+        }
+
+        private BsonDocument IncidentTicketToBson(IncidentTicket incidentTicket)
+        {
+            BsonDocument newBsonDocument = new BsonDocument
+            {
+                {"reportedDate", incidentTicket.dateTimeReported },
+                {"subject", incidentTicket.subject },
+                {"type", incidentTicket.incidentType },
+                {"user", incidentTicket.reportedBy },
+                {"priority", incidentTicket.priority },
+                {"description", incidentTicket.description },
+                {"resolved", incidentTicket.resolved },
+                {"deadline", incidentTicket.deadlineFollowUp }
+            };
+            return newBsonDocument;
         }
     }
 }
