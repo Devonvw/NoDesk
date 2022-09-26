@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace View.Forms
 {
-    class ServiceDaskCreateTickets : TicketUserInputControl
+    class ServiceDaskCreateTickets : CreateUpdateUserInput
     {
         public ServiceDaskCreateTickets(MainForm mainForm) : base(mainForm, "Create new incident ticket", "submit ticket")
         {

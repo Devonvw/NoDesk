@@ -1,6 +1,6 @@
 ﻿namespace View.Forms
 {
-    partial class TicketUserInputControl
+    partial class CreateUpdateUserInput
     {
         /// <summary>
         /// Required designer variable.
@@ -50,9 +50,10 @@
             // submitTicketButton
             // 
             this.submitTicketButton.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.submitTicketButton.Location = new System.Drawing.Point(517, 553);
+            this.submitTicketButton.Location = new System.Drawing.Point(591, 737);
+            this.submitTicketButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.submitTicketButton.Name = "submitTicketButton";
-            this.submitTicketButton.Size = new System.Drawing.Size(140, 40);
+            this.submitTicketButton.Size = new System.Drawing.Size(160, 53);
             this.submitTicketButton.TabIndex = 33;
             this.submitTicketButton.Text = "submit ticket";
             this.submitTicketButton.UseVisualStyleBackColor = true;
@@ -60,33 +61,38 @@
             // CancelButton
             // 
             this.CancelButton.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CancelButton.Location = new System.Drawing.Point(357, 553);
+            this.CancelButton.Location = new System.Drawing.Point(408, 737);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(140, 40);
+            this.CancelButton.Size = new System.Drawing.Size(160, 53);
             this.CancelButton.TabIndex = 32;
             this.CancelButton.Text = "CANCEL";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click_1);
             // 
             // dateTimeReportedDTP
             // 
-            this.dateTimeReportedDTP.Location = new System.Drawing.Point(357, 136);
+            this.dateTimeReportedDTP.Location = new System.Drawing.Point(408, 181);
+            this.dateTimeReportedDTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimeReportedDTP.Name = "dateTimeReportedDTP";
-            this.dateTimeReportedDTP.Size = new System.Drawing.Size(300, 23);
+            this.dateTimeReportedDTP.Size = new System.Drawing.Size(342, 27);
             this.dateTimeReportedDTP.TabIndex = 31;
             // 
             // descriptionTB
             // 
-            this.descriptionTB.Location = new System.Drawing.Point(357, 377);
+            this.descriptionTB.Location = new System.Drawing.Point(408, 503);
+            this.descriptionTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.descriptionTB.Multiline = true;
             this.descriptionTB.Name = "descriptionTB";
-            this.descriptionTB.Size = new System.Drawing.Size(300, 170);
+            this.descriptionTB.Size = new System.Drawing.Size(342, 225);
             this.descriptionTB.TabIndex = 29;
             // 
             // subjectOfIncidentTB
             // 
-            this.subjectOfIncidentTB.Location = new System.Drawing.Point(357, 177);
+            this.subjectOfIncidentTB.Location = new System.Drawing.Point(408, 236);
+            this.subjectOfIncidentTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.subjectOfIncidentTB.Name = "subjectOfIncidentTB";
-            this.subjectOfIncidentTB.Size = new System.Drawing.Size(300, 23);
+            this.subjectOfIncidentTB.Size = new System.Drawing.Size(342, 27);
             this.subjectOfIncidentTB.TabIndex = 28;
             // 
             // priorityCB
@@ -97,17 +103,19 @@
             "Low",
             "Normal",
             "High"});
-            this.priorityCB.Location = new System.Drawing.Point(357, 297);
+            this.priorityCB.Location = new System.Drawing.Point(408, 396);
+            this.priorityCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.priorityCB.Name = "priorityCB";
-            this.priorityCB.Size = new System.Drawing.Size(300, 23);
+            this.priorityCB.Size = new System.Drawing.Size(342, 28);
             this.priorityCB.TabIndex = 27;
             // 
             // reportedByUserCB
             // 
             this.reportedByUserCB.FormattingEnabled = true;
-            this.reportedByUserCB.Location = new System.Drawing.Point(357, 256);
+            this.reportedByUserCB.Location = new System.Drawing.Point(408, 341);
+            this.reportedByUserCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.reportedByUserCB.Name = "reportedByUserCB";
-            this.reportedByUserCB.Size = new System.Drawing.Size(300, 23);
+            this.reportedByUserCB.Size = new System.Drawing.Size(342, 28);
             this.reportedByUserCB.TabIndex = 26;
             // 
             // typeOfIncidentCB
@@ -118,18 +126,19 @@
             "Software",
             "HardWare",
             "Service"});
-            this.typeOfIncidentCB.Location = new System.Drawing.Point(357, 216);
+            this.typeOfIncidentCB.Location = new System.Drawing.Point(408, 288);
+            this.typeOfIncidentCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.typeOfIncidentCB.Name = "typeOfIncidentCB";
-            this.typeOfIncidentCB.Size = new System.Drawing.Size(300, 23);
+            this.typeOfIncidentCB.Size = new System.Drawing.Size(342, 28);
             this.typeOfIncidentCB.TabIndex = 25;
             // 
             // descriptionLabel
             // 
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.descriptionLabel.Location = new System.Drawing.Point(171, 377);
+            this.descriptionLabel.Location = new System.Drawing.Point(195, 503);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(116, 22);
+            this.descriptionLabel.Size = new System.Drawing.Size(146, 27);
             this.descriptionLabel.TabIndex = 24;
             this.descriptionLabel.Text = "Description :";
             // 
@@ -137,9 +146,9 @@
             // 
             this.deadlineFollowUpLabel.AutoSize = true;
             this.deadlineFollowUpLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.deadlineFollowUpLabel.Location = new System.Drawing.Point(171, 337);
+            this.deadlineFollowUpLabel.Location = new System.Drawing.Point(195, 449);
             this.deadlineFollowUpLabel.Name = "deadlineFollowUpLabel";
-            this.deadlineFollowUpLabel.Size = new System.Drawing.Size(180, 22);
+            this.deadlineFollowUpLabel.Size = new System.Drawing.Size(232, 27);
             this.deadlineFollowUpLabel.TabIndex = 23;
             this.deadlineFollowUpLabel.Text = "Deadline/ follow up :";
             // 
@@ -147,9 +156,9 @@
             // 
             this.typeOfIncidentLabel.AutoSize = true;
             this.typeOfIncidentLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.typeOfIncidentLabel.Location = new System.Drawing.Point(171, 217);
+            this.typeOfIncidentLabel.Location = new System.Drawing.Point(195, 289);
             this.typeOfIncidentLabel.Name = "typeOfIncidentLabel";
-            this.typeOfIncidentLabel.Size = new System.Drawing.Size(159, 22);
+            this.typeOfIncidentLabel.Size = new System.Drawing.Size(203, 27);
             this.typeOfIncidentLabel.TabIndex = 22;
             this.typeOfIncidentLabel.Text = "Type of incident : ";
             // 
@@ -157,9 +166,9 @@
             // 
             this.reportedByUserLabel.AutoSize = true;
             this.reportedByUserLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.reportedByUserLabel.Location = new System.Drawing.Point(171, 257);
+            this.reportedByUserLabel.Location = new System.Drawing.Point(195, 343);
             this.reportedByUserLabel.Name = "reportedByUserLabel";
-            this.reportedByUserLabel.Size = new System.Drawing.Size(167, 22);
+            this.reportedByUserLabel.Size = new System.Drawing.Size(212, 27);
             this.reportedByUserLabel.TabIndex = 21;
             this.reportedByUserLabel.Text = "Reported by user :";
             // 
@@ -167,9 +176,9 @@
             // 
             this.pryorityLabel.AutoSize = true;
             this.pryorityLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.pryorityLabel.Location = new System.Drawing.Point(171, 297);
+            this.pryorityLabel.Location = new System.Drawing.Point(195, 396);
             this.pryorityLabel.Name = "pryorityLabel";
-            this.pryorityLabel.Size = new System.Drawing.Size(78, 22);
+            this.pryorityLabel.Size = new System.Drawing.Size(100, 27);
             this.pryorityLabel.TabIndex = 20;
             this.pryorityLabel.Text = "Priority :";
             // 
@@ -177,9 +186,9 @@
             // 
             this.subjectOfIincidentLabel.AutoSize = true;
             this.subjectOfIincidentLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.subjectOfIincidentLabel.Location = new System.Drawing.Point(171, 177);
+            this.subjectOfIincidentLabel.Location = new System.Drawing.Point(195, 236);
             this.subjectOfIincidentLabel.Name = "subjectOfIincidentLabel";
-            this.subjectOfIincidentLabel.Size = new System.Drawing.Size(181, 22);
+            this.subjectOfIincidentLabel.Size = new System.Drawing.Size(233, 27);
             this.subjectOfIincidentLabel.TabIndex = 19;
             this.subjectOfIincidentLabel.Text = "Subject of incident : ";
             // 
@@ -187,9 +196,9 @@
             // 
             this.dateTimeReportedLabel.AutoSize = true;
             this.dateTimeReportedLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimeReportedLabel.Location = new System.Drawing.Point(171, 137);
+            this.dateTimeReportedLabel.Location = new System.Drawing.Point(195, 183);
             this.dateTimeReportedLabel.Name = "dateTimeReportedLabel";
-            this.dateTimeReportedLabel.Size = new System.Drawing.Size(183, 22);
+            this.dateTimeReportedLabel.Size = new System.Drawing.Size(232, 27);
             this.dateTimeReportedLabel.TabIndex = 18;
             this.dateTimeReportedLabel.Text = "Date/time reported : ";
             // 
@@ -197,24 +206,25 @@
             // 
             this.pageTitleLabel.AutoSize = true;
             this.pageTitleLabel.Font = new System.Drawing.Font("Arial", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.pageTitleLabel.Location = new System.Drawing.Point(156, 34);
+            this.pageTitleLabel.Location = new System.Drawing.Point(178, 45);
             this.pageTitleLabel.Name = "pageTitleLabel";
-            this.pageTitleLabel.Size = new System.Drawing.Size(144, 51);
+            this.pageTitleLabel.Size = new System.Drawing.Size(180, 63);
             this.pageTitleLabel.TabIndex = 34;
             this.pageTitleLabel.Text = "label1";
             // 
             // deadlineFollowUpDTP
             // 
-            this.deadlineFollowUpDTP.Location = new System.Drawing.Point(357, 337);
+            this.deadlineFollowUpDTP.Location = new System.Drawing.Point(408, 449);
+            this.deadlineFollowUpDTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.deadlineFollowUpDTP.Name = "deadlineFollowUpDTP";
-            this.deadlineFollowUpDTP.Size = new System.Drawing.Size(300, 23);
+            this.deadlineFollowUpDTP.Size = new System.Drawing.Size(342, 27);
             this.deadlineFollowUpDTP.TabIndex = 35;
             // 
             // TicketUserInputControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 646);
+            this.ClientSize = new System.Drawing.Size(1037, 861);
             this.Controls.Add(this.deadlineFollowUpDTP);
             this.Controls.Add(this.pageTitleLabel);
             this.Controls.Add(this.submitTicketButton);
@@ -232,6 +242,7 @@
             this.Controls.Add(this.pryorityLabel);
             this.Controls.Add(this.subjectOfIincidentLabel);
             this.Controls.Add(this.dateTimeReportedLabel);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TicketUserInputControl";
             this.Text = "TicketUserInputControl";
             this.ResumeLayout(false);

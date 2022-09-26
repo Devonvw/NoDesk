@@ -1,24 +1,14 @@
 ﻿using Controller;
-using DnsClient.Protocol;
 using Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace View.Forms
 {
-    public abstract partial class TicketUserInputControl : Form
+    public abstract partial class CreateUpdateUserInput : Form
     {
         protected MainForm mainForm;
         protected TicketCRUDController ticketCRUDController;
 
-        public TicketUserInputControl(MainForm mainForm, string pageTitle, string submitTicketText)
+        public CreateUpdateUserInput(MainForm mainForm, string pageTitle, string submitTicketText)
         {
             this.mainForm = mainForm;
             ticketCRUDController = new TicketCRUDController();
@@ -48,22 +38,16 @@ namespace View.Forms
             return false;
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-            mainForm.OpenChildForm(new ServiceDaskReadTickets(mainForm), sender);
-        }
+
 
         protected IncidentTicket GetTableInput()
         {
             return new IncidentTicket(dateTimeReportedDTP.Value, subjectOfIncidentTB.Text, typeOfIncidentCB.Text, reportedByUserCB.Text, (Priority)priorityCB.SelectedIndex, deadlineFollowUpDTP.Value, descriptionTB.Text);
-            //TicketCRUDController.CreateTicket(dateTimeReported, subjectOfIncidentTB.Text, typeOfIncidentCB.Text, reportedByUserCB.Text, (Priority)priorityCB.SelectedIndex, deadlineFollowUpDate, descriptionTB.Text);
-            //MessageBox.Show("Ticket created successfully!");
-            //mainForm.OpenChildForm(new ServiceDaskReadTickets(mainForm), sender);            
         }
 
-        protected void submitTicketButton_Click(object sender, EventArgs e)
+        private void CancelButton_Click_1(object sender, EventArgs e)
         {
-
+            mainForm.OpenChildForm(new ServiceDaskReadTickets(mainForm), sender);
         }
     }
 }
