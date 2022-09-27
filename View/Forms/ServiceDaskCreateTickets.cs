@@ -13,23 +13,21 @@ namespace View.Forms
     {
         public ServiceDaskCreateTickets(MainForm mainForm) : base(mainForm, "Create new incident ticket", "submit ticket")
         {
-            submitTicketButton.Click += SubmitTicketButton_Click;
+            submitTicketButton.Click += SubmitTicketButton_Click!;
         }
 
         private void SubmitTicketButton_Click(object sender, EventArgs e)
         {
-
-            if (CheckValues())
+            RadioButton? incidentTypeRB = flowLayoutPanel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            RadioButton? priorityRB = flowLayoutPanel2.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            if (CheckValues(incidentTypeRB!, priorityRB!))
             {
-                IncidentTicket incidentTicket = GetTableInput();
+                IncidentTicket incidentTicket = GetTableInput(incidentTypeRB!, priorityRB!);
                 ticketCRUDController.CreateTicket(incidentTicket);
                 MessageBox.Show("Ticket created successfully!");
                 mainForm.OpenChildForm(new ServiceDaskReadTickets(mainForm), sender);
                 return;
             }
-            MessageBox.Show("Please fill in all tables");
         }
-
-        
     }
 }

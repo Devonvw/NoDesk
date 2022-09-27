@@ -70,7 +70,7 @@ namespace View.Forms
                     foreach (ListViewItem item in listView1.SelectedItems)
                     {
                         IncidentTicket incidentTicket = (IncidentTicket)item.Tag;
-                        ticketCRUDController.DeleteTicket(incidentTicket.Id);
+                        ticketCRUDController.DeleteTicket(incidentTicket.Id!);
                     }
                     LoadTable();
                     return;

@@ -20,8 +20,14 @@ namespace DAL
         public void ArchiveOldResolvedTickets()
         {
             FilterDefinition<BsonDocument> filter = Builders<BsonDocument>.Filter.Eq("resolved", true) & Builders<BsonDocument>.Filter.Lt("reportedDate", DateTime.Today.AddYears(-2));
-            archive.InsertMany(collection.Find(filter).ToList());
-            collection.DeleteMany(filter);
+
+            List<BsonDocument> list = collection.Find(filter).ToList();
+            if (list.Count != 0)
+            {
+                archive.InsertMany(list);
+                collection.DeleteMany(filter);
+            }
+
         }
     }
 }

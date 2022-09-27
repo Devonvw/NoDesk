@@ -1,5 +1,7 @@
 ﻿using Controller;
 using Model;
+using System.ComponentModel;
+using System.Windows.Forms.VisualStyles;
 
 namespace View.Forms
 {
@@ -18,9 +20,9 @@ namespace View.Forms
         }
 
 
-        protected bool CheckValues()
+        protected bool CheckValues(RadioButton incidentTypeRB, RadioButton priorityRB)
         {
-            if (subjectOfIncidentTB.Text != string.Empty && typeOfIncidentCB.Text != string.Empty && reportedByUserCB.Text != string.Empty && priorityCB.Text != string.Empty && descriptionTB.Text != string.Empty)
+            if (subjectOfIncidentTB.Text != string.Empty && reportedByUserCB.Text != string.Empty && descriptionTB.Text != string.Empty && incidentTypeRB != null && priorityRB != null)
             {
                 if (deadlineFollowUpDTP.Value > DateTime.Now)
                 {
@@ -40,9 +42,9 @@ namespace View.Forms
 
 
 
-        protected IncidentTicket GetTableInput()
+        protected virtual IncidentTicket GetTableInput(RadioButton incidentTypeRB, RadioButton priorityRB)
         {
-            return new IncidentTicket(dateTimeReportedDTP.Value, subjectOfIncidentTB.Text, typeOfIncidentCB.Text, reportedByUserCB.Text, (Priority)priorityCB.SelectedIndex, deadlineFollowUpDTP.Value, descriptionTB.Text);
+            return new IncidentTicket(dateTimeReportedDTP.Value, subjectOfIncidentTB.Text, incidentTypeRB.Text, reportedByUserCB.Text, (Priority)priorityRB.Tag, deadlineFollowUpDTP.Value, descriptionTB.Text);
         }
 
         private void CancelButton_Click_1(object sender, EventArgs e)
