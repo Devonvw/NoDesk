@@ -1,17 +1,6 @@
 ﻿using Controller;
-using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Model;
-using User = Model.User;
 using MongoDB.Bson.Serialization;
+using User = Model.User;
 
 namespace View.Forms
 {
@@ -42,9 +31,15 @@ namespace View.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (txtPass.Text == "" || txtUsername.Text == "")
+            {
+                MessageBox.Show("You did not enter a username and/or password");
+                return;
+            }
 
             string userName = txtUsername.Text;
             string passWord = txtPass.Text;
+
 
             User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
 
@@ -52,8 +47,12 @@ namespace View.Forms
 
         }
 
+
+
         private void ChechLoginInfo(string userName, string passWord, User user)
         {
+            
+
             if (userName == user.UserName && passWord == user.Password)
             {
                 MainForm mainForm = new MainForm();
@@ -64,6 +63,8 @@ namespace View.Forms
             {
                 MessageBox.Show("You entered the wrong user name and/or password. \nPlease try again.");
             }
+
+
         }
     }
 }
