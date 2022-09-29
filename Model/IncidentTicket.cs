@@ -9,14 +9,14 @@ namespace Model
 {
     public class IncidentTicket
     {
-        public string Id;
+        public string? Id;
         public DateTime dateTimeReported;
-        public string subject;
-        public string incidentType;
-        public string reportedBy;
+        public string? subject;
+        public string? incidentType;
+        public string? reportedBy;
         public Priority priority;
         public DateTime deadlineFollowUp;
-        public string description;
+        public string? description;
         public bool resolved;
 
         public IncidentTicket(DateTime dateTimeReported, string subject, string incidentType, string reportedBy, Priority priority, DateTime deadlineFollowUp, string description)
@@ -40,7 +40,7 @@ namespace Model
                         Id = element.Value.ToString();
                         break;
                     case ("reportedDate"):
-                        dateTimeReported = DateTime.Parse(element.Value.ToString());
+                        dateTimeReported = DateTime.Parse(element.Value.ToString()!);
                         break;
                     case ("subject"):
                         subject = element.Value.ToString();
@@ -52,10 +52,10 @@ namespace Model
                         reportedBy = element.Value.ToString();
                         break;
                     case ("priority"):
-                        priority = Enum.Parse<Priority>(element.Value.ToString());
+                        priority = Enum.Parse<Priority>(element.Value.ToString()!);
                         break;
                     case ("deadline"):
-                        deadlineFollowUp = DateTime.Parse(element.Value.ToString());
+                        deadlineFollowUp = DateTime.Parse(element.Value.ToString()!);
                         break;
                     case ("description"):
                         description = element.Value.ToString();

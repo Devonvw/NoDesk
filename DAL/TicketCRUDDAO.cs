@@ -14,15 +14,14 @@ namespace DAL
             collection.InsertOne(insidentTicket);
         }
 
-        public void UpdateTicket(UpdateDefinition<BsonDocument> update, FilterDefinition<BsonDocument> filter)
+        public void UpdateTicket(BsonDocument update, FilterDefinition<BsonDocument> filter)
         {
-            collection.UpdateMany(filter, update);
+            collection.ReplaceOne(filter, update);
         }
 
         public BsonDocument GetTicket(FilterDefinition<BsonDocument> filter)
         {
             return collection.Find(filter).First();
-
         }
 
         public List<BsonDocument> GetTicketList(FilterDefinition<BsonDocument> filter)

@@ -17,10 +17,12 @@ namespace View.Forms
     {
         MainForm mainForm;
         TicketCRUDController ticketCRUDController;
+        ArchiveDataBaseController archiveDataBaseController;
         public ServiceDaskReadTickets(MainForm mainForm)
         {
             this.mainForm = mainForm;
             ticketCRUDController = new TicketCRUDController();
+            archiveDataBaseController = new ArchiveDataBaseController();
             InitializeComponent();
             LoadTable();
         }
@@ -68,13 +70,19 @@ namespace View.Forms
                     foreach (ListViewItem item in listView1.SelectedItems)
                     {
                         IncidentTicket incidentTicket = (IncidentTicket)item.Tag;
-                        ticketCRUDController.DeleteTicket(incidentTicket.Id);
+                        ticketCRUDController.DeleteTicket(incidentTicket.Id!);
                     }
                     LoadTable();
                     return;
                 }
             }
             MessageBox.Show("please select a ticket");
+        }
+
+        private void archiveButton_Click(object sender, EventArgs e)
+        {
+            archiveDataBaseController.ArchiveOldResolvedTicketes();
+            LoadTable();
         }
     }
 }

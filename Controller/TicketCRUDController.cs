@@ -30,7 +30,7 @@ namespace Controller
         public List<IncidentTicket> ReadTicketList()
         {
             List<IncidentTicket> incidentTickets = new List<IncidentTicket>();
-            foreach (BsonDocument bsonDocument in ticketCRUDDAO.GetTicketList(Builders<BsonDocument>.Filter.Empty))
+            foreach (BsonDocument bsonDocument in ticketCRUDDAO.GetTicketList(Builders<BsonDocument>.Filter.Eq("resolved", false)))
             {
                 incidentTickets.Add(new IncidentTicket(bsonDocument));
             }
