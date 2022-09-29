@@ -1,3 +1,5 @@
+using View.Forms;
+
 namespace View
 {
     public partial class MainForm : Form
@@ -10,6 +12,7 @@ namespace View
         //Open a child form
         public void OpenChildForm(Form childForm, object btnSender)
         {
+
             if (activeForm != null)
                 activeForm.Close();
             activeForm = childForm;
@@ -23,7 +26,9 @@ namespace View
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            
             OpenChildForm(new Forms.DashboardForm(), sender);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,9 +41,11 @@ namespace View
             OpenChildForm(new Forms.ServiceDaskReadTickets(this), sender);
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogOut_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.LoginForm(), sender);
+            this.Close();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
         }
     }
 

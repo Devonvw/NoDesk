@@ -44,17 +44,20 @@ namespace View.Forms
         {
 
             string userName = txtUsername.Text;
+            string passWord = txtPass.Text;
 
             User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
 
             
-            if (userName == user.UserName)
+            if (userName == user.UserName && passWord == user.Password)
             {
-                MessageBox.Show(user.ToString());
+                MainForm mainForm = new MainForm();
+                mainForm.Show();
+                this.Hide();
             }
             else
             {
-                MessageBox.Show("Fail");
+                MessageBox.Show("You entered the wrong user name and/or password. \nPlease try again.");
             }
             
             
