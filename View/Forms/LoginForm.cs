@@ -48,7 +48,12 @@ namespace View.Forms
 
             User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
 
-            
+            ChechLoginInfo(userName, passWord, user);
+
+        }
+
+        private void ChechLoginInfo(string userName, string passWord, User user)
+        {
             if (userName == user.UserName && passWord == user.Password)
             {
                 MainForm mainForm = new MainForm();
@@ -59,9 +64,6 @@ namespace View.Forms
             {
                 MessageBox.Show("You entered the wrong user name and/or password. \nPlease try again.");
             }
-            
-            
-        
         }
     }
 }
