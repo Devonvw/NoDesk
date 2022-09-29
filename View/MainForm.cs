@@ -35,6 +35,11 @@ namespace View
         {
             OpenChildForm(new Forms.ServiceDaskReadTickets(this), sender);
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.LoginForm(), sender);
+        }
     }
 
 }

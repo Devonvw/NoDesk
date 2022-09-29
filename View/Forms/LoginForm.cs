@@ -20,8 +20,14 @@ namespace View.Forms
         private void lblForgotLoginDetails_Click(object sender, EventArgs e)
         {
             ForgotPassword forgotPassword = new ForgotPassword();
-
             forgotPassword.ShowDialog();
+
+        }
+
+        private void lblAddUser_Click(object sender, EventArgs e)
+        {
+            AddUser addUser = new AddUser();
+            addUser.ShowDialog();
 
         }
     }
