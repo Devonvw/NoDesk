@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlChild = new System.Windows.Forms.Panel();
+            this.lblAddUser = new System.Windows.Forms.Label();
             this.lblForgotLoginDetails = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblAddUser = new System.Windows.Forms.Label();
             this.pnlChild.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +62,17 @@
             this.pnlChild.Size = new System.Drawing.Size(800, 402);
             this.pnlChild.TabIndex = 3;
             // 
+            // lblAddUser
+            // 
+            this.lblAddUser.AutoSize = true;
+            this.lblAddUser.ForeColor = System.Drawing.Color.Blue;
+            this.lblAddUser.Location = new System.Drawing.Point(264, 288);
+            this.lblAddUser.Name = "lblAddUser";
+            this.lblAddUser.Size = new System.Drawing.Size(48, 15);
+            this.lblAddUser.TabIndex = 9;
+            this.lblAddUser.Text = "Sign Up";
+            this.lblAddUser.Click += new System.EventHandler(this.lblAddUser_Click);
+            // 
             // lblForgotLoginDetails
             // 
             this.lblForgotLoginDetails.AutoSize = true;
@@ -83,6 +94,7 @@
             this.btnLogin.TabIndex = 7;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // label5
             // 
@@ -98,6 +110,7 @@
             // 
             this.txtPass.Location = new System.Drawing.Point(264, 262);
             this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(265, 23);
             this.txtPass.TabIndex = 5;
             // 
@@ -155,17 +168,6 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 48);
             this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // lblAddUser
-            // 
-            this.lblAddUser.AutoSize = true;
-            this.lblAddUser.ForeColor = System.Drawing.Color.Blue;
-            this.lblAddUser.Location = new System.Drawing.Point(264, 288);
-            this.lblAddUser.Name = "lblAddUser";
-            this.lblAddUser.Size = new System.Drawing.Size(48, 15);
-            this.lblAddUser.TabIndex = 9;
-            this.lblAddUser.Text = "Sign Up";
-            this.lblAddUser.Click += new System.EventHandler(this.lblAddUser_Click);
             // 
             // LoginForm
             // 

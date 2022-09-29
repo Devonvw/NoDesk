@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace DAL
 {
@@ -19,6 +20,11 @@ namespace DAL
         {
             collection.InsertOne(User);
         }
+
+        //public BsonDocument GetUser(FilterDefinition<BsonDocument> filter)
+        //{
+        //    return collection.Find(filter).First();
+        //}
 
         public BsonDocument GetUser(FilterDefinition<BsonDocument> filter)
         {
