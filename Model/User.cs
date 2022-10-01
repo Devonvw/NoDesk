@@ -18,11 +18,10 @@ namespace Model
         private int phoneNumber;
         private string location;
 
-        public User(string firstname, string lastname, string email, string username, string password)
+        public User(string firstname, string lastname,string username, string password)
         {
             this.firstname = firstname;
             this.lastname = lastname;
-            this.email = email;
             this.username = username;
             this.password = password;
         }
