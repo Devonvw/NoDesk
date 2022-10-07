@@ -30,8 +30,6 @@ namespace View.Forms
             this.Close();
         }
 
-       
-
         public bool EmailValidator(string email)
         {
             return new EmailAddressAttribute().IsValid(email);
@@ -52,13 +50,13 @@ namespace View.Forms
 
         private void txtBoxPhonenumber_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '+'))
             {
                 e.Handled = true;
             }
 
             // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '+') && ((sender as TextBox).Text.IndexOf('+') > -1))
             {
                 e.Handled = true;
             }
