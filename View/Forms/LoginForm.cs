@@ -24,19 +24,28 @@ namespace View.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtPass.Text == "" || txtUsername.Text == "")
+
+            try
             {
-                MessageBox.Show("You did not enter a username and/or password");
-                return;
+                if (txtPass.Text == "" || txtUsername.Text == "")
+                {
+                    MessageBox.Show("You did not enter a username and/or password");
+                    return;
+                }
+
+                string userName = txtUsername.Text;
+                string passWord = txtPass.Text;
+
+
+                User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
+
+                ChechLoginInfo(userName, passWord, user);
+               
             }
-
-            string userName = txtUsername.Text;
-            string passWord = txtPass.Text;
-
-
-            User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
-
-            ChechLoginInfo(userName, passWord, user);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong. Please try again", ex.Message);
+            }
 
         }
 
@@ -44,20 +53,19 @@ namespace View.Forms
 
         private void ChechLoginInfo(string userName, string passWord, User user)
         {
+
+
+                if (userName == user.UserName && passWord == user.Password)
+                {
+                    MainForm mainForm = new MainForm();
+                    mainForm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("You entered the wrong user name and/or password. \nPlease try again.");
+                }
             
-
-            if (userName == user.UserName && passWord == user.Password)
-            {
-                MainForm mainForm = new MainForm();
-                mainForm.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("You entered the wrong user name and/or password. \nPlease try again.");
-            }
-
-
         }
     }
 }
