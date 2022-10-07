@@ -15,7 +15,8 @@ namespace View.Forms
 {
     public partial class AddUser : Form
     {
-        public AddUser()
+       
+        public AddUser( )
         {
             InitializeComponent();
         }
@@ -28,6 +29,8 @@ namespace View.Forms
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
+            //UserManagementForum userManagementForum = new UserManagementForum();
+            //userManagementForum.Show();
         }
 
         public bool EmailValidator(string email)

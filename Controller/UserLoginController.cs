@@ -22,6 +22,18 @@ namespace Controller
             userDAO.CreateUser(UserToBsonDocument(user));
         }
 
+        public List<User> GetUserList()
+        {
+            List<User> users = new List<User>();
+
+            foreach (BsonDocument doc in userDAO.GetUserList(Builders<BsonDocument>.Filter.Empty))
+            {
+                users.Add(new User(doc));
+            }
+
+            return users;               
+        }
+
         public BsonDocument UserToBsonDocument(Model.User user)
         {
             BsonDocument newBsonDocument = new BsonDocument

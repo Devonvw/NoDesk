@@ -47,6 +47,11 @@ namespace View
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.UserManagementForum(this),sender);
+        }
     }
 
 }

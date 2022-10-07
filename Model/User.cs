@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,20 @@ namespace Model
             this.lastname = lastname;
             this.username = username;
             this.password = password;
+        }
+         
+        public User(BsonDocument bsonDoc)
+        {
+            BsonSerializer.Deserialize<User>(bsonDoc);
+
+            _id = bsonDoc["_id"].AsObjectId;
+            firstname = bsonDoc["FirstName"].AsString;
+            lastname = bsonDoc["LastName"].AsString;
+            username = bsonDoc["UserName"].AsString;
+            email = bsonDoc["Email"].AsString;
+            password = bsonDoc["Password"].AsString;
+            phoneNumber = bsonDoc["PhoneNumber"].AsInt32;
+            userType = (UserType)Enum.Parse(typeof(UserType), bsonDoc["UserType"].AsString, true);
         }
         public string FirstName { get { return firstname; } set { firstname = value; } }
         public string LastName { get { return lastname; } set { lastname = value; } }

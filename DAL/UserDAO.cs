@@ -30,5 +30,11 @@ namespace DAL
         {
             return collection.Find(filter).First();
         }
+
+        public List<BsonDocument> GetUserList(FilterDefinition<BsonDocument> filter)
+        {
+            return collection.Find(filter).ToList();
+
+        }
     }
 }

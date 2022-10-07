@@ -37,7 +37,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblForgotLoginDetails = new System.Windows.Forms.Label();
-            this.lblAddUser = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -128,23 +127,11 @@
             this.lblForgotLoginDetails.Text = "Forgot Login Details?";
             this.lblForgotLoginDetails.Click += new System.EventHandler(this.lblForgotLoginDetails_Click);
             // 
-            // lblAddUser
-            // 
-            this.lblAddUser.AutoSize = true;
-            this.lblAddUser.ForeColor = System.Drawing.Color.Blue;
-            this.lblAddUser.Location = new System.Drawing.Point(256, 279);
-            this.lblAddUser.Name = "lblAddUser";
-            this.lblAddUser.Size = new System.Drawing.Size(48, 15);
-            this.lblAddUser.TabIndex = 9;
-            this.lblAddUser.Text = "Sign Up";
-            this.lblAddUser.Click += new System.EventHandler(this.lblAddUser_Click);
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblAddUser);
             this.Controls.Add(this.lblForgotLoginDetails);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogin);
@@ -172,6 +159,5 @@
         private Label label5;
         private Button btnLogin;
         private Label lblForgotLoginDetails;
-        private Label lblAddUser;
     }
 }

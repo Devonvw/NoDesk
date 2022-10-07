@@ -22,13 +22,6 @@ namespace View.Forms
 
         }
 
-        private void lblAddUser_Click(object sender, EventArgs e)
-        {
-            AddUser addUser = new AddUser();
-            addUser.ShowDialog();
-
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (txtPass.Text == "" || txtUsername.Text == "")
