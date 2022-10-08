@@ -1,6 +1,8 @@
 ﻿using Controller;
 using Model;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,7 +44,21 @@ namespace View.Forms
                 listView1.Items.Add(li);
             }
         }
-
+        private void SearchTable(BsonDocument bsonDocument)
+        {
+            listView1.Items.Clear();
+            List<IncidentTicket> tickets = ticketCRUDController.ReadTicketList();
+            foreach (IncidentTicket ticket in tickets)
+            {
+                ListViewItem li = new ListViewItem(ticket.Id);
+                li.SubItems.Add(ticket.subject);
+                li.SubItems.Add(ticket.reportedBy);
+                li.SubItems.Add(ticket.dateTimeReported.ToString("dd/MM/yyyy"));
+                li.SubItems.Add(ticket.resolved.ToString());
+                li.Tag = ticket;
+                listView1.Items.Add(li);
+            }
+        }
         private void updateTicketButton_Click(object sender, EventArgs e)
         {
             if(listView1.SelectedItems.Count != 0)
@@ -83,6 +99,12 @@ namespace View.Forms
         {
             archiveDataBaseController.ArchiveOldResolvedTicketes();
             LoadTable();
+        }
+        private void searchThroughTickets_TextChanged(object sender, EventArgs e)
+        {
+            string userInput = searchThroughTickets.Text;
+            listView1.Items.Clear();
+            SearchTable(ticketCRUDController.SearchTicket(userInput));
         }
     }
 }
