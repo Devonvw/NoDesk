@@ -21,10 +21,6 @@ namespace DAL
             collection.InsertOne(User);
         }
 
-        //public BsonDocument GetUser(FilterDefinition<BsonDocument> filter)
-        //{
-        //    return collection.Find(filter).First();
-        //}
 
         public BsonDocument GetUser(FilterDefinition<BsonDocument> filter)
         {
@@ -32,9 +28,16 @@ namespace DAL
         }
 
         public List<BsonDocument> GetUserList(FilterDefinition<BsonDocument> filter)
-        {
+        {   
+            
             return collection.Find(filter).ToList();
-
+            
         }
+
+
+
+
+
+
     }
 }

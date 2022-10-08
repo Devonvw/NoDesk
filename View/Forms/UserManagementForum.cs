@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -23,7 +24,8 @@ namespace View.Forms
             userLoginController = new UserLoginController();
             this.mainForm = mainForm;
             InitializeComponent();
-            LoadTable();
+            List<User> users = userLoginController.GetUserList();
+            LoadTable(users);
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -32,10 +34,9 @@ namespace View.Forms
             addUser.Show();
         }
 
-        private void LoadTable()
+        private void LoadTable(List<User> users)
         {
             listViewUsers.Items.Clear();
-            List<User> users = userLoginController.GetUserList();
             foreach (User user in users)
             {
                 ListViewItem li = new ListViewItem(user._id.ToString());
@@ -46,6 +47,21 @@ namespace View.Forms
                 li.Tag = user;
                 listViewUsers.Items.Add(li);
             }
+        }
+
+        private void txtBoxFilterMail_TextChanged(object sender, EventArgs e)
+        {   
+
+            
+           
+                listViewUsers.Items.Clear();
+                LoadTable(userLoginController.GetUserEmail(txtBoxFilterMail.Text));
+            
+            //else if (txtBoxFilterMail.Text == "" || txtBoxFilterMail.Text == "Filter by email")
+            //{
+            //    LoadTable(userLoginController.GetUserList());
+            //}
+
         }
     }
 }
