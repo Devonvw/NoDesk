@@ -18,6 +18,8 @@ namespace View.Forms
         MainForm mainForm;
         TicketCRUDController ticketCRUDController;
         ArchiveDataBaseController archiveDataBaseController;
+
+        
         public ServiceDaskReadTickets(MainForm mainForm)
         {
             this.mainForm = mainForm;
@@ -25,6 +27,7 @@ namespace View.Forms
             archiveDataBaseController = new ArchiveDataBaseController();
             InitializeComponent();
             LoadTable();
+            
         }
 
         private void LoadTable()
@@ -45,6 +48,7 @@ namespace View.Forms
 
         private void updateTicketButton_Click(object sender, EventArgs e)
         {
+           
             if(listView1.SelectedItems.Count != 0)
             {
                 IncidentTicket incidentTicket = (IncidentTicket)listView1.SelectedItems[0].Tag;
