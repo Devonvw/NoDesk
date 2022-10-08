@@ -34,12 +34,14 @@
             this.txtUsername = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
             this.pnlChild.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlChild
             // 
             this.pnlChild.AutoScroll = true;
+            this.pnlChild.Controls.Add(this.label3);
             this.pnlChild.Controls.Add(this.btnForgotPass);
             this.pnlChild.Controls.Add(this.label2);
             this.pnlChild.Controls.Add(this.txtUsername);
@@ -59,6 +61,7 @@
             this.btnForgotPass.TabIndex = 3;
             this.btnForgotPass.Text = "Send password reset mail";
             this.btnForgotPass.UseVisualStyleBackColor = false;
+            this.btnForgotPass.Click += new System.EventHandler(this.btnForgotPass_Click);
             // 
             // label2
             // 
@@ -94,6 +97,15 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 48);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(301, 247);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(222, 15);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "(Can\'t find the email? Check your spam!)";
+            // 
             // ForgotPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -117,5 +129,6 @@
         private MaskedTextBox txtUsername;
         private Label label1;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Label label3;
     }
 }

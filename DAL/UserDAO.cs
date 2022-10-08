@@ -21,8 +21,6 @@ namespace DAL
             collection.InsertOne(User);
         }
 
-
-
         public BsonDocument GetUser(FilterDefinition<BsonDocument> filter)
         {
             return collection.Find(filter).First();
