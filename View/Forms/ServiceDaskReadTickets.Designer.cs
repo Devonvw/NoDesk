@@ -40,24 +40,24 @@
             this.updateTicketButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.archiveButton = new System.Windows.Forms.Button();
-            this.buttonCloseTicket = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // overviewTicketsLabel
             // 
             this.overviewTicketsLabel.AutoSize = true;
             this.overviewTicketsLabel.Font = new System.Drawing.Font("Arial", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.overviewTicketsLabel.Location = new System.Drawing.Point(105, 67);
+            this.overviewTicketsLabel.Location = new System.Drawing.Point(120, 89);
             this.overviewTicketsLabel.Name = "overviewTicketsLabel";
-            this.overviewTicketsLabel.Size = new System.Drawing.Size(361, 51);
+            this.overviewTicketsLabel.Size = new System.Drawing.Size(452, 63);
             this.overviewTicketsLabel.TabIndex = 0;
             this.overviewTicketsLabel.Text = "Overview tickets";
             // 
             // createIncidentButton
             // 
-            this.createIncidentButton.Location = new System.Drawing.Point(181, 128);
+            this.createIncidentButton.Location = new System.Drawing.Point(245, 170);
+            this.createIncidentButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.createIncidentButton.Name = "createIncidentButton";
-            this.createIncidentButton.Size = new System.Drawing.Size(112, 39);
+            this.createIncidentButton.Size = new System.Drawing.Size(144, 52);
             this.createIncidentButton.TabIndex = 1;
             this.createIncidentButton.Text = "CREATE INCIDENT";
             this.createIncidentButton.UseVisualStyleBackColor = true;
@@ -73,9 +73,10 @@
             this.Resolved});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(105, 188);
+            this.listView1.Location = new System.Drawing.Point(120, 251);
+            this.listView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(580, 321);
+            this.listView1.Size = new System.Drawing.Size(662, 427);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -106,9 +107,10 @@
             // 
             // deleteTicketButton
             // 
-            this.deleteTicketButton.Location = new System.Drawing.Point(418, 128);
+            this.deleteTicketButton.Location = new System.Drawing.Point(545, 170);
+            this.deleteTicketButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.deleteTicketButton.Name = "deleteTicketButton";
-            this.deleteTicketButton.Size = new System.Drawing.Size(126, 39);
+            this.deleteTicketButton.Size = new System.Drawing.Size(144, 52);
             this.deleteTicketButton.TabIndex = 3;
             this.deleteTicketButton.Text = "DELETE TICKET";
             this.deleteTicketButton.UseVisualStyleBackColor = true;
@@ -116,9 +118,10 @@
             // 
             // updateTicketButton
             // 
-            this.updateTicketButton.Location = new System.Drawing.Point(299, 128);
+            this.updateTicketButton.Location = new System.Drawing.Point(395, 170);
+            this.updateTicketButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.updateTicketButton.Name = "updateTicketButton";
-            this.updateTicketButton.Size = new System.Drawing.Size(113, 39);
+            this.updateTicketButton.Size = new System.Drawing.Size(144, 52);
             this.updateTicketButton.TabIndex = 4;
             this.updateTicketButton.Text = "UPDATE TICKET";
             this.updateTicketButton.UseVisualStyleBackColor = true;
@@ -127,41 +130,30 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(21, 128);
+            this.textBox1.Location = new System.Drawing.Point(62, 170);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 39);
+            this.textBox1.Size = new System.Drawing.Size(175, 51);
             this.textBox1.TabIndex = 5;
             this.textBox1.Text = "Search...";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // archiveButton
             // 
-            this.archiveButton.Location = new System.Drawing.Point(550, 129);
-            this.archiveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.archiveButton.Location = new System.Drawing.Point(695, 171);
             this.archiveButton.Name = "archiveButton";
-            this.archiveButton.Size = new System.Drawing.Size(126, 38);
+            this.archiveButton.Size = new System.Drawing.Size(144, 51);
             this.archiveButton.TabIndex = 6;
             this.archiveButton.Text = "ARCHIVE TICKETS";
             this.archiveButton.UseVisualStyleBackColor = true;
             this.archiveButton.Click += new System.EventHandler(this.archiveButton_Click);
             // 
-            // buttonCloseTicket
-            // 
-            this.buttonCloseTicket.Location = new System.Drawing.Point(682, 128);
-            this.buttonCloseTicket.Name = "buttonCloseTicket";
-            this.buttonCloseTicket.Size = new System.Drawing.Size(117, 39);
-            this.buttonCloseTicket.TabIndex = 7;
-            this.buttonCloseTicket.Text = "CLOSE TICKET ";
-            this.buttonCloseTicket.UseVisualStyleBackColor = true;
-            this.buttonCloseTicket.Click += new System.EventHandler(this.buttonCloseTicket_Click);
-            // 
             // ServiceDaskReadTickets
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 573);
-            this.Controls.Add(this.buttonCloseTicket);
+            this.ClientSize = new System.Drawing.Size(937, 764);
             this.Controls.Add(this.archiveButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.updateTicketButton);
@@ -169,6 +161,7 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.createIncidentButton);
             this.Controls.Add(this.overviewTicketsLabel);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ServiceDaskReadTickets";
             this.Text = "ServiceDask";
             this.ResumeLayout(false);
@@ -190,6 +183,5 @@
         private Button updateTicketButton;
         private TextBox textBox1;
         private Button archiveButton;
-        private Button buttonCloseTicket;
     }
 }
