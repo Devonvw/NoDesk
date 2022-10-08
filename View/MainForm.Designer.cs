@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
+            this.btnIncident = new System.Windows.Forms.Button();
+            this.btnUserManagement = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1.SuspendLayout();
@@ -39,9 +39,9 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.Controls.Add(this.button3);
+            this.flowLayoutPanel1.Controls.Add(this.btnDashboard);
+            this.flowLayoutPanel1.Controls.Add(this.btnIncident);
+            this.flowLayoutPanel1.Controls.Add(this.btnUserManagement);
             this.flowLayoutPanel1.Controls.Add(this.btnLogOut);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 10);
@@ -49,35 +49,35 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(882, 48);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // button1
+            // btnDashboard
             // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 32);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Dashboard";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnDashboard.Location = new System.Drawing.Point(3, 3);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Size = new System.Drawing.Size(109, 32);
+            this.btnDashboard.TabIndex = 0;
+            this.btnDashboard.Text = "Dashboard";
+            this.btnDashboard.UseVisualStyleBackColor = true;
+            this.btnDashboard.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnIncident
             // 
-            this.button2.Location = new System.Drawing.Point(118, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 32);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Incident Management";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnIncident.Location = new System.Drawing.Point(118, 3);
+            this.btnIncident.Name = "btnIncident";
+            this.btnIncident.Size = new System.Drawing.Size(140, 32);
+            this.btnIncident.TabIndex = 1;
+            this.btnIncident.Text = "Incident Management";
+            this.btnIncident.UseVisualStyleBackColor = true;
+            this.btnIncident.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btnUserManagement
             // 
-            this.button3.Location = new System.Drawing.Point(264, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(128, 32);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "User Management";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnUserManagement.Location = new System.Drawing.Point(264, 3);
+            this.btnUserManagement.Name = "btnUserManagement";
+            this.btnUserManagement.Size = new System.Drawing.Size(128, 32);
+            this.btnUserManagement.TabIndex = 2;
+            this.btnUserManagement.Text = "User Management";
+            this.btnUserManagement.UseVisualStyleBackColor = true;
+            this.btnUserManagement.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnLogOut
             // 
@@ -119,10 +119,11 @@
         #endregion
 
         private FlowLayoutPanel flowLayoutPanel1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        public Button btnDashboard;
+        public Button btnIncident;
+        public Button btnUserManagement;
         private Panel pnlChild;
         private Button btnLogOut;
+        public Button btnAddIncidentReg;
     }
 }

@@ -57,15 +57,36 @@ namespace View.Forms
 
                 if (userName == user.UserName && passWord == user.Password)
                 {
-                    MainForm mainForm = new MainForm();
-                    mainForm.Show();
-                    this.Hide();
+                    CheckUserType(user);
+                    
                 }
                 else
                 {
                     MessageBox.Show("You entered the wrong user name and/or password. \nPlease try again.");
                 }
             
+        }
+
+        private void CheckUserType(User user)
+        {
+            MainForm mainForm = new MainForm();
+            
+
+            if (user.UserType == Model.UserType.Regular)
+            {
+                mainForm.Show();
+                mainForm.btnUserManagement.Enabled = false;
+                mainForm.btnIncident.Enabled = false;
+                this.Hide();
+            }
+            else
+            {
+                mainForm.btnDashboard.Enabled = false;
+                mainForm.Show();
+                this.Hide();
+            }
+
+           
         }
     }
 }
