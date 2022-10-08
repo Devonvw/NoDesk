@@ -38,16 +38,13 @@ namespace View.Forms
         {
             string randomToken = RandomString();
 
-            
-            
-
             User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(txtUsername.Text));
 
             MailMessage message = new MailMessage();
             message.From = new MailAddress(fromMail);
             message.Subject = "Wachtwoord reset email";
             message.To.Add(new MailAddress(user.Email));
-            message.Body = $"<html><body> Hallo gebruik deze code om uw wachtwoord te reseten. <br> Code:{randomToken} </body></html>";
+            message.Body = $"<html><body> Hallo gebruik deze code om uw wachtwoord te reseten. <br> Code: {randomToken} </body></html>";
             message.IsBodyHtml = true;
 
             var smtpClient = new SmtpClient("smtp.gmail.com")
@@ -58,7 +55,7 @@ namespace View.Forms
             };
 
             smtpClient.Send(message);
-            MessageBox.Show(randomToken);
+            
             MessageBox.Show("Email send!");
         }
 
