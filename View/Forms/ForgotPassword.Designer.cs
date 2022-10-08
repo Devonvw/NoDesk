@@ -29,44 +29,95 @@
         private void InitializeComponent()
         {
             this.pnlChild = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.btnForgotPass = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
             this.pnlChild.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlChild
             // 
             this.pnlChild.AutoScroll = true;
+            this.pnlChild.Controls.Add(this.button1);
             this.pnlChild.Controls.Add(this.label3);
+            this.pnlChild.Controls.Add(this.textBox1);
+            this.pnlChild.Controls.Add(this.label4);
+            this.pnlChild.Controls.Add(this.maskedTextBox1);
             this.pnlChild.Controls.Add(this.btnForgotPass);
             this.pnlChild.Controls.Add(this.label2);
             this.pnlChild.Controls.Add(this.txtUsername);
             this.pnlChild.Controls.Add(this.label1);
             this.pnlChild.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlChild.Location = new System.Drawing.Point(0, 48);
+            this.pnlChild.Location = new System.Drawing.Point(0, 0);
             this.pnlChild.Name = "pnlChild";
-            this.pnlChild.Size = new System.Drawing.Size(800, 402);
+            this.pnlChild.Size = new System.Drawing.Size(800, 450);
             this.pnlChild.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(265, 294);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(204, 33);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "reset password";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(265, 247);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 15);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "New password";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(265, 265);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(204, 23);
+            this.textBox1.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(265, 191);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(373, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Secret token (check your email dont forget to check spam!)";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(265, 211);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(204, 23);
+            this.maskedTextBox1.TabIndex = 5;
             // 
             // btnForgotPass
             // 
             this.btnForgotPass.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnForgotPass.Location = new System.Drawing.Point(334, 191);
+            this.btnForgotPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnForgotPass.Location = new System.Drawing.Point(265, 122);
             this.btnForgotPass.Name = "btnForgotPass";
-            this.btnForgotPass.Size = new System.Drawing.Size(148, 38);
+            this.btnForgotPass.Size = new System.Drawing.Size(204, 38);
             this.btnForgotPass.TabIndex = 3;
-            this.btnForgotPass.Text = "Send password reset mail";
+            this.btnForgotPass.Text = "Send secret token to mail";
             this.btnForgotPass.UseVisualStyleBackColor = false;
             this.btnForgotPass.Click += new System.EventHandler(this.btnForgotPass_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(334, 123);
+            this.label2.Location = new System.Drawing.Point(265, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 15);
             this.label2.TabIndex = 2;
@@ -74,37 +125,20 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(334, 153);
+            this.txtUsername.Location = new System.Drawing.Point(265, 93);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(148, 23);
+            this.txtUsername.Size = new System.Drawing.Size(204, 23);
             this.txtUsername.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(334, 22);
+            this.label1.Location = new System.Drawing.Point(265, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "NoDesk: TGG";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 48);
-            this.flowLayoutPanel1.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(301, 247);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(222, 15);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "(Can\'t find the email? Check your spam!)";
             // 
             // ForgotPassword
             // 
@@ -112,7 +146,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pnlChild);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "ForgotPassword";
             this.Text = "ForgotPassword";
             this.pnlChild.ResumeLayout(false);
@@ -128,7 +161,10 @@
         private Label label2;
         private MaskedTextBox txtUsername;
         private Label label1;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private Label label4;
+        private MaskedTextBox maskedTextBox1;
+        private Button button1;
         private Label label3;
+        private TextBox textBox1;
     }
 }

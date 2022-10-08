@@ -36,13 +36,18 @@ namespace View.Forms
 
         private void SendMail(string fromMail, string fromPassword)
         {
+            string randomToken = RandomString();
+
+            
+            
+
             User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(txtUsername.Text));
 
             MailMessage message = new MailMessage();
             message.From = new MailAddress(fromMail);
             message.Subject = "Wachtwoord reset email";
             message.To.Add(new MailAddress(user.Email));
-            message.Body = "<html><body> Hallo uw tijdelijke wachtwoord is:  </body></html>";
+            message.Body = $"<html><body> Hallo gebruik deze code om uw wachtwoord te reseten. <br> Code:{randomToken} </body></html>";
             message.IsBodyHtml = true;
 
             var smtpClient = new SmtpClient("smtp.gmail.com")
@@ -53,7 +58,23 @@ namespace View.Forms
             };
 
             smtpClient.Send(message);
+            MessageBox.Show(randomToken);
             MessageBox.Show("Email send!");
+        }
+
+        private static string RandomString()
+        {
+            Random random = new Random();
+            const string pool = "abcdefghijklmnopqrstuvwxyz0123456789";
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < 8; i++)
+            {
+                char c = pool[random.Next(0, pool.Length)];
+                builder.Append(c);
+            }
+
+            return builder.ToString();
         }
     }
 }
