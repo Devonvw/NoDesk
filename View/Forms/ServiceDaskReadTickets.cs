@@ -88,5 +88,20 @@ namespace View.Forms
             archiveDataBaseController.ArchiveOldResolvedTicketes();
             LoadTable();
         }
+
+        private void buttonCloseTicket_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0 || listView1.SelectedItems.Count >= 2)
+            {
+                MessageBox.Show("Please select one ticket");
+            }
+            else
+            {
+                IncidentTicket incidentTicket = (IncidentTicket)(listView1.FocusedItem).Tag;
+                incidentTicket.resolved = true;
+                ticketCRUDController.UpdateTicket(incidentTicket);
+                LoadTable();
+            }
+        }
     }
 }

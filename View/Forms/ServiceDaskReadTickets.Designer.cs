@@ -40,6 +40,7 @@
             this.updateTicketButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.archiveButton = new System.Windows.Forms.Button();
+            this.buttonCloseTicket = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // overviewTicketsLabel
@@ -54,7 +55,7 @@
             // 
             // createIncidentButton
             // 
-            this.createIncidentButton.Location = new System.Drawing.Point(214, 128);
+            this.createIncidentButton.Location = new System.Drawing.Point(165, 129);
             this.createIncidentButton.Name = "createIncidentButton";
             this.createIncidentButton.Size = new System.Drawing.Size(126, 39);
             this.createIncidentButton.TabIndex = 1;
@@ -105,7 +106,7 @@
             // 
             // deleteTicketButton
             // 
-            this.deleteTicketButton.Location = new System.Drawing.Point(477, 128);
+            this.deleteTicketButton.Location = new System.Drawing.Point(428, 129);
             this.deleteTicketButton.Name = "deleteTicketButton";
             this.deleteTicketButton.Size = new System.Drawing.Size(126, 39);
             this.deleteTicketButton.TabIndex = 3;
@@ -115,7 +116,7 @@
             // 
             // updateTicketButton
             // 
-            this.updateTicketButton.Location = new System.Drawing.Point(346, 128);
+            this.updateTicketButton.Location = new System.Drawing.Point(297, 129);
             this.updateTicketButton.Name = "updateTicketButton";
             this.updateTicketButton.Size = new System.Drawing.Size(126, 39);
             this.updateTicketButton.TabIndex = 4;
@@ -126,7 +127,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(54, 128);
+            this.textBox1.Location = new System.Drawing.Point(5, 129);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(154, 39);
@@ -136,7 +137,7 @@
             // 
             // archiveButton
             // 
-            this.archiveButton.Location = new System.Drawing.Point(608, 128);
+            this.archiveButton.Location = new System.Drawing.Point(559, 129);
             this.archiveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.archiveButton.Name = "archiveButton";
             this.archiveButton.Size = new System.Drawing.Size(126, 38);
@@ -145,11 +146,22 @@
             this.archiveButton.UseVisualStyleBackColor = true;
             this.archiveButton.Click += new System.EventHandler(this.archiveButton_Click);
             // 
+            // buttonCloseTicket
+            // 
+            this.buttonCloseTicket.Location = new System.Drawing.Point(695, 129);
+            this.buttonCloseTicket.Name = "buttonCloseTicket";
+            this.buttonCloseTicket.Size = new System.Drawing.Size(113, 37);
+            this.buttonCloseTicket.TabIndex = 7;
+            this.buttonCloseTicket.Text = "CLOSE TICKET";
+            this.buttonCloseTicket.UseVisualStyleBackColor = true;
+            this.buttonCloseTicket.Click += new System.EventHandler(this.buttonCloseTicket_Click);
+            // 
             // ServiceDaskReadTickets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 573);
+            this.Controls.Add(this.buttonCloseTicket);
             this.Controls.Add(this.archiveButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.updateTicketButton);
@@ -178,5 +190,6 @@
         public Button updateTicketButton;
         private TextBox textBox1;
         public Button archiveButton;
+        private Button buttonCloseTicket;
     }
 }

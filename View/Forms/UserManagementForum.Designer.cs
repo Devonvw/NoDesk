@@ -58,6 +58,7 @@
             this.txtBoxFilterMail.Size = new System.Drawing.Size(180, 36);
             this.txtBoxFilterMail.TabIndex = 1;
             this.txtBoxFilterMail.Text = "Filer by email";
+            this.txtBoxFilterMail.TextChanged += new System.EventHandler(this.txtBoxFilterMail_TextChanged);
             // 
             // btnAddUser
             // 

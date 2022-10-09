@@ -50,5 +50,31 @@ namespace Controller
             };
             return newBsonDocument;
         }
+
+        public List<User> GetUserEmail(string email)
+        {
+            List<User> users = new List<User>();
+
+            foreach (BsonDocument doc in userDAO.GetUserList(Builders<BsonDocument>.Filter.Regex("Email", new BsonRegularExpression(email))))
+            {
+                users.Add(new User(doc));
+            }
+
+            return users;
+        }
+
+        public List<User> SearchOnEmail(string email)
+        {
+            List<User> allUSers = GetUserList();
+
+            foreach (User u in allUSers)
+            {
+                if (!(u.Email.Contains(email)))
+                {
+                    allUSers.Remove(u);
+                }
+            }
+            return allUSers;
+        }
     }
 }

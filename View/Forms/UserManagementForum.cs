@@ -23,7 +23,8 @@ namespace View.Forms
             userLoginController = new UserLoginController();
             this.mainForm = mainForm;
             InitializeComponent();
-            LoadTable();
+            List<User> allUsers = userLoginController.GetUserList();
+            LoadTable(allUsers);
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -32,10 +33,9 @@ namespace View.Forms
             addUser.Show();
         }
 
-        private void LoadTable()
+        private void LoadTable(List<User> users)
         {
             listViewUsers.Items.Clear();
-            List<User> users = userLoginController.GetUserList();
             foreach (User user in users)
             {
                 ListViewItem li = new ListViewItem(user._id.ToString());
@@ -46,6 +46,12 @@ namespace View.Forms
                 li.Tag = user;
                 listViewUsers.Items.Add(li);
             }
+        }
+
+        private void txtBoxFilterMail_TextChanged(object sender, EventArgs e)
+        {
+            listViewUsers.Items.Clear();
+            LoadTable(userLoginController.GetUserEmail(txtBoxFilterMail.Text));
         }
     }
 }
