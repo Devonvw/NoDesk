@@ -53,5 +53,10 @@ namespace View.Forms
             listViewUsers.Items.Clear();
             LoadTable(userLoginController.GetUserEmail(txtBoxFilterMail.Text));
         }
+
+        private void UserManagementForum_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

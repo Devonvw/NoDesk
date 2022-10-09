@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlChild = new System.Windows.Forms.Panel();
+            this.lblShowHidePass = new System.Windows.Forms.Label();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNewPassword = new System.Windows.Forms.TextBox();
@@ -44,6 +45,7 @@
             // pnlChild
             // 
             this.pnlChild.AutoScroll = true;
+            this.pnlChild.Controls.Add(this.lblShowHidePass);
             this.pnlChild.Controls.Add(this.btnResetPassword);
             this.pnlChild.Controls.Add(this.label3);
             this.pnlChild.Controls.Add(this.txtNewPassword);
@@ -58,6 +60,17 @@
             this.pnlChild.Name = "pnlChild";
             this.pnlChild.Size = new System.Drawing.Size(800, 450);
             this.pnlChild.TabIndex = 5;
+            // 
+            // lblShowHidePass
+            // 
+            this.lblShowHidePass.AutoSize = true;
+            this.lblShowHidePass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblShowHidePass.Location = new System.Drawing.Point(475, 267);
+            this.lblShowHidePass.Name = "lblShowHidePass";
+            this.lblShowHidePass.Size = new System.Drawing.Size(32, 21);
+            this.lblShowHidePass.TabIndex = 10;
+            this.lblShowHidePass.Text = "👁";
+            this.lblShowHidePass.Click += new System.EventHandler(this.lblShowHidePass_Click);
             // 
             // btnResetPassword
             // 
@@ -170,5 +183,6 @@
         private Button btnResetPassword;
         private Label label3;
         private TextBox txtNewPassword;
+        private Label lblShowHidePass;
     }
 }

@@ -37,6 +37,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblForgotLoginDetails = new System.Windows.Forms.Label();
+            this.lblShowHidePass = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -127,11 +128,23 @@
             this.lblForgotLoginDetails.Text = "Forgot Login Details?";
             this.lblForgotLoginDetails.Click += new System.EventHandler(this.lblForgotLoginDetails_Click);
             // 
+            // lblShowHidePass
+            // 
+            this.lblShowHidePass.AutoSize = true;
+            this.lblShowHidePass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblShowHidePass.Location = new System.Drawing.Point(527, 255);
+            this.lblShowHidePass.Name = "lblShowHidePass";
+            this.lblShowHidePass.Size = new System.Drawing.Size(32, 21);
+            this.lblShowHidePass.TabIndex = 11;
+            this.lblShowHidePass.Text = "👁";
+            this.lblShowHidePass.Click += new System.EventHandler(this.lblShowHidePass_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblShowHidePass);
             this.Controls.Add(this.lblForgotLoginDetails);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogin);
@@ -142,6 +155,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtUsername);
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -159,5 +173,6 @@
         private Label label5;
         private Button btnLogin;
         private Label lblForgotLoginDetails;
+        private Label lblShowHidePass;
     }
 }

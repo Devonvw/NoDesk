@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Net;
-using System.Net.Mail;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Controller;
+﻿using Controller;
 using Model;
 using MongoDB.Bson.Serialization;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 
 namespace View.Forms
 {
@@ -20,10 +11,10 @@ namespace View.Forms
     {
         UserLoginController userLoginController;
         private string randomToken = RandomString();
-        
+
         public ForgotPassword()
         {
-            
+
             InitializeComponent();
             userLoginController = new UserLoginController();
         }
@@ -56,11 +47,11 @@ namespace View.Forms
             };
 
             smtpClient.Send(message);
-            
+
             MessageBox.Show("Email send!");
 
 
-            
+
         }
 
         private static string RandomString()
@@ -82,17 +73,32 @@ namespace View.Forms
         {
             if (txtSecretToken.Text == randomToken)
             {
-               
+
                 User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(txtUsername.Text));
-                user.Password = txtNewPassword.Text;
+                user.Password = new Model.PasswordHasher(txtNewPassword.Text).HashedPassword;
                 userLoginController.UpdateUser(user);
-                
+
                 MessageBox.Show("Password updated!");
+                this.Close();
             }
             else
             {
                 MessageBox.Show("The entered token is not correct please try again!");
             }
+        }
+
+        private void lblShowHidePass_Click(object sender, EventArgs e)
+        {
+
+            if (txtNewPassword.PasswordChar == '*')
+            {
+                txtNewPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                txtNewPassword.PasswordChar = '*';
+            }
+
         }
     }
 }

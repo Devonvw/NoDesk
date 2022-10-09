@@ -127,7 +127,9 @@
             this.Controls.Add(this.txtBoxFilterMail);
             this.Controls.Add(this.label1);
             this.Name = "UserManagementForum";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserManagementForum";
+            this.Load += new System.EventHandler(this.UserManagementForum_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
