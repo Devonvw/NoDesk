@@ -39,7 +39,7 @@ namespace View.Forms
 
                 User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
 
-                ChechLoginInfo(userName, passWord, user);
+                ChechLoginInfo(userName, new Model.PasswordHasher(passWord).HashedPassword, user);
                
             }
             catch (Exception ex)
