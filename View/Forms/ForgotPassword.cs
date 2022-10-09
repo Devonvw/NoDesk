@@ -19,6 +19,8 @@ namespace View.Forms
     public partial class ForgotPassword : Form
     {
         UserLoginController userLoginController;
+        private string randomToken = RandomString();
+        
         public ForgotPassword()
         {
             
@@ -36,7 +38,6 @@ namespace View.Forms
 
         private void SendMail(string fromMail, string fromPassword)
         {
-            string randomToken = RandomString();
 
             User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(txtUsername.Text));
 
@@ -57,6 +58,9 @@ namespace View.Forms
             smtpClient.Send(message);
             
             MessageBox.Show("Email send!");
+
+
+            
         }
 
         private static string RandomString()
@@ -72,6 +76,23 @@ namespace View.Forms
             }
 
             return builder.ToString();
+        }
+
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            if (txtSecretToken.Text == randomToken)
+            {
+               
+                User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(txtUsername.Text));
+                user.Password = txtNewPassword.Text;
+                userLoginController.UpdateUser(user);
+                
+                MessageBox.Show("Password updated!");
+            }
+            else
+            {
+                MessageBox.Show("The entered token is not correct please try again!");
+            }
         }
     }
 }

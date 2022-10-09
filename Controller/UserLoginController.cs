@@ -17,6 +17,12 @@ namespace Controller
         {
            return userDAO.GetUser(Builders<BsonDocument>.Filter.Eq("UserName", userName));
         }
+
+        public void UpdateUser(User user)
+        {
+            userDAO.UpdateUser(UserToBsonDocument(user), Builders<BsonDocument>.Filter.Eq("_id", user._id));
+        }
+
         public void CreateUser(Model.User user)
         {
             userDAO.CreateUser(UserToBsonDocument(user));

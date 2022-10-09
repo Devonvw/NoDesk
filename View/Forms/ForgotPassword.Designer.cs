@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.pnlChild = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnResetPassword = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtSecretToken = new System.Windows.Forms.MaskedTextBox();
             this.btnForgotPass = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.MaskedTextBox();
@@ -44,11 +44,11 @@
             // pnlChild
             // 
             this.pnlChild.AutoScroll = true;
-            this.pnlChild.Controls.Add(this.button1);
+            this.pnlChild.Controls.Add(this.btnResetPassword);
             this.pnlChild.Controls.Add(this.label3);
-            this.pnlChild.Controls.Add(this.textBox1);
+            this.pnlChild.Controls.Add(this.txtNewPassword);
             this.pnlChild.Controls.Add(this.label4);
-            this.pnlChild.Controls.Add(this.maskedTextBox1);
+            this.pnlChild.Controls.Add(this.txtSecretToken);
             this.pnlChild.Controls.Add(this.btnForgotPass);
             this.pnlChild.Controls.Add(this.label2);
             this.pnlChild.Controls.Add(this.txtUsername);
@@ -59,17 +59,18 @@
             this.pnlChild.Size = new System.Drawing.Size(800, 450);
             this.pnlChild.TabIndex = 5;
             // 
-            // button1
+            // btnResetPassword
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(265, 294);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(204, 33);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "reset password";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnResetPassword.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnResetPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnResetPassword.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnResetPassword.Location = new System.Drawing.Point(265, 294);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Size = new System.Drawing.Size(204, 33);
+            this.btnResetPassword.TabIndex = 9;
+            this.btnResetPassword.Text = "reset password";
+            this.btnResetPassword.UseVisualStyleBackColor = false;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
             // 
             // label3
             // 
@@ -80,12 +81,13 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "New password";
             // 
-            // textBox1
+            // txtNewPassword
             // 
-            this.textBox1.Location = new System.Drawing.Point(265, 265);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(204, 23);
-            this.textBox1.TabIndex = 7;
+            this.txtNewPassword.Location = new System.Drawing.Point(265, 265);
+            this.txtNewPassword.Name = "txtNewPassword";
+            this.txtNewPassword.PasswordChar = '*';
+            this.txtNewPassword.Size = new System.Drawing.Size(204, 23);
+            this.txtNewPassword.TabIndex = 7;
             // 
             // label4
             // 
@@ -97,12 +99,12 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Secret token (check your email dont forget to check spam!)";
             // 
-            // maskedTextBox1
+            // txtSecretToken
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(265, 211);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(204, 23);
-            this.maskedTextBox1.TabIndex = 5;
+            this.txtSecretToken.Location = new System.Drawing.Point(265, 211);
+            this.txtSecretToken.Name = "txtSecretToken";
+            this.txtSecretToken.Size = new System.Drawing.Size(204, 23);
+            this.txtSecretToken.TabIndex = 5;
             // 
             // btnForgotPass
             // 
@@ -164,9 +166,9 @@
         private MaskedTextBox txtUsername;
         private Label label1;
         private Label label4;
-        private MaskedTextBox maskedTextBox1;
-        private Button button1;
+        private MaskedTextBox txtSecretToken;
+        private Button btnResetPassword;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox txtNewPassword;
     }
 }
