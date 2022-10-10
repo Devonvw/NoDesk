@@ -30,7 +30,7 @@ namespace API.Controllers
         [HttpPut]
         public void UpdateUser([FromBody]object userInput)
         {
-            User user = BsonSerializer.Deserialize<Model.User>(((JsonElement)userInput).GetRawText());
+            User user = BsonSerializer.Deserialize<User>(((JsonElement)userInput).GetRawText());
 
             userDAO.UpdateUser(UserToBsonDocument(user), Builders<BsonDocument>.Filter.Eq("_id", user._id));
         }
@@ -38,7 +38,7 @@ namespace API.Controllers
         [HttpPost]
         public void CreateUser([FromBody]object userInput)
         {
-            User user = BsonSerializer.Deserialize<Model.User>(((JsonElement)userInput).GetRawText());
+            User user = BsonSerializer.Deserialize<User>(((JsonElement)userInput).GetRawText());
 
             userDAO.CreateUser(UserToBsonDocument(user));
         }
@@ -55,7 +55,7 @@ namespace API.Controllers
 
             return users;
         }
-        private BsonDocument UserToBsonDocument(Model.User user)
+        private BsonDocument UserToBsonDocument(User user)
         {
             BsonDocument newBsonDocument = new BsonDocument
             {
