@@ -81,7 +81,6 @@ namespace View.Forms
 
         private void archiveButton_Click(object sender, EventArgs e)
         {
-            archiveDataBaseController.ArchiveOldResolvedTicketes();
             LoadTable();
         }
     }
