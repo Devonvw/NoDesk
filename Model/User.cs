@@ -37,6 +37,7 @@ namespace Model
             username = bsonDoc["UserName"].AsString;
             email = bsonDoc["Email"].AsString;
             password = bsonDoc["Password"].AsString;
+            location = bsonDoc["Location"].AsString;
             phoneNumber = bsonDoc["PhoneNumber"].AsInt32;
             userType = (UserType)Enum.Parse(typeof(UserType), bsonDoc["UserType"].AsString, true);
         }

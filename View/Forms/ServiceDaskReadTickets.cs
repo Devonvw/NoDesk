@@ -18,17 +18,21 @@ namespace View.Forms
         MainForm mainForm;
         TicketCRUDController ticketCRUDController;
         ArchiveDataBaseController archiveDataBaseController;
+        
 
         
         public ServiceDaskReadTickets(MainForm mainForm)
         {
+            
             this.mainForm = mainForm;
             ticketCRUDController = new TicketCRUDController();
             archiveDataBaseController = new ArchiveDataBaseController();
+
             InitializeComponent();
             LoadTable();
             
         }
+
 
         private void LoadTable()
         {
@@ -44,6 +48,7 @@ namespace View.Forms
                 li.Tag = ticket;
                 listView1.Items.Add(li);
             }
+            
         }
         private void LoadTableForSearch(List<IncidentTicket> tickets)
         {
@@ -80,6 +85,8 @@ namespace View.Forms
 
         private void deleteTicketButton_Click(object sender, EventArgs e)
         {
+            
+            
             if (listView1.SelectedItems.Count != 0)
             {
                 if (MessageBox.Show("Are you sure you want to delete these tickets?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)

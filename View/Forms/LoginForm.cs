@@ -24,7 +24,7 @@ namespace View.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
+           
             try
             {
                 if (txtPass.Text == "" || txtUsername.Text == "")
@@ -38,6 +38,7 @@ namespace View.Forms
 
 
                 User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
+                
 
                 ChechLoginInfo(userName, new Model.PasswordHasher(passWord).HashedPassword, user);
                
@@ -53,12 +54,12 @@ namespace View.Forms
 
         private void ChechLoginInfo(string userName, string passWord, User user)
         {
-
+         
+            
 
                 if (userName == user.UserName && passWord == user.Password)
                 {
-                    CheckUserType(user);
-                    
+                    CheckUserType(user);                
                 }
                 else
                 {
@@ -67,16 +68,15 @@ namespace View.Forms
             
         }
 
-        private void CheckUserType(User user)
+        public void CheckUserType(User user)
         {
             MainForm mainForm = new MainForm();
-            
+            ServiceDaskReadTickets serviceDaskReadTickets = new ServiceDaskReadTickets(mainForm);
 
             if (user.UserType == Model.UserType.Regular)
             {
                 mainForm.Show();
                 mainForm.btnUserManagement.Enabled = false;
-                mainForm.btnIncident.Enabled = false;
                 this.Hide();
             }
             else
@@ -87,6 +87,18 @@ namespace View.Forms
             }
 
            
+        }
+
+        private void lblShowHidePass_Click(object sender, EventArgs e)
+        {
+            if (txtPass.PasswordChar == '*')
+            {
+                txtPass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPass.PasswordChar = '*';
+            }
         }
     }
 }

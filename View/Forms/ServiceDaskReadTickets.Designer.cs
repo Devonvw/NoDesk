@@ -171,6 +171,7 @@
             this.Controls.Add(this.createIncidentButton);
             this.Controls.Add(this.overviewTicketsLabel);
             this.Name = "ServiceDaskReadTickets";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ServiceDask";
             this.ResumeLayout(false);
             this.PerformLayout();
