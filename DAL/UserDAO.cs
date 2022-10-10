@@ -31,7 +31,6 @@ namespace DAL
             return collection.Find(filter).ToList();
 
         }
-
         public void UpdateUser(BsonDocument update, FilterDefinition<BsonDocument> filter)
         {
             collection.ReplaceOne(filter, update);
