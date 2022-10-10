@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,6 @@ namespace Model
         private string password;
         private int phoneNumber;
         private string location;
-
         public User(string firstname, string lastname,string username, string password)
         {
             this.firstname = firstname;
@@ -29,8 +29,8 @@ namespace Model
          
         public User(BsonDocument bsonDoc)
         {
-            BsonSerializer.Deserialize<User>(bsonDoc);
-
+            //BsonSerializer.Deserialize<User>(bsonDoc);
+            Debug.WriteLine(bsonDoc);
             _id = bsonDoc["_id"].AsObjectId;
             firstname = bsonDoc["FirstName"].AsString;
             lastname = bsonDoc["LastName"].AsString;
