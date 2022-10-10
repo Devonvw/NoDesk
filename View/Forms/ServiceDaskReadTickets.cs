@@ -45,6 +45,19 @@ namespace View.Forms
                 listView1.Items.Add(li);
             }
         }
+        private void LoadTableForSearch(List<IncidentTicket> tickets)
+        {
+            foreach (IncidentTicket ticket in tickets)
+            {
+                ListViewItem li = new ListViewItem(ticket.Id);
+                li.SubItems.Add(ticket.subject);
+                li.SubItems.Add(ticket.reportedBy);
+                li.SubItems.Add(ticket.dateTimeReported.ToString("dd/MM/yyyy"));
+                li.SubItems.Add(ticket.resolved.ToString());
+                li.Tag = ticket;
+                listView1.Items.Add(li);
+            }
+        }
 
         private void updateTicketButton_Click(object sender, EventArgs e)
         {
@@ -102,6 +115,28 @@ namespace View.Forms
                 ticketCRUDController.UpdateTicket(incidentTicket);
                 LoadTable();
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            switch (textBox1.Text)
+            {
+                case ("Search..."):
+                    {
+                        LoadTable();
+                        break; }
+                case (""):
+                    {
+                        LoadTable();
+                        break; }
+                default:
+                    {
+                        listView1.Items.Clear();
+                        LoadTableForSearch(ticketCRUDController.GetAllTicketsBasedOnSearch(textBox1.Text));
+                        break;
+                    }  
+            }
+           
         }
     }
 }

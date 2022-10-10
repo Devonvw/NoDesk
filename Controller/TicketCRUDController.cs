@@ -2,6 +2,7 @@
 using Model;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Collections.Generic;
 
 namespace Controller
 {
@@ -60,6 +61,21 @@ namespace Controller
                 {"deadline", incidentTicket.deadlineFollowUp }
             };
             return newBsonDocument;
+        }
+        public List<IncidentTicket> GetAllTicketsBasedOnSearch(string input)
+        {
+            var filter = Builders<BsonDocument>.Filter.Regex("subject", new BsonRegularExpression(input));
+            filter |= Builders<BsonDocument>.Filter.Regex("description", new BsonRegularExpression(input));
+            filter &= Builders<BsonDocument>.Filter.Eq("resolved", false);
+
+            List<IncidentTicket> incidentTickets = new List<IncidentTicket>();
+
+            foreach (BsonDocument doc in ticketCRUDDAO.GetAllTicketsBasedOnSearch(filter))
+            {
+                incidentTickets.Add(new IncidentTicket(doc));
+            }
+
+            return incidentTickets;
         }
     }
 }

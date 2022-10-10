@@ -63,18 +63,6 @@ namespace Controller
             return users;
         }
 
-        public List<User> SearchOnEmail(string email)
-        {
-            List<User> allUSers = GetUserList();
-
-            foreach (User u in allUSers)
-            {
-                if (!(u.Email.Contains(email)))
-                {
-                    allUSers.Remove(u);
-                }
-            }
-            return allUSers;
-        }
+        
     }
 }
