@@ -1,49 +1,33 @@
 ﻿using DAL;
-using Microsoft.AspNetCore.Mvc;
 using Model;
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
-using Newtonsoft.Json;
-using System.Text.Json;
-using System.Xml.Linq;
 
-namespace API.Controllers
+namespace Controller
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UsersController : ControllerBase
+    public class UserLoginController
     {
         private UserDAO userDAO;
-        public UsersController()
+        public UserLoginController()
         {
             userDAO = new UserDAO();
         }
-
-        [HttpGet]
-        [Route("{username}")]
-        public object GetUser(string username)
+  
+        public BsonDocument GetUser(string userName)
         {
-            return BsonTypeMapper.MapToDotNetValue(userDAO.GetUser(Builders<BsonDocument>.Filter.Eq("UserName", username)));
+           return userDAO.GetUser(Builders<BsonDocument>.Filter.Eq("UserName", userName));
         }
 
-        [HttpPut]
-        public void UpdateUser([FromBody]object userInput)
+        public void UpdateUser(User user)
         {
-            User user = BsonSerializer.Deserialize<User>(((JsonElement)userInput).GetRawText());
-
             userDAO.UpdateUser(UserToBsonDocument(user), Builders<BsonDocument>.Filter.Eq("_id", user._id));
         }
 
-        [HttpPost]
-        public void CreateUser([FromBody]object userInput)
+        public void CreateUser(Model.User user)
         {
-            User user = BsonSerializer.Deserialize<User>(((JsonElement)userInput).GetRawText());
-
             userDAO.CreateUser(UserToBsonDocument(user));
         }
 
-        [HttpGet]
         public List<User> GetUserList()
         {
             List<User> users = new List<User>();
@@ -53,9 +37,10 @@ namespace API.Controllers
                 users.Add(new User(doc));
             }
 
-            return users;
+            return users;               
         }
-        private BsonDocument UserToBsonDocument(User user)
+
+        public BsonDocument UserToBsonDocument(Model.User user)
         {
             BsonDocument newBsonDocument = new BsonDocument
             {
@@ -67,13 +52,11 @@ namespace API.Controllers
                 {"Location",user.Location},
                 {"PhoneNumber",user.PhoneNumber},
                 {"UserType", user.UserType.ToString()},
-
+                
             };
             return newBsonDocument;
         }
 
-        [HttpGet]
-        [Route("email/{email}")]
         public List<User> GetUserEmail(string email)
         {
             List<User> users = new List<User>();
@@ -85,5 +68,7 @@ namespace API.Controllers
 
             return users;
         }
+
+        
     }
 }

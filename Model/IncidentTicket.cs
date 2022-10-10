@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,16 +10,17 @@ namespace Model
 {
     public class IncidentTicket
     {
-        public string? Id;
-        public DateTime dateTimeReported;
-        public string? subject;
-        public string? incidentType;
-        public string? reportedBy;
-        public Priority priority;
-        public DateTime deadlineFollowUp;
-        public string? description;
-        public bool resolved;
+        public string? Id { get; set; }
+        public DateTime dateTimeReported { get; set; }
+        public string? subject { get; set; }
+        public string? incidentType { get; set; }
+        public string? reportedBy { get; set; }
+        public Priority priority { get; set; }
+        public DateTime deadlineFollowUp { get; set; }
+        public string? description { get; set; }
+        public bool resolved { get; set; }
 
+        public IncidentTicket() { }
         public IncidentTicket(DateTime dateTimeReported, string subject, string incidentType, string reportedBy, Priority priority, DateTime deadlineFollowUp, string description)
         {
             this.dateTimeReported = dateTimeReported;
@@ -31,7 +33,7 @@ namespace Model
         }
 
         public IncidentTicket(BsonDocument bsonDocument)
-        {          
+        {
             foreach (BsonElement element in bsonDocument)
             {
                 switch (element.Name)

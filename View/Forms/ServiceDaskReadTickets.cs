@@ -18,14 +18,21 @@ namespace View.Forms
         MainForm mainForm;
         TicketCRUDController ticketCRUDController;
         ArchiveDataBaseController archiveDataBaseController;
+        
+
+        
         public ServiceDaskReadTickets(MainForm mainForm)
         {
+            
             this.mainForm = mainForm;
             ticketCRUDController = new TicketCRUDController();
             archiveDataBaseController = new ArchiveDataBaseController();
+
             InitializeComponent();
             LoadTable();
+            
         }
+
 
         private void LoadTable()
         {
@@ -41,10 +48,25 @@ namespace View.Forms
                 li.Tag = ticket;
                 listView1.Items.Add(li);
             }
+            
+        }
+        private void LoadTableForSearch(List<IncidentTicket> tickets)
+        {
+            foreach (IncidentTicket ticket in tickets)
+            {
+                ListViewItem li = new ListViewItem(ticket.Id);
+                li.SubItems.Add(ticket.subject);
+                li.SubItems.Add(ticket.reportedBy);
+                li.SubItems.Add(ticket.dateTimeReported.ToString("dd/MM/yyyy"));
+                li.SubItems.Add(ticket.resolved.ToString());
+                li.Tag = ticket;
+                listView1.Items.Add(li);
+            }
         }
 
         private void updateTicketButton_Click(object sender, EventArgs e)
         {
+           
             if(listView1.SelectedItems.Count != 0)
             {
                 IncidentTicket incidentTicket = (IncidentTicket)listView1.SelectedItems[0].Tag;
@@ -63,6 +85,8 @@ namespace View.Forms
 
         private void deleteTicketButton_Click(object sender, EventArgs e)
         {
+            
+            
             if (listView1.SelectedItems.Count != 0)
             {
                 if (MessageBox.Show("Are you sure you want to delete these tickets?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -83,6 +107,43 @@ namespace View.Forms
         {
             MessageBox.Show(archiveDataBaseController.ArchiveOldResolvedTicketes());
             LoadTable();
+        }
+
+        private void buttonCloseTicket_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0 || listView1.SelectedItems.Count >= 2)
+            {
+                MessageBox.Show("Please select one ticket");
+            }
+            else
+            {
+                IncidentTicket incidentTicket = (IncidentTicket)(listView1.FocusedItem).Tag;
+                incidentTicket.resolved = true;
+                ticketCRUDController.UpdateTicket(incidentTicket);
+                LoadTable();
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            switch (textBox1.Text)
+            {
+                case ("Search..."):
+                    {
+                        LoadTable();
+                        break; }
+                case (""):
+                    {
+                        LoadTable();
+                        break; }
+                default:
+                    {
+                        listView1.Items.Clear();
+                        LoadTableForSearch(ticketCRUDController.GetAllTicketsBasedOnSearch(textBox1.Text));
+                        break;
+                    }  
+            }
+           
         }
     }
 }

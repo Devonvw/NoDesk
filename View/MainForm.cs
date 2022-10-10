@@ -1,15 +1,22 @@
+using System.Security.Cryptography.X509Certificates;
+using View.Forms;
+
 namespace View
 {
     public partial class MainForm : Form
     {
         private Form activeForm;
+     
+
         public MainForm()
         {
             InitializeComponent();
+
         }
         //Open a child form
         public void OpenChildForm(Form childForm, object btnSender)
         {
+
             if (activeForm != null)
                 activeForm.Close();
             activeForm = childForm;
@@ -23,7 +30,9 @@ namespace View
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             OpenChildForm(new Forms.DashboardForm(), sender);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,6 +44,19 @@ namespace View
         {
             OpenChildForm(new Forms.ServiceDaskReadTickets(this), sender);
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.UserManagementForum(this),sender);
+        }
+
     }
 
 }
