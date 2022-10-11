@@ -10,9 +10,9 @@ namespace Controller
             archiveDataBaseDAO = new ArchiveDataBaseDAO();
         }
         
-        public void ArchiveOldResolvedTicketes()
+        public string ArchiveOldResolvedTicketes()
         {
-            archiveDataBaseDAO.ArchiveOldResolvedTickets();
+            return archiveDataBaseDAO.ArchiveOldResolvedTickets();
         }
     }
 }

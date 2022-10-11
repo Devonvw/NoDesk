@@ -17,8 +17,16 @@ namespace View.Forms
             InitializeComponent();
             pageTitleLabel.Text = pageTitle;
             submitTicketButton.Text = submitTicketText;
+            SetReportedUserName();
         }
 
+        private void SetReportedUserName()
+        {
+            foreach (String name in ticketCRUDController.getAllNames())
+            {
+                reportedByUserCB.Items.Add(name);
+            }
+        }
 
         protected bool CheckValues(RadioButton incidentTypeRB, RadioButton priorityRB)
         {

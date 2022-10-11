@@ -9,8 +9,10 @@ namespace Controller
     public class TicketCRUDController
     {
         private TicketCRUDDAO ticketCRUDDAO;
+        private UserDAO userDAO;
         public TicketCRUDController()
         {
+            userDAO = new UserDAO();
             ticketCRUDDAO = new TicketCRUDDAO();
         }
 
@@ -20,12 +22,12 @@ namespace Controller
         }
         public void CreateTicket(IncidentTicket incidentTicket)
         {
-            ticketCRUDDAO.CreateTicket(IncidentTicketToBson(incidentTicket));
+            ticketCRUDDAO.CreateTicket(incidentTicket.ToBsonDocument());
         }
 
         public void UpdateTicket(IncidentTicket incidentTicket)
         {
-            ticketCRUDDAO.UpdateTicket(IncidentTicketToBson(incidentTicket), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._id)));
+            ticketCRUDDAO.UpdateTicket(incidentTicket.ToBsonDocument(), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._Id)));
         }
 
         public List<IncidentTicket> ReadTicketList()
@@ -47,21 +49,7 @@ namespace Controller
             return ticketCRUDDAO.GetIncidentsPastDeadline();
         }
 
-        private BsonDocument IncidentTicketToBson(IncidentTicket incidentTicket)
-        {
-            BsonDocument newBsonDocument = new BsonDocument
-            {
-                {"reportedDate", incidentTicket.reportedDate },
-                {"subject", incidentTicket.subject },
-                {"type", incidentTicket.type },
-                {"user", incidentTicket.user },
-                {"priority", incidentTicket.priority },
-                {"description", incidentTicket.description },
-                {"resolved", incidentTicket.resolved },
-                {"deadline", incidentTicket.deadline }
-            };
-            return newBsonDocument;
-        }
+
         public List<IncidentTicket> GetAllTicketsBasedOnSearch(string input)
         {
             var filter = Builders<BsonDocument>.Filter.Regex("subject", new BsonRegularExpression(input));
@@ -76,6 +64,10 @@ namespace Controller
             }
 
             return incidentTickets;
+        }
+        public List<string> getAllNames()
+        {
+            return userDAO.GetAllNames();
         }
     }
 }

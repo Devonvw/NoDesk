@@ -17,7 +17,7 @@ namespace DAL
             archive = db.GetCollection<BsonDocument>("Archive");
         }
 
-        public void ArchiveOldResolvedTickets()
+        public string ArchiveOldResolvedTickets()
         {
             FilterDefinition<BsonDocument> filter = Builders<BsonDocument>.Filter.Eq("resolved", true) & Builders<BsonDocument>.Filter.Lt("reportedDate", DateTime.Today.AddYears(-2));
 
@@ -26,7 +26,9 @@ namespace DAL
             {
                 archive.InsertMany(list);
                 collection.DeleteMany(filter);
+                return "Tickets archived succesfully!";
             }
+            return "There were no Tickets To archive\nTickets must be 2 years old and resolved";
 
         }
     }

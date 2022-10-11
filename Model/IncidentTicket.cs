@@ -70,5 +70,21 @@ namespace Model
                 }
             }
         }
+
+        public BsonDocument ToBsonDocument()
+        {
+            BsonDocument newBsonDocument = new BsonDocument
+            {
+                {"reportedDate", dateTimeReported },
+                {"subject", subject },
+                {"type", incidentType },
+                {"user", reportedBy },
+                {"priority", priority },
+                {"description", description },
+                {"resolved", resolved },
+                {"deadline", deadlineFollowUp }
+            };
+            return newBsonDocument;
+        }
     }
 }

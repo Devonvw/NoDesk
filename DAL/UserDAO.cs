@@ -35,5 +35,15 @@ namespace DAL
         {
             collection.ReplaceOne(filter, update);
         }
+
+        public List<string> GetAllNames()
+        {
+            List<string> names = new List<string>();
+            foreach (BsonDocument bson in collection.Find(new BsonDocument()).ToList())
+            {
+                names.Add($"{bson[1]} {bson[2]}");
+            }
+            return names;
+        }
     }
 }

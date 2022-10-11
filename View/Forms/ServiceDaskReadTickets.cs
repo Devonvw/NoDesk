@@ -18,58 +18,76 @@ namespace View.Forms
         MainForm mainForm;
         TicketCRUDController ticketCRUDController;
         ArchiveDataBaseController archiveDataBaseController;
+        List<IncidentTicket> allIncidentTickets;
+
         
 
         
         public ServiceDaskReadTickets(MainForm mainForm)
-        {
-            
+        {            
             this.mainForm = mainForm;
             ticketCRUDController = new TicketCRUDController();
             archiveDataBaseController = new ArchiveDataBaseController();
+            allIncidentTickets = ticketCRUDController.ReadTicketList();
 
             InitializeComponent();
-            LoadTable();
+            FillTables(allIncidentTickets);
             
         }
 
 
-        private void LoadTable()
+        private void FillTables(List<IncidentTicket> tickets)
         {
-            listView1.Items.Clear();
-            List<IncidentTicket> tickets = ticketCRUDController.ReadTicketList();
+            OverviewTicketsLV.Items.Clear();
             foreach (IncidentTicket ticket in tickets)
             {
-                ListViewItem li = new ListViewItem(ticket._id);
+                ListViewItem li = new ListViewItem(ticket._Id);
                 li.SubItems.Add(ticket.subject);
                 li.SubItems.Add(ticket.user);
                 li.SubItems.Add(ticket.reportedDate.ToString("dd/MM/yyyy"));
                 li.SubItems.Add(ticket.resolved.ToString());
+                li.SubItems.Add(ticket.priority.ToString());
+                li.SubItems.Add(ticket.deadlineFollowUp.ToString("dd/MM/yyyy"));
                 li.Tag = ticket;
-                listView1.Items.Add(li);
-            }
-            
+                OverviewTicketsLV.Items.Add(li);
+            }            
         }
+
+        private void SortTable()
+        {
+            FillTables(GetTableTickets().OrderBy(p=>p.priority).ToList());
+        }
+
+        private List<IncidentTicket> GetTableTickets()
+        {
+            List<IncidentTicket> tickets = new List<IncidentTicket>();
+            foreach (ListViewItem item in OverviewTicketsLV.Items)
+            {
+                tickets.Add((IncidentTicket)item.Tag);
+            }
+            return tickets;
+        }
+
         private void LoadTableForSearch(List<IncidentTicket> tickets)
         {
             foreach (IncidentTicket ticket in tickets)
             {
-                ListViewItem li = new ListViewItem(ticket._id);
+                ListViewItem li = new ListViewItem(ticket._Id);
                 li.SubItems.Add(ticket.subject);
                 li.SubItems.Add(ticket.user);
                 li.SubItems.Add(ticket.reportedDate.ToString("dd/MM/yyyy"));
                 li.SubItems.Add(ticket.resolved.ToString());
                 li.Tag = ticket;
-                listView1.Items.Add(li);
+                OverviewTicketsLV.Items.Add(li);
             }
         }
 
         private void updateTicketButton_Click(object sender, EventArgs e)
         {
            
-            if(listView1.SelectedItems.Count != 0)
+            if(OverviewTicketsLV.SelectedItems.Count != 0)
             {
-                IncidentTicket incidentTicket = (IncidentTicket)listView1.SelectedItems[0].Tag;
+                IncidentTicket incidentTicket = (IncidentTicket)OverviewTicketsLV.SelectedItems[0].Tag;
                 mainForm.OpenChildForm(new ServiceDaskUpdateTicket(mainForm, incidentTicket), sender);
             }
             else
@@ -84,19 +102,17 @@ namespace View.Forms
         }
 
         private void deleteTicketButton_Click(object sender, EventArgs e)
-        {
-            
-            
-            if (listView1.SelectedItems.Count != 0)
+        {         
+            if (OverviewTicketsLV.SelectedItems.Count != 0)
             {
                 if (MessageBox.Show("Are you sure you want to delete these tickets?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    foreach (ListViewItem item in listView1.SelectedItems)
+                    foreach (ListViewItem item in OverviewTicketsLV.SelectedItems)
                     {
                         IncidentTicket incidentTicket = (IncidentTicket)item.Tag;
-                        ticketCRUDController.DeleteTicket(incidentTicket._id!);
+                        ticketCRUDController.DeleteTicket(incidentTicket._Id!);
                     }
-                    LoadTable();
+                    FillTables(allIncidentTickets);
                     return;
                 }
             }
@@ -105,22 +121,22 @@ namespace View.Forms
 
         private void archiveButton_Click(object sender, EventArgs e)
         {
-            archiveDataBaseController.ArchiveOldResolvedTicketes();
-            LoadTable();
+            MessageBox.Show(archiveDataBaseController.ArchiveOldResolvedTicketes());
+            FillTables(allIncidentTickets);
         }
 
         private void buttonCloseTicket_Click(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count == 0 || listView1.SelectedItems.Count >= 2)
+            if (OverviewTicketsLV.SelectedItems.Count == 0 || OverviewTicketsLV.SelectedItems.Count >= 2)
             {
                 MessageBox.Show("Please select one ticket");
             }
             else
             {
-                IncidentTicket incidentTicket = (IncidentTicket)(listView1.FocusedItem).Tag;
+                IncidentTicket incidentTicket = (IncidentTicket)(OverviewTicketsLV.FocusedItem).Tag;
                 incidentTicket.resolved = true;
                 ticketCRUDController.UpdateTicket(incidentTicket);
-                LoadTable();
+                FillTables(allIncidentTickets);
             }
         }
 
@@ -130,20 +146,25 @@ namespace View.Forms
             {
                 case ("Search..."):
                     {
-                        LoadTable();
+                        FillTables(allIncidentTickets);
                         break; }
                 case (""):
                     {
-                        LoadTable();
+                        FillTables(allIncidentTickets);
                         break; }
                 default:
                     {
-                        listView1.Items.Clear();
+                        OverviewTicketsLV.Items.Clear();
                         LoadTableForSearch(ticketCRUDController.GetAllTicketsBasedOnSearch(textBox1.Text));
                         break;
                     }  
             }
            
+        }
+
+        private void OverviewTicketsLV_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            SortTable();
         }
     }
 }
