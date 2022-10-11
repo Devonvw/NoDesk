@@ -32,6 +32,7 @@ namespace View.Forms
                     MessageBox.Show("You did not enter a username and/or password");
                     return;
                 }
+                
 
                 string userName = txtUsername.Text;
                 string passWord = txtPass.Text;
