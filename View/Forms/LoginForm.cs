@@ -8,6 +8,7 @@ namespace View.Forms
     {
 
         UserLoginController userLoginController;
+        User user;
 
         public LoginForm()
         {
@@ -15,12 +16,6 @@ namespace View.Forms
             InitializeComponent();
         }
 
-        private void lblForgotLoginDetails_Click(object sender, EventArgs e)
-        {
-            ForgotPassword forgotPassword = new ForgotPassword();
-            forgotPassword.ShowDialog();
-
-        }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -38,7 +33,7 @@ namespace View.Forms
                 string passWord = txtPass.Text;
 
 
-                User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
+                user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
                 
 
                 ChechLoginInfo(userName, new Model.PasswordHasher(passWord).HashedPassword, user);
@@ -51,6 +46,21 @@ namespace View.Forms
 
         }
 
+        private void lblForgotLoginDetails_Click(object sender, EventArgs e)
+        {
+            if (txtUsername.Text.Length != 0)
+            {
+                ForgotPassword forgotPassword = new ForgotPassword(new User(userLoginController.GetUser(txtUsername.Text)));
+                forgotPassword.ShowDialog();
+
+            }
+            else
+            {
+                ForgotPassword forgotPasswordForm = new ForgotPassword();
+                forgotPasswordForm.ShowDialog();
+                
+            }
+        }
 
 
         private void ChechLoginInfo(string userName, string passWord, User user)

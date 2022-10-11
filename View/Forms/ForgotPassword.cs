@@ -8,23 +8,32 @@ using System.Text;
 namespace View.Forms
 {
     public partial class ForgotPassword : Form
-    {
+    {   
         UserLoginController userLoginController;
         private string randomToken = RandomString();
+        User user;
+
+        public ForgotPassword(User user)
+        {
+            this.user = user;
+            InitializeComponent();
+            userLoginController = new UserLoginController();
+            txtUsername.Text = user.UserName;
+        }
 
         public ForgotPassword()
         {
-
             InitializeComponent();
             userLoginController = new UserLoginController();
         }
 
         private void btnForgotPass_Click(object sender, EventArgs e)
         {
-            string fromMail = "nodeskreset@gmail.com";
-            string fromPassword = "ljczunynomiqfpmw";
+            
+                string fromMail = "nodeskreset@gmail.com";
+                string fromPassword = "ljczunynomiqfpmw";
 
-            SendMail(fromMail, fromPassword);
+                SendMail(fromMail, fromPassword);
         }
 
         private void SendMail(string fromMail, string fromPassword)
