@@ -30,12 +30,14 @@
         {
             this.overviewTicketsLabel = new System.Windows.Forms.Label();
             this.createIncidentButton = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.OverviewTicketsLV = new System.Windows.Forms.ListView();
             this.ID = new System.Windows.Forms.ColumnHeader();
             this.Subject = new System.Windows.Forms.ColumnHeader();
             this.User = new System.Windows.Forms.ColumnHeader();
             this.Date = new System.Windows.Forms.ColumnHeader();
             this.Resolved = new System.Windows.Forms.ColumnHeader();
+            this.Priority = new System.Windows.Forms.ColumnHeader();
+            this.Deadline = new System.Windows.Forms.ColumnHeader();
             this.deleteTicketButton = new System.Windows.Forms.Button();
             this.updateTicketButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -47,38 +49,43 @@
             // 
             this.overviewTicketsLabel.AutoSize = true;
             this.overviewTicketsLabel.Font = new System.Drawing.Font("Arial", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.overviewTicketsLabel.Location = new System.Drawing.Point(105, 67);
+            this.overviewTicketsLabel.Location = new System.Drawing.Point(120, 89);
             this.overviewTicketsLabel.Name = "overviewTicketsLabel";
-            this.overviewTicketsLabel.Size = new System.Drawing.Size(361, 51);
+            this.overviewTicketsLabel.Size = new System.Drawing.Size(452, 63);
             this.overviewTicketsLabel.TabIndex = 0;
             this.overviewTicketsLabel.Text = "Overview tickets";
             // 
             // createIncidentButton
             // 
-            this.createIncidentButton.Location = new System.Drawing.Point(165, 129);
+            this.createIncidentButton.Location = new System.Drawing.Point(189, 172);
+            this.createIncidentButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.createIncidentButton.Name = "createIncidentButton";
-            this.createIncidentButton.Size = new System.Drawing.Size(126, 39);
+            this.createIncidentButton.Size = new System.Drawing.Size(144, 52);
             this.createIncidentButton.TabIndex = 1;
             this.createIncidentButton.Text = "CREATE INCIDENT";
             this.createIncidentButton.UseVisualStyleBackColor = true;
             this.createIncidentButton.Click += new System.EventHandler(this.createIncidentButton_Click);
             // 
-            // listView1
+            // OverviewTicketsLV
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.OverviewTicketsLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
             this.Subject,
             this.User,
             this.Date,
-            this.Resolved});
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(105, 188);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(580, 321);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.Resolved,
+            this.Priority,
+            this.Deadline});
+            this.OverviewTicketsLV.FullRowSelect = true;
+            this.OverviewTicketsLV.GridLines = true;
+            this.OverviewTicketsLV.Location = new System.Drawing.Point(120, 251);
+            this.OverviewTicketsLV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OverviewTicketsLV.Name = "OverviewTicketsLV";
+            this.OverviewTicketsLV.Size = new System.Drawing.Size(698, 427);
+            this.OverviewTicketsLV.TabIndex = 2;
+            this.OverviewTicketsLV.UseCompatibleStateImageBehavior = false;
+            this.OverviewTicketsLV.View = System.Windows.Forms.View.Details;
+            this.OverviewTicketsLV.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.OverviewTicketsLV_ColumnClick);
             // 
             // ID
             // 
@@ -104,11 +111,21 @@
             this.Resolved.Text = "Resolved";
             this.Resolved.Width = 100;
             // 
+            // Priority
+            // 
+            this.Priority.Text = "Priority";
+            // 
+            // Deadline
+            // 
+            this.Deadline.Text = "Deadline";
+            this.Deadline.Width = 120;
+            // 
             // deleteTicketButton
             // 
-            this.deleteTicketButton.Location = new System.Drawing.Point(428, 129);
+            this.deleteTicketButton.Location = new System.Drawing.Point(489, 172);
+            this.deleteTicketButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.deleteTicketButton.Name = "deleteTicketButton";
-            this.deleteTicketButton.Size = new System.Drawing.Size(126, 39);
+            this.deleteTicketButton.Size = new System.Drawing.Size(144, 52);
             this.deleteTicketButton.TabIndex = 3;
             this.deleteTicketButton.Text = "DELETE TICKET";
             this.deleteTicketButton.UseVisualStyleBackColor = true;
@@ -116,9 +133,10 @@
             // 
             // updateTicketButton
             // 
-            this.updateTicketButton.Location = new System.Drawing.Point(297, 129);
+            this.updateTicketButton.Location = new System.Drawing.Point(339, 172);
+            this.updateTicketButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.updateTicketButton.Name = "updateTicketButton";
-            this.updateTicketButton.Size = new System.Drawing.Size(126, 39);
+            this.updateTicketButton.Size = new System.Drawing.Size(144, 52);
             this.updateTicketButton.TabIndex = 4;
             this.updateTicketButton.Text = "UPDATE TICKET";
             this.updateTicketButton.UseVisualStyleBackColor = true;
@@ -127,10 +145,11 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(5, 129);
+            this.textBox1.Location = new System.Drawing.Point(6, 172);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 39);
+            this.textBox1.Size = new System.Drawing.Size(175, 51);
             this.textBox1.TabIndex = 5;
             this.textBox1.Text = "Search...";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -138,10 +157,9 @@
             // 
             // archiveButton
             // 
-            this.archiveButton.Location = new System.Drawing.Point(559, 129);
-            this.archiveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.archiveButton.Location = new System.Drawing.Point(639, 172);
             this.archiveButton.Name = "archiveButton";
-            this.archiveButton.Size = new System.Drawing.Size(126, 38);
+            this.archiveButton.Size = new System.Drawing.Size(144, 51);
             this.archiveButton.TabIndex = 6;
             this.archiveButton.Text = "ARCHIVE TICKETS";
             this.archiveButton.UseVisualStyleBackColor = true;
@@ -149,9 +167,10 @@
             // 
             // buttonCloseTicket
             // 
-            this.buttonCloseTicket.Location = new System.Drawing.Point(695, 129);
+            this.buttonCloseTicket.Location = new System.Drawing.Point(794, 172);
+            this.buttonCloseTicket.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonCloseTicket.Name = "buttonCloseTicket";
-            this.buttonCloseTicket.Size = new System.Drawing.Size(113, 37);
+            this.buttonCloseTicket.Size = new System.Drawing.Size(129, 49);
             this.buttonCloseTicket.TabIndex = 7;
             this.buttonCloseTicket.Text = "CLOSE TICKET";
             this.buttonCloseTicket.UseVisualStyleBackColor = true;
@@ -159,17 +178,18 @@
             // 
             // ServiceDaskReadTickets
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 573);
+            this.ClientSize = new System.Drawing.Size(937, 764);
             this.Controls.Add(this.buttonCloseTicket);
             this.Controls.Add(this.archiveButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.updateTicketButton);
             this.Controls.Add(this.deleteTicketButton);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.OverviewTicketsLV);
             this.Controls.Add(this.createIncidentButton);
             this.Controls.Add(this.overviewTicketsLabel);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ServiceDaskReadTickets";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ServiceDask";
@@ -182,7 +202,7 @@
 
         private Label overviewTicketsLabel;
         private Button createIncidentButton;
-        private ListView listView1;
+        private ListView OverviewTicketsLV;
         private ColumnHeader ID;
         private ColumnHeader Subject;
         private ColumnHeader User;
@@ -193,5 +213,7 @@
         private TextBox textBox1;
         public Button archiveButton;
         private Button buttonCloseTicket;
+        private ColumnHeader Priority;
+        private ColumnHeader Deadline;
     }
 }

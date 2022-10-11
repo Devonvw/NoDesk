@@ -9,8 +9,10 @@ namespace Controller
     public class TicketCRUDController
     {
         private TicketCRUDDAO ticketCRUDDAO;
+        private UserDAO userDAO;
         public TicketCRUDController()
         {
+            userDAO = new UserDAO();
             ticketCRUDDAO = new TicketCRUDDAO();
         }
 
@@ -25,7 +27,7 @@ namespace Controller
 
         public void UpdateTicket(IncidentTicket incidentTicket)
         {
-            ticketCRUDDAO.UpdateTicket(incidentTicket.ToBsonDocument(), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket.Id)));
+            ticketCRUDDAO.UpdateTicket(incidentTicket.ToBsonDocument(), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._Id)));
         }
 
         public List<IncidentTicket> ReadTicketList()
@@ -63,20 +65,9 @@ namespace Controller
 
             return incidentTickets;
         }
-        public List<IncidentTicket> GetAllTicketsBasedOnSearch(string input)
+        public List<string> getAllNames()
         {
-            var filter = Builders<BsonDocument>.Filter.Regex("subject", new BsonRegularExpression(input));
-            filter |= Builders<BsonDocument>.Filter.Regex("description", new BsonRegularExpression(input));
-            filter &= Builders<BsonDocument>.Filter.Eq("resolved", false);
-
-            List<IncidentTicket> incidentTickets = new List<IncidentTicket>();
-
-            foreach (BsonDocument doc in ticketCRUDDAO.GetAllTicketsBasedOnSearch(filter))
-            {
-                incidentTickets.Add(new IncidentTicket(doc));
-            }
-
-            return incidentTickets;
+            return userDAO.GetAllNames();
         }
     }
 }
