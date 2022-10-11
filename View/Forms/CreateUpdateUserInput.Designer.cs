@@ -60,10 +60,9 @@ namespace View.Forms
             // submitTicketButton
             // 
             this.submitTicketButton.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.submitTicketButton.Location = new System.Drawing.Point(591, 737);
-            this.submitTicketButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.submitTicketButton.Location = new System.Drawing.Point(517, 553);
             this.submitTicketButton.Name = "submitTicketButton";
-            this.submitTicketButton.Size = new System.Drawing.Size(160, 53);
+            this.submitTicketButton.Size = new System.Drawing.Size(140, 40);
             this.submitTicketButton.TabIndex = 33;
             this.submitTicketButton.Text = "submit ticket";
             this.submitTicketButton.UseVisualStyleBackColor = true;
@@ -71,10 +70,9 @@ namespace View.Forms
             // CancelButton
             // 
             this.CancelButton.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CancelButton.Location = new System.Drawing.Point(408, 737);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CancelButton.Location = new System.Drawing.Point(357, 553);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(160, 53);
+            this.CancelButton.Size = new System.Drawing.Size(140, 40);
             this.CancelButton.TabIndex = 32;
             this.CancelButton.Text = "CANCEL";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -82,46 +80,42 @@ namespace View.Forms
             // 
             // dateTimeReportedDTP
             // 
-            this.dateTimeReportedDTP.Location = new System.Drawing.Point(408, 181);
-            this.dateTimeReportedDTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateTimeReportedDTP.Location = new System.Drawing.Point(357, 136);
             this.dateTimeReportedDTP.Name = "dateTimeReportedDTP";
-            this.dateTimeReportedDTP.Size = new System.Drawing.Size(342, 27);
+            this.dateTimeReportedDTP.Size = new System.Drawing.Size(300, 23);
             this.dateTimeReportedDTP.TabIndex = 31;
             // 
             // descriptionTB
             // 
-            this.descriptionTB.Location = new System.Drawing.Point(408, 503);
-            this.descriptionTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.descriptionTB.Location = new System.Drawing.Point(357, 377);
             this.descriptionTB.Multiline = true;
             this.descriptionTB.Name = "descriptionTB";
-            this.descriptionTB.Size = new System.Drawing.Size(342, 225);
+            this.descriptionTB.Size = new System.Drawing.Size(300, 170);
             this.descriptionTB.TabIndex = 29;
             // 
             // subjectOfIncidentTB
             // 
-            this.subjectOfIncidentTB.Location = new System.Drawing.Point(408, 236);
-            this.subjectOfIncidentTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.subjectOfIncidentTB.Location = new System.Drawing.Point(357, 177);
             this.subjectOfIncidentTB.Name = "subjectOfIncidentTB";
-            this.subjectOfIncidentTB.Size = new System.Drawing.Size(342, 27);
+            this.subjectOfIncidentTB.Size = new System.Drawing.Size(300, 23);
             this.subjectOfIncidentTB.TabIndex = 28;
             // 
             // reportedByUserCB
             // 
             this.reportedByUserCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.reportedByUserCB.FormattingEnabled = true;
-            this.reportedByUserCB.Location = new System.Drawing.Point(408, 341);
-            this.reportedByUserCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.reportedByUserCB.Location = new System.Drawing.Point(357, 256);
             this.reportedByUserCB.Name = "reportedByUserCB";
-            this.reportedByUserCB.Size = new System.Drawing.Size(342, 28);
+            this.reportedByUserCB.Size = new System.Drawing.Size(300, 23);
             this.reportedByUserCB.TabIndex = 26;
             // 
             // descriptionLabel
             // 
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.descriptionLabel.Location = new System.Drawing.Point(195, 503);
+            this.descriptionLabel.Location = new System.Drawing.Point(171, 377);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(146, 27);
+            this.descriptionLabel.Size = new System.Drawing.Size(116, 22);
             this.descriptionLabel.TabIndex = 24;
             this.descriptionLabel.Text = "Description :";
             // 
@@ -129,9 +123,9 @@ namespace View.Forms
             // 
             this.deadlineFollowUpLabel.AutoSize = true;
             this.deadlineFollowUpLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.deadlineFollowUpLabel.Location = new System.Drawing.Point(195, 449);
+            this.deadlineFollowUpLabel.Location = new System.Drawing.Point(171, 337);
             this.deadlineFollowUpLabel.Name = "deadlineFollowUpLabel";
-            this.deadlineFollowUpLabel.Size = new System.Drawing.Size(232, 27);
+            this.deadlineFollowUpLabel.Size = new System.Drawing.Size(180, 22);
             this.deadlineFollowUpLabel.TabIndex = 23;
             this.deadlineFollowUpLabel.Text = "Deadline/ follow up :";
             // 
@@ -139,9 +133,9 @@ namespace View.Forms
             // 
             this.typeOfIncidentLabel.AutoSize = true;
             this.typeOfIncidentLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.typeOfIncidentLabel.Location = new System.Drawing.Point(195, 289);
+            this.typeOfIncidentLabel.Location = new System.Drawing.Point(171, 217);
             this.typeOfIncidentLabel.Name = "typeOfIncidentLabel";
-            this.typeOfIncidentLabel.Size = new System.Drawing.Size(203, 27);
+            this.typeOfIncidentLabel.Size = new System.Drawing.Size(159, 22);
             this.typeOfIncidentLabel.TabIndex = 22;
             this.typeOfIncidentLabel.Text = "Type of incident : ";
             // 
@@ -149,9 +143,9 @@ namespace View.Forms
             // 
             this.reportedByUserLabel.AutoSize = true;
             this.reportedByUserLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.reportedByUserLabel.Location = new System.Drawing.Point(195, 343);
+            this.reportedByUserLabel.Location = new System.Drawing.Point(171, 257);
             this.reportedByUserLabel.Name = "reportedByUserLabel";
-            this.reportedByUserLabel.Size = new System.Drawing.Size(212, 27);
+            this.reportedByUserLabel.Size = new System.Drawing.Size(167, 22);
             this.reportedByUserLabel.TabIndex = 21;
             this.reportedByUserLabel.Text = "Reported by user :";
             // 
@@ -159,9 +153,9 @@ namespace View.Forms
             // 
             this.pryorityLabel.AutoSize = true;
             this.pryorityLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.pryorityLabel.Location = new System.Drawing.Point(195, 396);
+            this.pryorityLabel.Location = new System.Drawing.Point(171, 297);
             this.pryorityLabel.Name = "pryorityLabel";
-            this.pryorityLabel.Size = new System.Drawing.Size(100, 27);
+            this.pryorityLabel.Size = new System.Drawing.Size(78, 22);
             this.pryorityLabel.TabIndex = 20;
             this.pryorityLabel.Text = "Priority :";
             // 
@@ -169,9 +163,9 @@ namespace View.Forms
             // 
             this.subjectOfIincidentLabel.AutoSize = true;
             this.subjectOfIincidentLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.subjectOfIincidentLabel.Location = new System.Drawing.Point(195, 236);
+            this.subjectOfIincidentLabel.Location = new System.Drawing.Point(171, 177);
             this.subjectOfIincidentLabel.Name = "subjectOfIincidentLabel";
-            this.subjectOfIincidentLabel.Size = new System.Drawing.Size(233, 27);
+            this.subjectOfIincidentLabel.Size = new System.Drawing.Size(181, 22);
             this.subjectOfIincidentLabel.TabIndex = 19;
             this.subjectOfIincidentLabel.Text = "Subject of incident : ";
             // 
@@ -179,9 +173,9 @@ namespace View.Forms
             // 
             this.dateTimeReportedLabel.AutoSize = true;
             this.dateTimeReportedLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimeReportedLabel.Location = new System.Drawing.Point(195, 183);
+            this.dateTimeReportedLabel.Location = new System.Drawing.Point(171, 137);
             this.dateTimeReportedLabel.Name = "dateTimeReportedLabel";
-            this.dateTimeReportedLabel.Size = new System.Drawing.Size(232, 27);
+            this.dateTimeReportedLabel.Size = new System.Drawing.Size(183, 22);
             this.dateTimeReportedLabel.TabIndex = 18;
             this.dateTimeReportedLabel.Text = "Date/time reported : ";
             // 
@@ -189,26 +183,26 @@ namespace View.Forms
             // 
             this.pageTitleLabel.AutoSize = true;
             this.pageTitleLabel.Font = new System.Drawing.Font("Arial", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.pageTitleLabel.Location = new System.Drawing.Point(178, 45);
+            this.pageTitleLabel.Location = new System.Drawing.Point(156, 34);
             this.pageTitleLabel.Name = "pageTitleLabel";
-            this.pageTitleLabel.Size = new System.Drawing.Size(180, 63);
+            this.pageTitleLabel.Size = new System.Drawing.Size(144, 51);
             this.pageTitleLabel.TabIndex = 34;
             this.pageTitleLabel.Text = "label1";
             // 
             // deadlineFollowUpDTP
             // 
-            this.deadlineFollowUpDTP.Location = new System.Drawing.Point(408, 449);
-            this.deadlineFollowUpDTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.deadlineFollowUpDTP.Location = new System.Drawing.Point(357, 337);
             this.deadlineFollowUpDTP.Name = "deadlineFollowUpDTP";
-            this.deadlineFollowUpDTP.Size = new System.Drawing.Size(342, 27);
+            this.deadlineFollowUpDTP.Size = new System.Drawing.Size(300, 23);
             this.deadlineFollowUpDTP.TabIndex = 35;
             // 
             // softwareRB
             // 
             this.softwareRB.AutoSize = true;
-            this.softwareRB.Location = new System.Drawing.Point(3, 3);
+            this.softwareRB.Location = new System.Drawing.Point(3, 2);
+            this.softwareRB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.softwareRB.Name = "softwareRB";
-            this.softwareRB.Size = new System.Drawing.Size(89, 24);
+            this.softwareRB.Size = new System.Drawing.Size(71, 19);
             this.softwareRB.TabIndex = 36;
             this.softwareRB.Text = "Software";
             this.softwareRB.UseVisualStyleBackColor = true;
@@ -216,9 +210,10 @@ namespace View.Forms
             // hardwareRB
             // 
             this.hardwareRB.AutoSize = true;
-            this.hardwareRB.Location = new System.Drawing.Point(98, 3);
+            this.hardwareRB.Location = new System.Drawing.Point(80, 2);
+            this.hardwareRB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.hardwareRB.Name = "hardwareRB";
-            this.hardwareRB.Size = new System.Drawing.Size(95, 24);
+            this.hardwareRB.Size = new System.Drawing.Size(76, 19);
             this.hardwareRB.TabIndex = 37;
             this.hardwareRB.Text = "Hardware";
             this.hardwareRB.UseVisualStyleBackColor = true;
@@ -226,9 +221,10 @@ namespace View.Forms
             // ServiceRB
             // 
             this.ServiceRB.AutoSize = true;
-            this.ServiceRB.Location = new System.Drawing.Point(199, 3);
+            this.ServiceRB.Location = new System.Drawing.Point(162, 2);
+            this.ServiceRB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ServiceRB.Name = "ServiceRB";
-            this.ServiceRB.Size = new System.Drawing.Size(77, 24);
+            this.ServiceRB.Size = new System.Drawing.Size(62, 19);
             this.ServiceRB.TabIndex = 38;
             this.ServiceRB.Text = "Service";
             this.ServiceRB.UseVisualStyleBackColor = true;
@@ -236,9 +232,10 @@ namespace View.Forms
             // HighRB
             // 
             this.HighRB.AutoSize = true;
-            this.HighRB.Location = new System.Drawing.Point(152, 3);
+            this.HighRB.Location = new System.Drawing.Point(127, 2);
+            this.HighRB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HighRB.Name = "HighRB";
-            this.HighRB.Size = new System.Drawing.Size(62, 24);
+            this.HighRB.Size = new System.Drawing.Size(51, 19);
             this.HighRB.TabIndex = 41;
             this.HighRB.Tag = Model.Priority.High;
             this.HighRB.Text = "High";
@@ -247,9 +244,10 @@ namespace View.Forms
             // normalRB
             // 
             this.normalRB.AutoSize = true;
-            this.normalRB.Location = new System.Drawing.Point(66, 3);
+            this.normalRB.Location = new System.Drawing.Point(56, 2);
+            this.normalRB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.normalRB.Name = "normalRB";
-            this.normalRB.Size = new System.Drawing.Size(80, 24);
+            this.normalRB.Size = new System.Drawing.Size(65, 19);
             this.normalRB.TabIndex = 40;
             this.normalRB.Tag = Model.Priority.Normal;
             this.normalRB.Text = "Normal";
@@ -258,9 +256,10 @@ namespace View.Forms
             // lowRB
             // 
             this.lowRB.AutoSize = true;
-            this.lowRB.Location = new System.Drawing.Point(3, 3);
+            this.lowRB.Location = new System.Drawing.Point(3, 2);
+            this.lowRB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lowRB.Name = "lowRB";
-            this.lowRB.Size = new System.Drawing.Size(57, 24);
+            this.lowRB.Size = new System.Drawing.Size(47, 19);
             this.lowRB.TabIndex = 39;
             this.lowRB.Tag = Model.Priority.Low;
             this.lowRB.Text = "Low";
@@ -271,9 +270,10 @@ namespace View.Forms
             this.flowLayoutPanel1.Controls.Add(this.softwareRB);
             this.flowLayoutPanel1.Controls.Add(this.hardwareRB);
             this.flowLayoutPanel1.Controls.Add(this.ServiceRB);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(409, 288);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(358, 216);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(281, 28);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(246, 21);
             this.flowLayoutPanel1.TabIndex = 42;
             // 
             // flowLayoutPanel2
@@ -281,16 +281,17 @@ namespace View.Forms
             this.flowLayoutPanel2.Controls.Add(this.lowRB);
             this.flowLayoutPanel2.Controls.Add(this.normalRB);
             this.flowLayoutPanel2.Controls.Add(this.HighRB);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(408, 395);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(357, 296);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(282, 28);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(247, 21);
             this.flowLayoutPanel2.TabIndex = 43;
             // 
             // CreateUpdateUserInput
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 861);
+            this.ClientSize = new System.Drawing.Size(907, 646);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.deadlineFollowUpDTP);
@@ -308,7 +309,6 @@ namespace View.Forms
             this.Controls.Add(this.pryorityLabel);
             this.Controls.Add(this.subjectOfIincidentLabel);
             this.Controls.Add(this.dateTimeReportedLabel);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CreateUpdateUserInput";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TicketUserInputControl";

@@ -20,7 +20,7 @@ namespace View.Forms
             pageTitleLabel.Text = pageTitle;
             submitTicketButton.Text = submitTicketText;
             SetReportedUserName();
-            LoadUsers();
+       
         }
 
         private void SetReportedUserName()
@@ -63,12 +63,14 @@ namespace View.Forms
             mainForm.OpenChildForm(new ServiceDaskReadTickets(mainForm), sender);
         }
 
-        private void LoadUsers()
-        {
-            foreach (User user in userLoginController.GetServiceDeskUsers())
-            {
-                reportedByUserCB.Items.Add(user.FullName);
-            }
-        }
+        //private void LoadUsers()
+        //{
+        //    foreach (User user in userLoginController.GetServiceDeskUsers())
+        //    {
+        //        reportedByUserCB.Items.Add(user.FullName);
+        //    }
+        //}
+
+
     }
 }

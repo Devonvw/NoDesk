@@ -177,5 +177,7 @@ namespace View.Forms
             TransferTicketForm transferTicketForm = new TransferTicketForm(incidentTicketSelected,this);
             transferTicketForm.Show();
         }
+
+
     }
 }
