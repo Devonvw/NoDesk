@@ -29,26 +29,33 @@ namespace View.Forms
 
         private void SendMail(string fromMail, string fromPassword)
         {
-
-            User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(txtUsername.Text));
-
-            MailMessage message = new MailMessage();
-            message.From = new MailAddress(fromMail);
-            message.Subject = "Wachtwoord reset email";
-            message.To.Add(new MailAddress(user.Email));
-            message.Body = $"<html><body> Hallo gebruik deze code om uw wachtwoord te reseten. <br> Code: {randomToken} </body></html>";
-            message.IsBodyHtml = true;
-
-            var smtpClient = new SmtpClient("smtp.gmail.com")
+            try
             {
-                Port = 587,
-                Credentials = new NetworkCredential(fromMail, fromPassword),
-                EnableSsl = true,
-            };
+                User user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(txtUsername.Text));
 
-            smtpClient.Send(message);
+                MailMessage message = new MailMessage();
+                message.From = new MailAddress(fromMail);
+                message.Subject = "Wachtwoord reset email";
+                message.To.Add(new MailAddress(user.Email));
+                message.Body = $"<html><body> Hallo gebruik deze code om uw wachtwoord te reseten. <br> Code: {randomToken} </body></html>";
+                message.IsBodyHtml = true;
 
-            MessageBox.Show("Email send!");
+                var smtpClient = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    Credentials = new NetworkCredential(fromMail, fromPassword),
+                    EnableSsl = true,
+                };
+
+                smtpClient.Send(message);
+
+                MessageBox.Show("Email send!");
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("The username does not exist or you entered the wrong username");
+            }
+            
 
 
 
