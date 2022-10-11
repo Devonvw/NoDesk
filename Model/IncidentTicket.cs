@@ -10,25 +10,25 @@ namespace Model
 {
     public class IncidentTicket
     {
-        public string? Id { get; set; }
-        public DateTime dateTimeReported { get; set; }
+        public string? _id { get; set; }
+        public DateTime reportedDate { get; set; }
         public string? subject { get; set; }
-        public string? incidentType { get; set; }
-        public string? reportedBy { get; set; }
+        public string? type { get; set; }
+        public string? user { get; set; }
         public Priority priority { get; set; }
-        public DateTime deadlineFollowUp { get; set; }
+        public DateTime deadline { get; set; }
         public string? description { get; set; }
         public bool resolved { get; set; }
 
         public IncidentTicket() { }
         public IncidentTicket(DateTime dateTimeReported, string subject, string incidentType, string reportedBy, Priority priority, DateTime deadlineFollowUp, string description)
         {
-            this.dateTimeReported = dateTimeReported;
+            this.reportedDate = dateTimeReported;
             this.subject = subject;
-            this.incidentType = incidentType;
-            this.reportedBy = reportedBy;
+            this.type = incidentType;
+            this.user = reportedBy;
             this.priority = priority;
-            this.deadlineFollowUp = deadlineFollowUp;
+            this.deadline = deadlineFollowUp;
             this.description = description;
         }
 
@@ -39,25 +39,25 @@ namespace Model
                 switch (element.Name)
                 {
                     case "_id":
-                        Id = element.Value.ToString();
+                        _id = element.Value.ToString();
                         break;
                     case ("reportedDate"):
-                        dateTimeReported = DateTime.Parse(element.Value.ToString()!);
+                        reportedDate = DateTime.Parse(element.Value.ToString()!);
                         break;
                     case ("subject"):
                         subject = element.Value.ToString();
                         break;
                     case ("type"):
-                        incidentType = element.Value.ToString();
+                        type = element.Value.ToString();
                         break;
                     case ("user"):
-                        reportedBy = element.Value.ToString();
+                        user = element.Value.ToString();
                         break;
                     case ("priority"):
                         priority = Enum.Parse<Priority>(element.Value.ToString()!);
                         break;
                     case ("deadline"):
-                        deadlineFollowUp = DateTime.Parse(element.Value.ToString()!);
+                        deadline = DateTime.Parse(element.Value.ToString()!);
                         break;
                     case ("description"):
                         description = element.Value.ToString();

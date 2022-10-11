@@ -25,7 +25,7 @@ namespace Controller
 
         public void UpdateTicket(IncidentTicket incidentTicket)
         {
-            ticketCRUDDAO.UpdateTicket(IncidentTicketToBson(incidentTicket), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket.Id)));
+            ticketCRUDDAO.UpdateTicket(IncidentTicketToBson(incidentTicket), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._id)));
         }
 
         public List<IncidentTicket> ReadTicketList()
@@ -51,14 +51,14 @@ namespace Controller
         {
             BsonDocument newBsonDocument = new BsonDocument
             {
-                {"reportedDate", incidentTicket.dateTimeReported },
+                {"reportedDate", incidentTicket.reportedDate },
                 {"subject", incidentTicket.subject },
-                {"type", incidentTicket.incidentType },
-                {"user", incidentTicket.reportedBy },
+                {"type", incidentTicket.type },
+                {"user", incidentTicket.user },
                 {"priority", incidentTicket.priority },
                 {"description", incidentTicket.description },
                 {"resolved", incidentTicket.resolved },
-                {"deadline", incidentTicket.deadlineFollowUp }
+                {"deadline", incidentTicket.deadline }
             };
             return newBsonDocument;
         }

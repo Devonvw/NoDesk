@@ -1,12 +1,13 @@
 using DAL;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using MongoDB.Driver;
 using System.Diagnostics;
+using System.Net;
 using System.Text.Json;
+
 
 namespace API.Controllers
 {
@@ -32,13 +33,13 @@ namespace API.Controllers
         public void CreateTicket([FromBody]IncidentTicket incidentTicket)
         {
             //BsonDocument.Parse(((JsonElement)incidentTicket).GetRawText())
-            //ticketCRUDDAO.CreateTicket(IncidentTicketToBson(incidentTicket));
+            ticketCRUDDAO.CreateTicket(IncidentTicketToBson(incidentTicket));
         }
 
         [HttpPut]
         public void UpdateTicket([FromBody]IncidentTicket incidentTicket)
         {
-            //ticketCRUDDAO.UpdateTicket(BsonDocument.Parse(IncidentTicketToBson(incidentTicket), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket.Id)));
+            ticketCRUDDAO.UpdateTicket(IncidentTicketToBson(incidentTicket), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._id)));
         }
 
         [HttpGet]
@@ -89,14 +90,14 @@ namespace API.Controllers
             Debug.WriteLine(incidentTicket?.subject);
             BsonDocument newBsonDocument = new BsonDocument
             {
-                {"reportedDate", incidentTicket.dateTimeReported },
+                {"reportedDate", incidentTicket.reportedDate },
                 {"subject", incidentTicket.subject },
-                {"type", incidentTicket.incidentType },
-                {"user", incidentTicket.reportedBy },
+                {"type", incidentTicket.type },
+                {"user", incidentTicket.user },
                 {"priority", incidentTicket.priority },
                 {"description", incidentTicket.description },
                 {"resolved", incidentTicket.resolved },
-                {"deadline", incidentTicket.deadlineFollowUp }
+                {"deadline", incidentTicket.deadline }
             };
             return newBsonDocument;
         }

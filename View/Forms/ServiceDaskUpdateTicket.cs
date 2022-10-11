@@ -12,9 +12,9 @@ namespace View.Forms
         {
             this.oldIncidentTicket = oldIncidentTicket;
             InitializeComponent();
-            dateTimeReportedDTP.Value = oldIncidentTicket.dateTimeReported;
+            dateTimeReportedDTP.Value = oldIncidentTicket.reportedDate;
             subjectOfIncidentTB.Text = oldIncidentTicket.subject;
-            switch (oldIncidentTicket.incidentType)
+            switch (oldIncidentTicket.type)
             {
                 case "Software":
                     softwareRB.Checked = true;
@@ -28,7 +28,7 @@ namespace View.Forms
                 default:
                     break;
             }
-            reportedByUserCB.Text = oldIncidentTicket.reportedBy;
+            reportedByUserCB.Text = oldIncidentTicket.user;
             switch (oldIncidentTicket.priority)
             {
                 case Priority.Low:
@@ -43,7 +43,7 @@ namespace View.Forms
                 default:
                     break;
             }
-            deadlineFollowUpDTP.Value = oldIncidentTicket.deadlineFollowUp;
+            deadlineFollowUpDTP.Value = oldIncidentTicket.deadline;
             descriptionTB.Text = oldIncidentTicket.description;
             submitTicketButton.Click += SubmitTicketButton_Click!;
         }
@@ -65,7 +65,7 @@ namespace View.Forms
         protected override IncidentTicket GetTableInput(RadioButton incidentType, RadioButton priorityRB)
         {
             IncidentTicket incidentTicket = base.GetTableInput(incidentType, priorityRB);
-            incidentTicket.Id = oldIncidentTicket.Id;
+            incidentTicket._id = oldIncidentTicket._id;
             return incidentTicket;
         }
 

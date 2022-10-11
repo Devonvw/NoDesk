@@ -10,7 +10,7 @@ namespace Model
 {
     public class User
     {
-        public ObjectId _id;
+        public ObjectId? _id;
         private string firstname;
         private string lastname;
         private UserType userType;
@@ -30,7 +30,6 @@ namespace Model
         public User(BsonDocument bsonDoc)
         {
             //BsonSerializer.Deserialize<User>(bsonDoc);
-            Debug.WriteLine(bsonDoc);
             _id = bsonDoc["_id"].AsObjectId;
             firstname = bsonDoc["FirstName"].AsString;
             lastname = bsonDoc["LastName"].AsString;
@@ -53,7 +52,7 @@ namespace Model
         public UserType UserType { get => userType; set => userType = value; }
         public int PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public string Location { get => location; set => location = value; }
-        public ObjectId _Id { get => _id; set => _id = value; }
+        public ObjectId? _Id { get => _id; set => _id = value; }
 
 
         public override string ToString()

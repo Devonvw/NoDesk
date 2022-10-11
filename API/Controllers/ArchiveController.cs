@@ -8,6 +8,8 @@ using System.Text.Json;
 
 namespace API.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class ArchiveController : Controller
     {
         private ArchiveDataBaseDAO archiveDAO;

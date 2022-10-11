@@ -40,10 +40,10 @@ namespace View.Forms
             List<IncidentTicket> tickets = ticketCRUDController.ReadTicketList();
             foreach (IncidentTicket ticket in tickets)
             {
-                ListViewItem li = new ListViewItem(ticket.Id);
+                ListViewItem li = new ListViewItem(ticket._id);
                 li.SubItems.Add(ticket.subject);
-                li.SubItems.Add(ticket.reportedBy);
-                li.SubItems.Add(ticket.dateTimeReported.ToString("dd/MM/yyyy"));
+                li.SubItems.Add(ticket.user);
+                li.SubItems.Add(ticket.reportedDate.ToString("dd/MM/yyyy"));
                 li.SubItems.Add(ticket.resolved.ToString());
                 li.Tag = ticket;
                 listView1.Items.Add(li);
@@ -54,10 +54,10 @@ namespace View.Forms
         {
             foreach (IncidentTicket ticket in tickets)
             {
-                ListViewItem li = new ListViewItem(ticket.Id);
+                ListViewItem li = new ListViewItem(ticket._id);
                 li.SubItems.Add(ticket.subject);
-                li.SubItems.Add(ticket.reportedBy);
-                li.SubItems.Add(ticket.dateTimeReported.ToString("dd/MM/yyyy"));
+                li.SubItems.Add(ticket.user);
+                li.SubItems.Add(ticket.reportedDate.ToString("dd/MM/yyyy"));
                 li.SubItems.Add(ticket.resolved.ToString());
                 li.Tag = ticket;
                 listView1.Items.Add(li);
@@ -94,7 +94,7 @@ namespace View.Forms
                     foreach (ListViewItem item in listView1.SelectedItems)
                     {
                         IncidentTicket incidentTicket = (IncidentTicket)item.Tag;
-                        ticketCRUDController.DeleteTicket(incidentTicket.Id!);
+                        ticketCRUDController.DeleteTicket(incidentTicket._id!);
                     }
                     LoadTable();
                     return;

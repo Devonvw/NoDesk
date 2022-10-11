@@ -28,9 +28,9 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public void UpdateUser([FromBody]object userInput)
+        public void UpdateUser([FromBody]User user)
         {
-            User user = BsonSerializer.Deserialize<User>(((JsonElement)userInput).GetRawText());
+            //User user = BsonSerializer.Deserialize<User>(((JsonElement)userInput).GetRawText());
 
             userDAO.UpdateUser(UserToBsonDocument(user), Builders<BsonDocument>.Filter.Eq("_id", user._id));
         }
