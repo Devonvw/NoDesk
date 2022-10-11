@@ -10,7 +10,7 @@ namespace Model
 {
     public class IncidentTicket
     {
-        public string? _id { get; set; }
+        public string? _Id { get; set; }
         public DateTime reportedDate { get; set; }
         public string? subject { get; set; }
         public string? type { get; set; }
@@ -20,17 +20,6 @@ namespace Model
         public string? description { get; set; }
         public bool resolved { get; set; }
 
-        public IncidentTicket() { }
-        public IncidentTicket(DateTime dateTimeReported, string subject, string incidentType, string reportedBy, Priority priority, DateTime deadlineFollowUp, string description)
-        {
-            this.reportedDate = dateTimeReported;
-            this.subject = subject;
-            this.type = incidentType;
-            this.user = reportedBy;
-            this.priority = priority;
-            this.deadline = deadlineFollowUp;
-            this.description = description;
-        }
 
         public IncidentTicket(BsonDocument bsonDocument)
         {
@@ -39,7 +28,7 @@ namespace Model
                 switch (element.Name)
                 {
                     case "_id":
-                        _id = element.Value.ToString();
+                        _Id = element.Value.ToString();
                         break;
                     case ("reportedDate"):
                         reportedDate = DateTime.Parse(element.Value.ToString()!);
@@ -69,6 +58,18 @@ namespace Model
                         break;
                 }
             }
+        }
+
+        public IncidentTicket(DateTime reportedDate, string? subject, string? type, string? user, Priority priority, DateTime deadline, string? description)
+        {
+            this.reportedDate = reportedDate;
+            this.subject = subject;
+            this.type = type;
+            this.user = user;
+            this.priority = priority;
+            this.deadline = deadline;
+            this.description = description;
+            this.resolved = false;
         }
 
         public BsonDocument ToBsonDocument()

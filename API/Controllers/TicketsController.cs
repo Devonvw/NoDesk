@@ -39,7 +39,7 @@ namespace API.Controllers
         [HttpPut]
         public void UpdateTicket([FromBody]IncidentTicket incidentTicket)
         {
-            ticketCRUDDAO.UpdateTicket(IncidentTicketToBson(incidentTicket), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._id)));
+            ticketCRUDDAO.UpdateTicket(IncidentTicketToBson(incidentTicket), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._Id)));
         }
 
         [HttpGet]
