@@ -34,7 +34,7 @@ namespace View.Forms
         }
 
 
-        private void LoadTable()
+        public void LoadTable()
         {
             listView1.Items.Clear();
             List<IncidentTicket> tickets = ticketCRUDController.ReadTicketList();
@@ -144,6 +144,17 @@ namespace View.Forms
                     }  
             }
            
+        }
+
+        private void btnTransferTicket_Click(object sender, EventArgs e)
+        {   
+            if(listView1.SelectedItems.Count == 0) {
+                MessageBox.Show("No ticket selected");
+                return;
+            }
+            IncidentTicket incidentTicketSelected = (IncidentTicket)listView1.SelectedItems[0].Tag;
+            TransferTicketForm transferTicketForm = new TransferTicketForm(incidentTicketSelected,this);
+            transferTicketForm.Show();
         }
     }
 }

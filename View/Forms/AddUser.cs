@@ -52,7 +52,11 @@ namespace View.Forms
         }
 
         private void txtBoxPhonenumber_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
+        {   
+            if(txtBoxPhonenumber.Text.Length > 10)
+            {
+                
+            }
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '+'))
             {
                 e.Handled = true;
@@ -63,6 +67,7 @@ namespace View.Forms
             {
                 e.Handled = true;
             }
+
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
