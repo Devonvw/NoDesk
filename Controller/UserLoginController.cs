@@ -69,6 +69,22 @@ namespace Controller
             return users;
         }
 
-        
+        public List<User> GetServiceDeskUsers()
+        {
+            List<User> users = new List<User>();
+
+            foreach (BsonDocument doc in userDAO.GetUserList(Builders<BsonDocument>.Filter.Eq("UserType","ServiceDesk")))
+            {
+                users.Add(new User(doc));
+            }
+            return users;
+        }
+
+        public int GetCountOfTicketsOnUser(User user)
+        {
+            return userDAO.GetCountOfTicketsOnUser(Builders<BsonDocument>.Filter.Eq("UserName", user.UserName));
+        }
+
+
     }
 }

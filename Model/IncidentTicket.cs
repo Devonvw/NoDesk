@@ -86,5 +86,10 @@ namespace Model
             };
             return newBsonDocument;
         }
+
+        public override string ToString()
+        {
+            return $"{dateTimeReported.ToString("dd/mm/yyyy")} {subject} {incidentType} {reportedBy}";
+        }
     }
 }

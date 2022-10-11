@@ -85,7 +85,7 @@
             this.listViewUsers.GridLines = true;
             this.listViewUsers.Location = new System.Drawing.Point(84, 168);
             this.listViewUsers.Name = "listViewUsers";
-            this.listViewUsers.Size = new System.Drawing.Size(709, 291);
+            this.listViewUsers.Size = new System.Drawing.Size(703, 291);
             this.listViewUsers.TabIndex = 2;
             this.listViewUsers.UseCompatibleStateImageBehavior = false;
             this.listViewUsers.View = System.Windows.Forms.View.Details;
@@ -116,6 +116,7 @@
             // tickets
             // 
             this.tickets.Text = "# tickets";
+            this.tickets.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // UserManagementForum
             // 

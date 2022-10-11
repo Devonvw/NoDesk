@@ -43,6 +43,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.archiveButton = new System.Windows.Forms.Button();
             this.buttonCloseTicket = new System.Windows.Forms.Button();
+            this.btnTransferTicket = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // overviewTicketsLabel
@@ -176,10 +177,22 @@
             this.buttonCloseTicket.UseVisualStyleBackColor = true;
             this.buttonCloseTicket.Click += new System.EventHandler(this.buttonCloseTicket_Click);
             // 
+            // btnTransferTicket
+            // 
+            this.btnTransferTicket.Location = new System.Drawing.Point(695, 188);
+            this.btnTransferTicket.Name = "btnTransferTicket";
+            this.btnTransferTicket.Size = new System.Drawing.Size(113, 37);
+            this.btnTransferTicket.TabIndex = 8;
+            this.btnTransferTicket.Text = "TRANSFER TICKET";
+            this.btnTransferTicket.UseVisualStyleBackColor = true;
+            this.btnTransferTicket.Click += new System.EventHandler(this.btnTransferTicket_Click);
+            // 
             // ServiceDaskReadTickets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(820, 573);
+            this.Controls.Add(this.btnTransferTicket);
             this.ClientSize = new System.Drawing.Size(937, 764);
             this.Controls.Add(this.buttonCloseTicket);
             this.Controls.Add(this.archiveButton);
@@ -213,6 +226,7 @@
         private TextBox textBox1;
         public Button archiveButton;
         private Button buttonCloseTicket;
+        private Button btnTransferTicket;
         private ColumnHeader Priority;
         private ColumnHeader Deadline;
     }

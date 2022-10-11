@@ -37,6 +37,7 @@ namespace View.Forms
 
 
         private void FillTables(List<IncidentTicket> tickets)
+        public void LoadTable()
         {
             OverviewTicketsLV.Items.Clear();
             foreach (IncidentTicket ticket in tickets)
@@ -165,6 +166,17 @@ namespace View.Forms
         private void OverviewTicketsLV_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             SortTable();
+        }
+
+        private void btnTransferTicket_Click(object sender, EventArgs e)
+        {   
+            if(listView1.SelectedItems.Count == 0) {
+                MessageBox.Show("No ticket selected");
+                return;
+            }
+            IncidentTicket incidentTicketSelected = (IncidentTicket)listView1.SelectedItems[0].Tag;
+            TransferTicketForm transferTicketForm = new TransferTicketForm(incidentTicketSelected,this);
+            transferTicketForm.Show();
         }
     }
 }

@@ -42,7 +42,7 @@ namespace View.Forms
                 li.SubItems.Add(user.Email);
                 li.SubItems.Add(user.FirstName);
                 li.SubItems.Add(user.LastName);
-                li.SubItems.Add("NOT AVAILABLE YET! ");
+                li.SubItems.Add(userLoginController.GetCountOfTicketsOnUser(user).ToString());
                 li.Tag = user;
                 listViewUsers.Items.Add(li);
             }
