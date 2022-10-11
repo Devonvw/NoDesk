@@ -47,7 +47,7 @@ namespace View.Forms
                 li.SubItems.Add(ticket.reportedDate.ToString("dd/MM/yyyy"));
                 li.SubItems.Add(ticket.resolved.ToString());
                 li.SubItems.Add(ticket.priority.ToString());
-                li.SubItems.Add(ticket.deadlineFollowUp.ToString("dd/MM/yyyy"));
+                li.SubItems.Add(ticket.deadline.ToString("dd/MM/yyyy"));
                 li.Tag = ticket;
                 OverviewTicketsLV.Items.Add(li);
             }            
