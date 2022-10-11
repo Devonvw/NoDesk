@@ -31,6 +31,7 @@ namespace DAL
             return collection.Find(filter).ToList();
 
         }
+       
         public void UpdateUser(BsonDocument update, FilterDefinition<BsonDocument> filter)
         {
             collection.ReplaceOne(filter, update);
@@ -44,6 +45,12 @@ namespace DAL
                 names.Add($"{bson[1]} {bson[2]}");
             }
             return names;
+        }
+
+        public int GetCountOfTicketsOnUser(FilterDefinition<BsonDocument> filter)
+        {
+            return Convert.ToInt32(collection.Find(filter).CountDocuments());
+
         }
     }
 }

@@ -9,15 +9,18 @@ namespace View.Forms
     {
         protected MainForm mainForm;
         protected TicketCRUDController ticketCRUDController;
+        protected UserLoginController userLoginController;
 
         public CreateUpdateUserInput(MainForm mainForm, string pageTitle, string submitTicketText)
         {
             this.mainForm = mainForm;
             ticketCRUDController = new TicketCRUDController();
+            userLoginController = new UserLoginController();
             InitializeComponent();
             pageTitleLabel.Text = pageTitle;
             submitTicketButton.Text = submitTicketText;
             SetReportedUserName();
+            LoadUsers();
         }
 
         private void SetReportedUserName()
@@ -58,6 +61,14 @@ namespace View.Forms
         private void CancelButton_Click_1(object sender, EventArgs e)
         {
             mainForm.OpenChildForm(new ServiceDaskReadTickets(mainForm), sender);
+        }
+
+        private void LoadUsers()
+        {
+            foreach (User user in userLoginController.GetServiceDeskUsers())
+            {
+                reportedByUserCB.Items.Add(user.FullName);
+            }
         }
     }
 }

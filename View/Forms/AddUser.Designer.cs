@@ -147,6 +147,7 @@
             // txtBoxPhonenumber
             // 
             this.txtBoxPhonenumber.Location = new System.Drawing.Point(322, 313);
+            this.txtBoxPhonenumber.MaxLength = 10;
             this.txtBoxPhonenumber.Name = "txtBoxPhonenumber";
             this.txtBoxPhonenumber.Size = new System.Drawing.Size(135, 23);
             this.txtBoxPhonenumber.TabIndex = 11;
