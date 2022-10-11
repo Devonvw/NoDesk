@@ -27,7 +27,7 @@ namespace Controller
 
         public void UpdateTicket(IncidentTicket incidentTicket)
         {
-            ticketCRUDDAO.UpdateTicket(incidentTicket.ToBsonDocument(), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._Id)));
+            ticketCRUDDAO.UpdateTicket(incidentTicket.ToBsonDocument(), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._id)));
         }
 
         public List<IncidentTicket> ReadTicketList()

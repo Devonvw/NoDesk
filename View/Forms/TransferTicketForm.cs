@@ -44,9 +44,9 @@ namespace View.Forms
                 MessageBox.Show("Please select new user to tranfer ticket");
                 return;
             }
-            ticket.reportedBy = comboBox1.Text;
+            ticket.user = comboBox1.Text;
             ticketCRUDController.UpdateTicket(ticket);
-            form.LoadTable();
+            form.FillTables(ticketCRUDController.ReadTicketList());
             this.Hide();
         }
     }

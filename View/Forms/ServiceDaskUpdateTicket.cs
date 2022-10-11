@@ -65,7 +65,7 @@ namespace View.Forms
         protected override IncidentTicket GetTableInput(RadioButton incidentType, RadioButton priorityRB)
         {
             IncidentTicket incidentTicket = base.GetTableInput(incidentType, priorityRB);
-            incidentTicket._Id = oldIncidentTicket._Id;
+            incidentTicket._id = oldIncidentTicket._id;
             return incidentTicket;
         }
 

@@ -75,21 +75,21 @@ namespace Model
         {
             BsonDocument newBsonDocument = new BsonDocument
             {
-                {"reportedDate", dateTimeReported },
+                {"reportedDate", reportedDate },
                 {"subject", subject },
-                {"type", incidentType },
-                {"user", reportedBy },
+                {"type", type },
+                {"user", user },
                 {"priority", priority },
                 {"description", description },
                 {"resolved", resolved },
-                {"deadline", deadlineFollowUp }
+                {"deadline", deadline }
             };
             return newBsonDocument;
         }
 
         public override string ToString()
         {
-            return $"{dateTimeReported.ToString("dd/mm/yyyy")} {subject} {incidentType} {reportedBy}";
+            return $"{reportedDate.ToString("dd/mm/yyyy")} {subject} {type} {user}";
         }
     }
 }
