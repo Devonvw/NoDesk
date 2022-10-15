@@ -34,12 +34,14 @@
             this.btnUserManagement = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.pnlChild = new System.Windows.Forms.Panel();
+            this.btnAddTicket = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnDashboard);
+            this.flowLayoutPanel1.Controls.Add(this.btnAddTicket);
             this.flowLayoutPanel1.Controls.Add(this.btnIncident);
             this.flowLayoutPanel1.Controls.Add(this.btnUserManagement);
             this.flowLayoutPanel1.Controls.Add(this.btnLogOut);
@@ -61,7 +63,7 @@
             // 
             // btnIncident
             // 
-            this.btnIncident.Location = new System.Drawing.Point(118, 3);
+            this.btnIncident.Location = new System.Drawing.Point(241, 3);
             this.btnIncident.Name = "btnIncident";
             this.btnIncident.Size = new System.Drawing.Size(140, 32);
             this.btnIncident.TabIndex = 1;
@@ -71,7 +73,7 @@
             // 
             // btnUserManagement
             // 
-            this.btnUserManagement.Location = new System.Drawing.Point(264, 3);
+            this.btnUserManagement.Location = new System.Drawing.Point(387, 3);
             this.btnUserManagement.Name = "btnUserManagement";
             this.btnUserManagement.Size = new System.Drawing.Size(128, 32);
             this.btnUserManagement.TabIndex = 2;
@@ -82,7 +84,7 @@
             // btnLogOut
             // 
             this.btnLogOut.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnLogOut.Location = new System.Drawing.Point(398, 3);
+            this.btnLogOut.Location = new System.Drawing.Point(521, 3);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(109, 32);
             this.btnLogOut.TabIndex = 3;
@@ -98,6 +100,16 @@
             this.pnlChild.Name = "pnlChild";
             this.pnlChild.Size = new System.Drawing.Size(882, 500);
             this.pnlChild.TabIndex = 1;
+            // 
+            // btnAddTicket
+            // 
+            this.btnAddTicket.Location = new System.Drawing.Point(118, 3);
+            this.btnAddTicket.Name = "btnAddTicket";
+            this.btnAddTicket.Size = new System.Drawing.Size(117, 32);
+            this.btnAddTicket.TabIndex = 0;
+            this.btnAddTicket.Text = "Add ticket";
+            this.btnAddTicket.UseVisualStyleBackColor = true;
+            this.btnAddTicket.Click += new System.EventHandler(this.btnAddTicket_Click);
             // 
             // MainForm
             // 
@@ -125,5 +137,6 @@
         private Panel pnlChild;
         private Button btnLogOut;
         public Button btnAddIncidentReg;
+        private Button btnAddTicket;
     }
 }

@@ -18,6 +18,10 @@ namespace DAL
         {
             collection.ReplaceOne(filter, update);
         }
+        public BsonDocument SearchTicket(FilterDefinition<BsonDocument> filter)
+        {
+            return collection.Find(filter).First();                                                             
+        }
 
         public BsonDocument GetTicket(FilterDefinition<BsonDocument> filter)
         {
@@ -27,7 +31,6 @@ namespace DAL
         public List<BsonDocument> GetTicketList(FilterDefinition<BsonDocument> filter)
         {
             return collection.Find(filter).ToList();
-
         }
 
         public void DeleteTicket(FilterDefinition<BsonDocument> filter)
