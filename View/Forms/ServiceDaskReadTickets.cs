@@ -136,7 +136,8 @@ namespace View.Forms
                 IncidentTicket incidentTicket = (IncidentTicket)(OverviewTicketsLV.FocusedItem).Tag;
                 incidentTicket.resolved = true;
                 ticketCRUDController.UpdateTicket(incidentTicket);
-                FillTables(allIncidentTickets);
+                List<IncidentTicket> upToDateTickets = ticketCRUDController.ReadTicketList();
+                FillTables(upToDateTickets);
             }
         }
 
