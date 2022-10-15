@@ -147,6 +147,7 @@
             // txtBoxPhonenumber
             // 
             this.txtBoxPhonenumber.Location = new System.Drawing.Point(322, 313);
+            this.txtBoxPhonenumber.MaxLength = 10;
             this.txtBoxPhonenumber.Name = "txtBoxPhonenumber";
             this.txtBoxPhonenumber.Size = new System.Drawing.Size(135, 23);
             this.txtBoxPhonenumber.TabIndex = 11;
@@ -226,9 +227,10 @@
             // 
             this.lblShowPassword.AutoSize = true;
             this.lblShowPassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblShowPassword.Location = new System.Drawing.Point(463, 383);
+            this.lblShowPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblShowPassword.Location = new System.Drawing.Point(463, 380);
             this.lblShowPassword.Name = "lblShowPassword";
-            this.lblShowPassword.Size = new System.Drawing.Size(19, 15);
+            this.lblShowPassword.Size = new System.Drawing.Size(32, 21);
             this.lblShowPassword.TabIndex = 19;
             this.lblShowPassword.Text = "👁";
             this.lblShowPassword.Click += new System.EventHandler(this.lblShowPassword_Click_1);
@@ -260,6 +262,7 @@
             this.Controls.Add(this.lblFirstname);
             this.Controls.Add(this.lblCreateUserHeader);
             this.Name = "AddUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add User ";
             this.ResumeLayout(false);
             this.PerformLayout();

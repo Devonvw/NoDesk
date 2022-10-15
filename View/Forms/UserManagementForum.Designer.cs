@@ -58,6 +58,7 @@
             this.txtBoxFilterMail.Size = new System.Drawing.Size(180, 36);
             this.txtBoxFilterMail.TabIndex = 1;
             this.txtBoxFilterMail.Text = "Filer by email";
+            this.txtBoxFilterMail.TextChanged += new System.EventHandler(this.txtBoxFilterMail_TextChanged);
             // 
             // btnAddUser
             // 
@@ -84,7 +85,7 @@
             this.listViewUsers.GridLines = true;
             this.listViewUsers.Location = new System.Drawing.Point(84, 168);
             this.listViewUsers.Name = "listViewUsers";
-            this.listViewUsers.Size = new System.Drawing.Size(709, 291);
+            this.listViewUsers.Size = new System.Drawing.Size(703, 291);
             this.listViewUsers.TabIndex = 2;
             this.listViewUsers.UseCompatibleStateImageBehavior = false;
             this.listViewUsers.View = System.Windows.Forms.View.Details;
@@ -115,6 +116,7 @@
             // tickets
             // 
             this.tickets.Text = "# tickets";
+            this.tickets.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // UserManagementForum
             // 
@@ -126,7 +128,9 @@
             this.Controls.Add(this.txtBoxFilterMail);
             this.Controls.Add(this.label1);
             this.Name = "UserManagementForum";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserManagementForum";
+            this.Load += new System.EventHandler(this.UserManagementForum_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

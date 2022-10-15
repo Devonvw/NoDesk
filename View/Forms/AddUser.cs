@@ -52,7 +52,11 @@ namespace View.Forms
         }
 
         private void txtBoxPhonenumber_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
+        {   
+            if(txtBoxPhonenumber.Text.Length > 10)
+            {
+                
+            }
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '+'))
             {
                 e.Handled = true;
@@ -63,13 +67,14 @@ namespace View.Forms
             {
                 e.Handled = true;
             }
+
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             if (txtBoxFirstname.Text.Length != 0 && txtBoxLastname.Text.Length != 0 && txtBoxEmail.Text.Length != 0 && txtBoxPassword.Text.Length != 0 && txtBoxUsername.Text.Length != 0 && txtBoxPhonenumber.Text.Length != 0 && txtBoxLocation.Text.Length != 0 && comboBoxUserType.SelectedIndex > -1)
             {
-                Model.User userToBeCreated = new Model.User(txtBoxFirstname.Text, txtBoxLastname.Text, txtBoxUsername.Text, txtBoxPassword.Text);
+                Model.User userToBeCreated = new Model.User(txtBoxFirstname.Text, txtBoxLastname.Text, txtBoxUsername.Text, new Model.PasswordHasher(txtBoxPassword.Text).HashedPassword);
                 if (EmailValidator(txtBoxEmail.Text))
                 {
                     userToBeCreated.Email = txtBoxEmail.Text;

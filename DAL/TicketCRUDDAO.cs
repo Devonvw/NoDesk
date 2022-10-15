@@ -51,5 +51,10 @@ namespace DAL
 
             return incidents.Count;
         }
+
+        public List<BsonDocument> GetAllTicketsBasedOnSearch(FilterDefinition<BsonDocument> filter)
+        {
+            return collection.Find(filter).ToList();
+        }
     }
 }

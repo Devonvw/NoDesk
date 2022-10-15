@@ -17,6 +17,12 @@ namespace Controller
         {
            return userDAO.GetUser(Builders<BsonDocument>.Filter.Eq("UserName", userName));
         }
+
+        public void UpdateUser(User user)
+        {
+            userDAO.UpdateUser(UserToBsonDocument(user), Builders<BsonDocument>.Filter.Eq("_id", user._id));
+        }
+
         public void CreateUser(Model.User user)
         {
             userDAO.CreateUser(UserToBsonDocument(user));
@@ -50,5 +56,35 @@ namespace Controller
             };
             return newBsonDocument;
         }
+
+        public List<User> GetUserEmail(string email)
+        {
+            List<User> users = new List<User>();
+
+            foreach (BsonDocument doc in userDAO.GetUserList(Builders<BsonDocument>.Filter.Regex("Email", new BsonRegularExpression(email))))
+            {
+                users.Add(new User(doc));
+            }
+
+            return users;
+        }
+
+        public List<User> GetServiceDeskUsers()
+        {
+            List<User> users = new List<User>();
+
+            foreach (BsonDocument doc in userDAO.GetUserList(Builders<BsonDocument>.Filter.Eq("UserType","ServiceDesk")))
+            {
+                users.Add(new User(doc));
+            }
+            return users;
+        }
+
+        public int GetCountOfTicketsOnUser(User user)
+        {
+            return userDAO.GetCountOfTicketsOnUser(Builders<BsonDocument>.Filter.Eq("UserName", user.UserName));
+        }
+
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,53 +10,43 @@ namespace Model
 {
     public class IncidentTicket
     {
-        public string? Id;
-        public DateTime dateTimeReported;
-        public string? subject;
-        public string? incidentType;
-        public string? reportedBy;
-        public Priority priority;
-        public DateTime deadlineFollowUp;
-        public string? description;
-        public bool resolved;
+        public string? _Id { get; set; }
+        public DateTime reportedDate { get; set; }
+        public string? subject { get; set; }
+        public string? type { get; set; }
+        public string? user { get; set; }
+        public Priority priority { get; set; }
+        public DateTime deadline { get; set; }
+        public string? description { get; set; }
+        public bool resolved { get; set; }
 
-        public IncidentTicket(DateTime dateTimeReported, string subject, string incidentType, string reportedBy, Priority priority, DateTime deadlineFollowUp, string description)
-        {
-            this.dateTimeReported = dateTimeReported;
-            this.subject = subject;
-            this.incidentType = incidentType;
-            this.reportedBy = reportedBy;
-            this.priority = priority;
-            this.deadlineFollowUp = deadlineFollowUp;
-            this.description = description;
-        }
 
         public IncidentTicket(BsonDocument bsonDocument)
-        {          
+        {
             foreach (BsonElement element in bsonDocument)
             {
                 switch (element.Name)
                 {
                     case "_id":
-                        Id = element.Value.ToString();
+                        _Id = element.Value.ToString();
                         break;
                     case ("reportedDate"):
-                        dateTimeReported = DateTime.Parse(element.Value.ToString()!);
+                        reportedDate = DateTime.Parse(element.Value.ToString()!);
                         break;
                     case ("subject"):
                         subject = element.Value.ToString();
                         break;
                     case ("type"):
-                        incidentType = element.Value.ToString();
+                        type = element.Value.ToString();
                         break;
                     case ("user"):
-                        reportedBy = element.Value.ToString();
+                        user = element.Value.ToString();
                         break;
                     case ("priority"):
                         priority = Enum.Parse<Priority>(element.Value.ToString()!);
                         break;
                     case ("deadline"):
-                        deadlineFollowUp = DateTime.Parse(element.Value.ToString()!);
+                        deadline = DateTime.Parse(element.Value.ToString()!);
                         break;
                     case ("description"):
                         description = element.Value.ToString();
@@ -67,6 +58,39 @@ namespace Model
                         break;
                 }
             }
+        }
+
+        public IncidentTicket(DateTime reportedDate, string? subject, string? type, string? user, Priority priority, DateTime deadline, string? description)
+        {
+            this.reportedDate = reportedDate;
+            this.subject = subject;
+            this.type = type;
+            this.user = user;
+            this.priority = priority;
+            this.deadline = deadline;
+            this.description = description;
+            this.resolved = false;
+        }
+
+        public BsonDocument ToBsonDocument()
+        {
+            BsonDocument newBsonDocument = new BsonDocument
+            {
+                {"reportedDate", reportedDate },
+                {"subject", subject },
+                {"type", type },
+                {"user", user },
+                {"priority", priority },
+                {"description", description },
+                {"resolved", resolved },
+                {"deadline", deadline }
+            };
+            return newBsonDocument;
+        }
+
+        public override string ToString()
+        {
+            return $"{reportedDate.ToString("dd/mm/yyyy")} {subject} {type} {user}";
         }
     }
 }

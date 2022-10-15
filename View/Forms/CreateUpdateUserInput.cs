@@ -9,16 +9,27 @@ namespace View.Forms
     {
         protected MainForm mainForm;
         protected TicketCRUDController ticketCRUDController;
+        protected UserLoginController userLoginController;
 
         public CreateUpdateUserInput(MainForm mainForm, string pageTitle, string submitTicketText)
         {
             this.mainForm = mainForm;
             ticketCRUDController = new TicketCRUDController();
+            userLoginController = new UserLoginController();
             InitializeComponent();
             pageTitleLabel.Text = pageTitle;
             submitTicketButton.Text = submitTicketText;
+            SetReportedUserName();
+       
         }
 
+        private void SetReportedUserName()
+        {
+            foreach (String name in ticketCRUDController.getAllNames())
+            {
+                reportedByUserCB.Items.Add(name);
+            }
+        }
 
         protected bool CheckValues(RadioButton incidentTypeRB, RadioButton priorityRB)
         {
@@ -51,5 +62,15 @@ namespace View.Forms
         {
             mainForm.OpenChildForm(new ServiceDaskReadTickets(mainForm), sender);
         }
+
+        //private void LoadUsers()
+        //{
+        //    foreach (User user in userLoginController.GetServiceDeskUsers())
+        //    {
+        //        reportedByUserCB.Items.Add(user.FullName);
+        //    }
+        //}
+
+
     }
 }

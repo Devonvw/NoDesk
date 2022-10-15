@@ -2,14 +2,17 @@
 using Model;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Collections.Generic;
 
 namespace Controller
 {
     public class TicketCRUDController
     {
         private TicketCRUDDAO ticketCRUDDAO;
+        private UserDAO userDAO;
         public TicketCRUDController()
         {
+            userDAO = new UserDAO();
             ticketCRUDDAO = new TicketCRUDDAO();
         }
 
@@ -19,11 +22,11 @@ namespace Controller
         }
         public void CreateTicket(IncidentTicket incidentTicket)
         {
-            ticketCRUDDAO.CreateTicket(IncidentTicketToBson(incidentTicket));
+            ticketCRUDDAO.CreateTicket(incidentTicket.ToBsonDocument());
         }
         public void UpdateTicket(IncidentTicket incidentTicket)
         {
-            ticketCRUDDAO.UpdateTicket(IncidentTicketToBson(incidentTicket), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket.Id)));
+            ticketCRUDDAO.UpdateTicket(incidentTicket.ToBsonDocument(), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._Id)));
         }
         public BsonDocument SearchTicket(string userInput)
         {
@@ -49,20 +52,25 @@ namespace Controller
             return ticketCRUDDAO.GetIncidentsPastDeadline();
         }
 
-        private BsonDocument IncidentTicketToBson(IncidentTicket incidentTicket)
+
+        public List<IncidentTicket> GetAllTicketsBasedOnSearch(string input)
         {
-            BsonDocument newBsonDocument = new BsonDocument
+            var filter = Builders<BsonDocument>.Filter.Regex("subject", new BsonRegularExpression(input));
+            filter |= Builders<BsonDocument>.Filter.Regex("description", new BsonRegularExpression(input));
+            filter &= Builders<BsonDocument>.Filter.Eq("resolved", false);
+
+            List<IncidentTicket> incidentTickets = new List<IncidentTicket>();
+
+            foreach (BsonDocument doc in ticketCRUDDAO.GetAllTicketsBasedOnSearch(filter))
             {
-                {"reportedDate", incidentTicket.dateTimeReported },
-                {"subject", incidentTicket.subject },
-                {"type", incidentTicket.incidentType },
-                {"user", incidentTicket.reportedBy },
-                {"priority", incidentTicket.priority },
-                {"description", incidentTicket.description },
-                {"resolved", incidentTicket.resolved },
-                {"deadline", incidentTicket.deadlineFollowUp }
-            };
-            return newBsonDocument;
+                incidentTickets.Add(new IncidentTicket(doc));
+            }
+
+            return incidentTickets;
+        }
+        public List<string> getAllNames()
+        {
+            return userDAO.GetAllNames();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using View.Forms;
 
 namespace View
@@ -5,9 +6,12 @@ namespace View
     public partial class MainForm : Form
     {
         private Form activeForm;
+     
+
         public MainForm()
         {
             InitializeComponent();
+
         }
         //Open a child form
         public void OpenChildForm(Form childForm, object btnSender)
@@ -26,7 +30,7 @@ namespace View
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+
             OpenChildForm(new Forms.DashboardForm(), sender);
 
         }
@@ -52,6 +56,7 @@ namespace View
         {
             OpenChildForm(new Forms.UserManagementForum(this),sender);
         }
+
     }
 
 }
