@@ -10,6 +10,20 @@ namespace Model
 {
     public class User
     {
+        private User() { }
+
+        private static User _user;
+
+        public static User GetInstance()
+        {
+            if (_user == null)
+            {
+                _user = new User();
+            }
+            return _user;
+        }
+
+
         public ObjectId? _id;
         private string firstname;
         private string lastname;
@@ -19,14 +33,16 @@ namespace Model
         private string password;
         private int phoneNumber;
         private string location;
-        public User(string firstname, string lastname,string username, string password)
+
+        public User(string firstname, string lastname, string username, string password)
         {
             this.firstname = firstname;
             this.lastname = lastname;
             this.username = username;
             this.password = password;
         }
-         
+
+
         public User(BsonDocument bsonDoc)
         {
             //BsonSerializer.Deserialize<User>(bsonDoc);
@@ -40,6 +56,7 @@ namespace Model
             phoneNumber = bsonDoc["PhoneNumber"].AsInt32;
             userType = (UserType)Enum.Parse(typeof(UserType), bsonDoc["UserType"].AsString, true);
         }
+
         public string FirstName { get { return firstname; } set { firstname = value; } }
         public string LastName { get { return lastname; } set { lastname = value; } }
         public string FullName { get { return $"{firstname} {lastname}"; }}

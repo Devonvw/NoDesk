@@ -1,6 +1,7 @@
 ﻿using Controller;
 using MongoDB.Bson.Serialization;
-using User = Model.User;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Model;
 
 namespace View.Forms
 {
@@ -8,12 +9,19 @@ namespace View.Forms
     {
 
         UserLoginController userLoginController;
-        User user;
+        User user = User.GetInstance();
+        MainForm mainForm;
 
         public LoginForm()
         {
+            mainForm = new MainForm();
             userLoginController = new UserLoginController();
             InitializeComponent();
+            
+            
+
+            
+
         }
 
 
@@ -34,10 +42,18 @@ namespace View.Forms
 
 
                 user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
+
+
+                MessageBox.Show(user.ToString());
+
+
                 
 
+
                 ChechLoginInfo(userName, new Model.PasswordHasher(passWord).HashedPassword, user);
-               
+
+
+
             }
             catch (Exception ex)
             {
@@ -66,8 +82,6 @@ namespace View.Forms
         private void ChechLoginInfo(string userName, string passWord, User user)
         {
          
-            
-
                 if (userName == user.UserName && passWord == user.Password)
                 {
                     CheckUserType(user);                
@@ -81,13 +95,15 @@ namespace View.Forms
 
         public void CheckUserType(User user)
         {
-            MainForm mainForm = new MainForm();
+            
             ServiceDaskReadTickets serviceDaskReadTickets = new ServiceDaskReadTickets(mainForm);
+            
 
             if (user.UserType == Model.UserType.Regular)
             {
                 mainForm.Show();
                 mainForm.btnUserManagement.Enabled = false;
+                mainForm.btnIncident.Enabled = false;
                 this.Hide();
             }
             else
