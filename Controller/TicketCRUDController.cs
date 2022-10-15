@@ -24,12 +24,14 @@ namespace Controller
         {
             ticketCRUDDAO.CreateTicket(incidentTicket.ToBsonDocument());
         }
-
         public void UpdateTicket(IncidentTicket incidentTicket)
         {
             ticketCRUDDAO.UpdateTicket(incidentTicket.ToBsonDocument(), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._Id)));
         }
-
+        public BsonDocument SearchTicket(string userInput)
+        {
+            return ticketCRUDDAO.SearchTicket(Builders<BsonDocument>.Filter.Regex("subject", new BsonRegularExpression(userInput)));
+        }
         public List<IncidentTicket> ReadTicketList()
         {
             List<IncidentTicket> incidentTickets = new List<IncidentTicket>();
