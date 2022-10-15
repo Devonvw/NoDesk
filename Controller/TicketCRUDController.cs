@@ -31,7 +31,6 @@ namespace Controller
         public BsonDocument SearchTicket(string userInput)
         {
             return ticketCRUDDAO.SearchTicket(Builders<BsonDocument>.Filter.Regex("subject", new BsonRegularExpression(userInput)));
-            //ticketCRUDDAO.SearchTicket(Builders<BsonDocument>.Filter.Eq("description", userInput));
         }
         public List<IncidentTicket> ReadTicketList()
         {
