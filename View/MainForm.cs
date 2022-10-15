@@ -57,6 +57,10 @@ namespace View
             OpenChildForm(new Forms.UserManagementForum(this),sender);
         }
 
+        private void btnAddTicket_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new ServiceDaskCreateTickets(this), sender);
+        }
     }
 
 }
