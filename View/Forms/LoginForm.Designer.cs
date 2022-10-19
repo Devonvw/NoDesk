@@ -38,6 +38,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblForgotLoginDetails = new System.Windows.Forms.Label();
             this.lblShowHidePass = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -139,11 +140,21 @@
             this.lblShowHidePass.Text = "👁";
             this.lblShowHidePass.Click += new System.EventHandler(this.lblShowHidePass_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(350, 142);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 15);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "(Case sensitive)";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.lblShowHidePass);
             this.Controls.Add(this.lblForgotLoginDetails);
             this.Controls.Add(this.label1);
@@ -174,5 +185,6 @@
         private Button btnLogin;
         private Label lblForgotLoginDetails;
         private Label lblShowHidePass;
+        private Label label6;
     }
 }

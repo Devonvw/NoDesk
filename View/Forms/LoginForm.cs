@@ -9,7 +9,7 @@ namespace View.Forms
     {
 
         UserLoginController userLoginController;
-        User user = User.GetInstance();
+        User user;
         MainForm mainForm;
 
         public LoginForm()
@@ -18,16 +18,13 @@ namespace View.Forms
             userLoginController = new UserLoginController();
             InitializeComponent();
             
-            
-
-            
 
         }
 
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-           
+            CurrentUser currentUser = CurrentUser.GetInstance();
             try
             {
                 if (txtPass.Text == "" || txtUsername.Text == "")
@@ -42,22 +39,16 @@ namespace View.Forms
 
 
                 user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
-
-
-                MessageBox.Show(user.ToString());
-
-
-                
-
+                currentUser.SetUser(user);
 
                 ChechLoginInfo(userName, new Model.PasswordHasher(passWord).HashedPassword, user);
 
 
 
             }
-            catch (Exception ex)
+            catch (InvalidOperationException ex)
             {
-                MessageBox.Show("Something went wrong. Please try again", ex.Message);
+                MessageBox.Show("This user does not exist. \nUsername and password are case sensitive!");
             }
 
         }
@@ -66,8 +57,15 @@ namespace View.Forms
         {
             if (txtUsername.Text.Length != 0)
             {
-                ForgotPassword forgotPassword = new ForgotPassword(new User(userLoginController.GetUser(txtUsername.Text)));
-                forgotPassword.ShowDialog();
+                try
+                {
+                    ForgotPassword forgotPassword = new ForgotPassword(new User(userLoginController.GetUser(txtUsername.Text)));
+                    forgotPassword.ShowDialog();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("This username does not exist. The username is needed for reseting the password");
+                }
 
             }
             else
@@ -108,6 +106,7 @@ namespace View.Forms
             }
             else
             {
+                mainForm.btnAddTicket.Enabled = false;
                 mainForm.btnDashboard.Enabled = false;
                 mainForm.Show();
                 this.Hide();

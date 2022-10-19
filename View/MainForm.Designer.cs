@@ -136,7 +136,7 @@
         public Button btnUserManagement;
         private Panel pnlChild;
         private Button btnLogOut;
-        public Button btnAddIncidentReg;
-        private Button btnAddTicket;
+        private Button btnAddIncidentReg;
+        public Button btnAddTicket;
     }
 }

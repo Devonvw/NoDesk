@@ -1,3 +1,4 @@
+using Model;
 using System.Security.Cryptography.X509Certificates;
 using View.Forms;
 
@@ -30,8 +31,16 @@ namespace View
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            User currentUser = CurrentUser.GetInstance().GetUser();
+            if (currentUser.UserType == UserType.ServiceDesk)
+            {
+                OpenChildForm(new Forms.ServiceDaskReadTickets(this), sender);
+            }
+            else
+            {
+                OpenChildForm(new Forms.DashboardForm(), sender);
 
-            OpenChildForm(new Forms.DashboardForm(), sender);
+            }
 
         }
 
