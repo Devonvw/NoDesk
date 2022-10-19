@@ -44,6 +44,7 @@
             this.archiveButton = new System.Windows.Forms.Button();
             this.buttonCloseTicket = new System.Windows.Forms.Button();
             this.btnTransferTicket = new System.Windows.Forms.Button();
+            this.btnEscalateTicket = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // overviewTicketsLabel
@@ -164,9 +165,9 @@
             // 
             // buttonCloseTicket
             // 
-            this.buttonCloseTicket.Location = new System.Drawing.Point(695, 129);
+            this.buttonCloseTicket.Location = new System.Drawing.Point(722, 188);
             this.buttonCloseTicket.Name = "buttonCloseTicket";
-            this.buttonCloseTicket.Size = new System.Drawing.Size(113, 37);
+            this.buttonCloseTicket.Size = new System.Drawing.Size(90, 60);
             this.buttonCloseTicket.TabIndex = 7;
             this.buttonCloseTicket.Text = "CLOSE TICKET";
             this.buttonCloseTicket.UseVisualStyleBackColor = true;
@@ -174,20 +175,31 @@
             // 
             // btnTransferTicket
             // 
-            this.btnTransferTicket.Location = new System.Drawing.Point(722, 188);
+            this.btnTransferTicket.Location = new System.Drawing.Point(691, 129);
             this.btnTransferTicket.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTransferTicket.Name = "btnTransferTicket";
-            this.btnTransferTicket.Size = new System.Drawing.Size(99, 52);
+            this.btnTransferTicket.Size = new System.Drawing.Size(117, 38);
             this.btnTransferTicket.TabIndex = 8;
             this.btnTransferTicket.Text = "TRANSFER TICKET";
             this.btnTransferTicket.UseVisualStyleBackColor = true;
             this.btnTransferTicket.Click += new System.EventHandler(this.btnTransferTicket_Click);
+            // 
+            // btnEscalateTicket
+            // 
+            this.btnEscalateTicket.Location = new System.Drawing.Point(722, 262);
+            this.btnEscalateTicket.Name = "btnEscalateTicket";
+            this.btnEscalateTicket.Size = new System.Drawing.Size(90, 60);
+            this.btnEscalateTicket.TabIndex = 9;
+            this.btnEscalateTicket.Text = "ESCALTE TICKET";
+            this.btnEscalateTicket.UseVisualStyleBackColor = true;
+            this.btnEscalateTicket.Click += new System.EventHandler(this.btnEscalateTicket_Click);
             // 
             // ServiceDaskReadTickets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 573);
+            this.Controls.Add(this.btnEscalateTicket);
             this.Controls.Add(this.btnTransferTicket);
             this.Controls.Add(this.buttonCloseTicket);
             this.Controls.Add(this.archiveButton);
@@ -223,5 +235,6 @@
         private Button btnTransferTicket;
         private ColumnHeader Priority;
         private ColumnHeader Deadline;
+        private Button btnEscalateTicket;
     }
 }
