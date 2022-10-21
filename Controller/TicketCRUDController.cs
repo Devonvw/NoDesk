@@ -41,7 +41,15 @@ namespace Controller
             }
             return incidentTickets;
         }
-
+        public List<IncidentTicket> ReadOwnTicketsList(User user)
+        {
+            List<IncidentTicket> ownTickets = new List<IncidentTicket>();
+            foreach (BsonDocument bsonDocument in ticketCRUDDAO.GetOwnTicketsList(Builders<BsonDocument>.Filter.Eq("user", user.FullName)))
+            {
+                ownTickets.Add(new IncidentTicket(bsonDocument));
+            }
+            return ownTickets;
+        }
         public (int resolved, int unresolved) GetUnresolvedIncidents()
         {
             return ticketCRUDDAO.GetUnresolvedIncidents();

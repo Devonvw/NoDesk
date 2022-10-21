@@ -141,9 +141,9 @@ namespace View.Forms
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txtBoxSearchIncidents_TextChanged(object sender, EventArgs e)
         {
-            switch (textBox1.Text)
+            switch (txtBoxSearchIncidents.Text)
             {
                 case ("Search..."):
                     {
@@ -156,7 +156,7 @@ namespace View.Forms
                 default:
                     {
                         OverviewTicketsLV.Items.Clear();
-                        LoadTableForSearch(ticketCRUDController.GetAllTicketsBasedOnSearch(textBox1.Text));
+                        LoadTableForSearch(ticketCRUDController.GetAllTicketsBasedOnSearch(txtBoxSearchIncidents.Text));
                         break;
                     }  
             }

@@ -32,6 +32,10 @@ namespace DAL
         {
             return collection.Find(filter).ToList();
         }
+        public List<BsonDocument> GetOwnTicketsList(FilterDefinition<BsonDocument> filter)
+        {
+            return collection.Find(filter).ToList();
+        }
 
         public void DeleteTicket(FilterDefinition<BsonDocument> filter)
         {
