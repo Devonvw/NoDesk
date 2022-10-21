@@ -27,17 +27,15 @@ namespace View.Forms
             CurrentUser currentUser = CurrentUser.GetInstance();
             try
             {
+                string userName = txtUsername.Text;
+                string passWord = txtPass.Text;
+
                 if (txtPass.Text == "" || txtUsername.Text == "")
                 {
                     MessageBox.Show("You did not enter a username and/or password");
                     return;
                 }
                 
-
-                string userName = txtUsername.Text;
-                string passWord = txtPass.Text;
-
-
                 user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
                 currentUser.SetUser(user);
 
