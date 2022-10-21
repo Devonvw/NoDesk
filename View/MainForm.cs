@@ -70,6 +70,11 @@ namespace View
         {
             OpenChildForm(new ServiceDaskCreateTickets(this), sender);
         }
+
+        private void btnViewMyTickets_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new ViewOwnTicketsForm(), sender);
+        }
     }
 
 }

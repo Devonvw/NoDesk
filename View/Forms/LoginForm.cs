@@ -94,8 +94,6 @@ namespace View.Forms
         public void CheckUserType(User user)
         {
             
-            ServiceDaskReadTickets serviceDaskReadTickets = new ServiceDaskReadTickets(mainForm);
-            
 
             if (user.UserType == Model.UserType.Regular)
             {
@@ -108,6 +106,7 @@ namespace View.Forms
             {
                 mainForm.btnAddTicket.Enabled = false;
                 mainForm.btnDashboard.Enabled = false;
+                mainForm.btnViewMyTickets.Enabled = false;
                 mainForm.Show();
                 this.Hide();
             }
