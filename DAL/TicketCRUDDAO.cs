@@ -20,7 +20,7 @@ namespace DAL
         }
         public BsonDocument SearchTicket(FilterDefinition<BsonDocument> filter)
         {
-            return collection.Find(filter).First();                                                             
+            return collection.Find(filter).First();
         }
 
         public BsonDocument GetTicket(FilterDefinition<BsonDocument> filter)
@@ -29,6 +29,10 @@ namespace DAL
         }
 
         public List<BsonDocument> GetTicketList(FilterDefinition<BsonDocument> filter)
+        {
+            return collection.Find(filter).ToList();
+        }
+        public List<BsonDocument> GetOwnTicketsList(FilterDefinition<BsonDocument> filter)
         {
             return collection.Find(filter).ToList();
         }
@@ -54,7 +58,7 @@ namespace DAL
 
         public List<BsonDocument> GetAllTicketsBasedOnSearch(FilterDefinition<BsonDocument> filter)
         {
-            return collection.Find(filter).ToList();
+            return (List<BsonDocument>)collection.Find(filter).SortBy(bson => true).SortBy(bson => bson["reportedDate"]).ThenByDescending(bson => bson["reportedDate"]).ToList();
         }
 
         public int GetCountOfTicketsOnUser(FilterDefinition<BsonDocument> filter)

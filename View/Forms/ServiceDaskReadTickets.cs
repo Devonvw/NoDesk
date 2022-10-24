@@ -68,20 +68,6 @@ namespace View.Forms
             return tickets;
         }
 
-        private void LoadTableForSearch(List<IncidentTicket> tickets)
-        {
-            foreach (IncidentTicket ticket in tickets)
-            {
-                ListViewItem li = new ListViewItem(ticket._Id);
-                li.SubItems.Add(ticket.subject);
-                li.SubItems.Add(ticket.user);
-                li.SubItems.Add(ticket.reportedDate.ToString("dd/MM/yyyy"));
-                li.SubItems.Add(ticket.resolved.ToString());
-                li.Tag = ticket;
-                OverviewTicketsLV.Items.Add(li);
-            }
-        }
-
         private void updateTicketButton_Click(object sender, EventArgs e)
         {
            
@@ -141,9 +127,9 @@ namespace View.Forms
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txtBoxSearchIncidents_TextChanged(object sender, EventArgs e)
         {
-            switch (textBox1.Text)
+            switch (txtBoxSearchIncidents.Text)
             {
                 case ("Search..."):
                     {
@@ -156,7 +142,7 @@ namespace View.Forms
                 default:
                     {
                         OverviewTicketsLV.Items.Clear();
-                        LoadTableForSearch(ticketCRUDController.GetAllTicketsBasedOnSearch(textBox1.Text));
+                        FillTables(ticketCRUDController.GetAllTicketsBasedOnSearch(txtBoxSearchIncidents.Text));
                         break;
                     }  
             }

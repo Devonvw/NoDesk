@@ -40,7 +40,7 @@
             this.Deadline = new System.Windows.Forms.ColumnHeader();
             this.deleteTicketButton = new System.Windows.Forms.Button();
             this.updateTicketButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxSearchIncidents = new System.Windows.Forms.TextBox();
             this.archiveButton = new System.Windows.Forms.Button();
             this.buttonCloseTicket = new System.Windows.Forms.Button();
             this.btnTransferTicket = new System.Windows.Forms.Button();
@@ -140,17 +140,17 @@
             this.updateTicketButton.UseVisualStyleBackColor = true;
             this.updateTicketButton.Click += new System.EventHandler(this.updateTicketButton_Click);
             // 
-            // textBox1
+            // txtBoxSearchIncidents
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(5, 129);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 39);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Search...";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtBoxSearchIncidents.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBoxSearchIncidents.Location = new System.Drawing.Point(5, 129);
+            this.txtBoxSearchIncidents.Multiline = true;
+            this.txtBoxSearchIncidents.Name = "txtBoxSearchIncidents";
+            this.txtBoxSearchIncidents.Size = new System.Drawing.Size(154, 39);
+            this.txtBoxSearchIncidents.TabIndex = 5;
+            this.txtBoxSearchIncidents.Text = "Search...";
+            this.txtBoxSearchIncidents.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxSearchIncidents.TextChanged += new System.EventHandler(this.txtBoxSearchIncidents_TextChanged);
             // 
             // archiveButton
             // 
@@ -203,7 +203,7 @@
             this.Controls.Add(this.btnTransferTicket);
             this.Controls.Add(this.buttonCloseTicket);
             this.Controls.Add(this.archiveButton);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxSearchIncidents);
             this.Controls.Add(this.updateTicketButton);
             this.Controls.Add(this.deleteTicketButton);
             this.Controls.Add(this.OverviewTicketsLV);
@@ -229,7 +229,7 @@
         private ColumnHeader Resolved;
         public Button deleteTicketButton;
         public Button updateTicketButton;
-        private TextBox textBox1;
+        private TextBox txtBoxSearchIncidents;
         public Button archiveButton;
         private Button buttonCloseTicket;
         private Button btnTransferTicket;

@@ -10,7 +10,7 @@ namespace View.Forms
     public partial class ForgotPassword : Form
     {   
         UserLoginController userLoginController;
-        private string randomToken = RandomString();
+        private string randomToken = RandomToken();
         User user;
 
         public ForgotPassword(User user)
@@ -46,7 +46,7 @@ namespace View.Forms
                 message.From = new MailAddress(fromMail);
                 message.Subject = "Wachtwoord reset email";
                 message.To.Add(new MailAddress(user.Email));
-                message.Body = $"<html><body> Hallo gebruik deze code om uw wachtwoord te reseten. <br> Code: {randomToken} </body></html>";
+                message.Body = $"<html><body> Hello please use this secret token to reset your password. <br> Code: {randomToken} </body></html>";
                 message.IsBodyHtml = true;
 
                 var smtpClient = new SmtpClient("smtp.gmail.com")
@@ -70,7 +70,7 @@ namespace View.Forms
 
         }
 
-        private static string RandomString()
+        private static string RandomToken()
         {
             Random random = new Random();
             const string pool = "abcdefghijklmnopqrstuvwxyz0123456789";

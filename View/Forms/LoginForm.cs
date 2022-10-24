@@ -1,7 +1,6 @@
 ﻿using Controller;
-using MongoDB.Bson.Serialization;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using Model;
+using MongoDB.Bson.Serialization;
 
 namespace View.Forms
 {
@@ -17,7 +16,6 @@ namespace View.Forms
             mainForm = new MainForm();
             userLoginController = new UserLoginController();
             InitializeComponent();
-            
 
         }
 
@@ -27,26 +25,22 @@ namespace View.Forms
             CurrentUser currentUser = CurrentUser.GetInstance();
             try
             {
+                string userName = txtUsername.Text;
+                string passWord = txtPass.Text;
+
                 if (txtPass.Text == "" || txtUsername.Text == "")
                 {
                     MessageBox.Show("You did not enter a username and/or password");
                     return;
                 }
-                
 
-                string userName = txtUsername.Text;
-                string passWord = txtPass.Text;
+                user = BsonSerializer.Deserialize<User>(userLoginController.GetUser(userName));
 
-
-                user = BsonSerializer.Deserialize<Model.User>(userLoginController.GetUser(userName));
                 currentUser.SetUser(user);
-
-                ChechLoginInfo(userName, new Model.PasswordHasher(passWord).HashedPassword, user);
-
-
+                ChechLoginInput(userName, new PasswordHasher(passWord).HashedPassword, user);
 
             }
-            catch (InvalidOperationException ex)
+            catch (InvalidOperationException)
             {
                 MessageBox.Show("This user does not exist. \nUsername and password are case sensitive!");
             }
@@ -62,7 +56,7 @@ namespace View.Forms
                     ForgotPassword forgotPassword = new ForgotPassword(new User(userLoginController.GetUser(txtUsername.Text)));
                     forgotPassword.ShowDialog();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("This username does not exist. The username is needed for reseting the password");
                 }
@@ -72,30 +66,27 @@ namespace View.Forms
             {
                 ForgotPassword forgotPasswordForm = new ForgotPassword();
                 forgotPasswordForm.ShowDialog();
-                
+
             }
         }
 
 
-        private void ChechLoginInfo(string userName, string passWord, User user)
+        private void ChechLoginInput(string userName, string passWord, User user)
         {
-         
-                if (userName == user.UserName && passWord == user.Password)
-                {
-                    CheckUserType(user);                
-                }
-                else
-                {
-                    MessageBox.Show("You entered the wrong user name and/or password. \nPlease try again.");
-                }
-            
+
+            if (userName == user.UserName && passWord == user.Password)
+            {
+                CheckUserType(user);
+            }
+            else
+            {
+                MessageBox.Show("You entered the wrong user name and/or password. \nPlease try again.");
+            }
+
         }
 
         public void CheckUserType(User user)
         {
-            
-            ServiceDaskReadTickets serviceDaskReadTickets = new ServiceDaskReadTickets(mainForm);
-            
 
             if (user.UserType == Model.UserType.Regular)
             {
@@ -108,11 +99,11 @@ namespace View.Forms
             {
                 mainForm.btnAddTicket.Enabled = false;
                 mainForm.btnDashboard.Enabled = false;
+                mainForm.btnViewMyTickets.Enabled = false;
                 mainForm.Show();
                 this.Hide();
             }
 
-           
         }
 
         private void lblShowHidePass_Click(object sender, EventArgs e)
