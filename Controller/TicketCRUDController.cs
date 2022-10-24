@@ -71,5 +71,13 @@ namespace Controller
         {
             return userDAO.GetAllNames();
         }
+
+        public int GetCountOfTicketsOnUser(User user)
+            
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("user", user.FullName);
+            filter &= Builders<BsonDocument>.Filter.Eq("resolved", false);
+            return ticketCRUDDAO.GetCountOfTicketsOnUser(filter);
+        }
     }
 }

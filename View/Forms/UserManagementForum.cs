@@ -17,9 +17,10 @@ namespace View.Forms
     {
         MainForm mainForm;
         UserLoginController userLoginController;
-
+        TicketCRUDController ticketCRUDController;
         public UserManagementForum(MainForm mainForm)
         {   
+            ticketCRUDController = new TicketCRUDController();
             userLoginController = new UserLoginController();
             this.mainForm = mainForm;
             InitializeComponent();
@@ -42,7 +43,7 @@ namespace View.Forms
                 li.SubItems.Add(user.Email);
                 li.SubItems.Add(user.FirstName);
                 li.SubItems.Add(user.LastName);
-                li.SubItems.Add(userLoginController.GetCountOfTicketsOnUser(user).ToString());
+                li.SubItems.Add(ticketCRUDController.GetCountOfTicketsOnUser(user).ToString());
                 li.Tag = user;
                 listViewUsers.Items.Add(li);
             }

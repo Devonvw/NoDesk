@@ -80,10 +80,7 @@ namespace Controller
             return users;
         }
 
-        public int GetCountOfTicketsOnUser(User user)
-        {
-            return userDAO.GetCountOfTicketsOnUser(Builders<BsonDocument>.Filter.Eq("UserName", user.UserName));
-        }
+      
 
 
     }

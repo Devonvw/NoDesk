@@ -47,10 +47,5 @@ namespace DAL
             return names;
         }
 
-        public int GetCountOfTicketsOnUser(FilterDefinition<BsonDocument> filter)
-        {
-            return Convert.ToInt32(collection.Find(filter).CountDocuments());
-
-        }
     }
 }
