@@ -10,20 +10,7 @@ namespace Model
 {
     public class User
     {
-        private User() { }
-
-        private static User _user;
-
-        public static User GetInstance()
-        {
-            if (_user == null)
-            {
-                _user = new User();
-            }
-            return _user;
-        }
-
-
+        
         public ObjectId? _id;
         private string firstname;
         private string lastname;
