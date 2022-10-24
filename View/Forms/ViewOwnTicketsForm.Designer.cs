@@ -51,9 +51,10 @@
             this.chDeadline});
             this.LstViewOwnTickets.FullRowSelect = true;
             this.LstViewOwnTickets.GridLines = true;
-            this.LstViewOwnTickets.Location = new System.Drawing.Point(54, 51);
+            this.LstViewOwnTickets.Location = new System.Drawing.Point(54, 38);
+            this.LstViewOwnTickets.MultiSelect = false;
             this.LstViewOwnTickets.Name = "LstViewOwnTickets";
-            this.LstViewOwnTickets.Size = new System.Drawing.Size(678, 249);
+            this.LstViewOwnTickets.Size = new System.Drawing.Size(678, 271);
             this.LstViewOwnTickets.TabIndex = 0;
             this.LstViewOwnTickets.UseCompatibleStateImageBehavior = false;
             this.LstViewOwnTickets.View = System.Windows.Forms.View.Details;
@@ -62,7 +63,7 @@
             // cHId
             // 
             this.cHId.Text = "ID";
-            this.cHId.Width = 90;
+            this.cHId.Width = 120;
             // 
             // cHSubject
             // 
@@ -72,7 +73,7 @@
             // cHDate
             // 
             this.cHDate.Text = "Date";
-            this.cHDate.Width = 150;
+            this.cHDate.Width = 120;
             // 
             // cHResolvedOrNot
             // 
@@ -100,7 +101,7 @@
             // lblTicketDescription
             // 
             this.lblTicketDescription.AutoSize = true;
-            this.lblTicketDescription.Location = new System.Drawing.Point(348, 312);
+            this.lblTicketDescription.Location = new System.Drawing.Point(368, 321);
             this.lblTicketDescription.Name = "lblTicketDescription";
             this.lblTicketDescription.Size = new System.Drawing.Size(100, 15);
             this.lblTicketDescription.TabIndex = 2;
