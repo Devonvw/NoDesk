@@ -27,16 +27,20 @@ namespace View.Forms
         {
             foreach (IncidentTicket ticket in ticketsOfUser)
             {
-                string[] arr = new string[6];
-                arr[0] = ticket._Id;
-                arr[1] = ticket.subject;
-                arr[2] = ticket.reportedDate.ToString("dd/MM/yyyy");
-                arr[3] = ticket.resolved.ToString();
-                arr[4] = ticket.priority.ToString();
-                arr[5] = ticket.deadline.ToString("dd/MM/yyyy");
-                LstViewOwnTickets.Tag = ticket;
-                ListViewItem li = new ListViewItem(arr);
+                ListViewItem li = new ListViewItem(ticket._Id);
+                li.SubItems.Add(ticket.subject);
+                li.SubItems.Add(ticket.reportedDate.ToString("dd/MM/yyyy"));
+                li.SubItems.Add(ticket.resolved.ToString());
+                li.SubItems.Add(ticket.priority.ToString());
+                li.SubItems.Add(ticket.deadline.ToString("dd/MM/yyyy"));
+                li.SubItems.Add(ticket.description.ToString());
+                li.Tag = ticket;
                 LstViewOwnTickets.Items.Add(li);
+
+                if (ticket.resolved)
+                   li.SubItems[3].Text = "Yes";
+                else
+                    li.SubItems[3].Text = "No";
             }
         }
         private void ViewOwnTicketsForm_Load(object sender, EventArgs e)
@@ -47,25 +51,14 @@ namespace View.Forms
 
         private void LstViewOwnTickets_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string description = "";
-            for (int i = 0; i < LstViewOwnTickets.Items.Count; i++)
+            if (LstViewOwnTickets.SelectedItems.Count > 0)
             {
-                txtBoxOwnTicketDescription.Clear();
-
-                if (LstViewOwnTickets.Items[i].Selected)
-                {
-                    foreach (IncidentTicket ticket in ticketsOfUser)
-                    {
-                    description = ticket.description;
-                        if (description == "")
-                        {
-                            txtBoxOwnTicketDescription.Text = "";
-                        }
-                        else
-                            txtBoxOwnTicketDescription.Text = description.ToString();
-                    }
-                }
-
+                ListViewItem item = LstViewOwnTickets.SelectedItems[0];
+                txtBoxOwnTicketDescription.Text = item.SubItems[6].Text;
+            }
+            else
+            {
+                txtBoxOwnTicketDescription.Text = string.Empty;
             }
         }
     }
