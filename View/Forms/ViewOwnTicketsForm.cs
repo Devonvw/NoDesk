@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Controller;
+using MongoDB.Bson;
 
 namespace View.Forms
 {
@@ -20,11 +21,16 @@ namespace View.Forms
         public ViewOwnTicketsForm()
         {
             InitializeComponent();
+            
+        }
+
+        public void FillListViewOwnTickets()
+        {
+            LstViewOwnTickets.Items.Clear();
+
             ticketCRUDController = new TicketCRUDController();
             ticketsOfUser = ticketCRUDController.ReadOwnTicketsList(currentUser);
-        }
-        private void FillListViewOwnTickets()
-        {
+         
             foreach (IncidentTicket ticket in ticketsOfUser)
             {
                 ListViewItem li = new ListViewItem(ticket._id);
@@ -59,6 +65,20 @@ namespace View.Forms
             else
             {
                 txtBoxOwnTicketDescription.Text = string.Empty;
+            }
+        }
+
+        private void buttonEscalateTicket_Click(object sender, EventArgs e)
+        {
+            if (LstViewOwnTickets.SelectedItems.Count > 0)
+            {
+                IncidentTicket ticketToBeEscalated  = ticketCRUDController.GetTicketById(ObjectId.Parse(LstViewOwnTickets.SelectedItems[0].Text));
+                EscalateTicketForm escalateTicketForm = new EscalateTicketForm(ticketToBeEscalated,this);
+                escalateTicketForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please choose a ticket");
             }
         }
     }

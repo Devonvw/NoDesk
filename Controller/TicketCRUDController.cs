@@ -87,5 +87,10 @@ namespace Controller
             filter &= Builders<BsonDocument>.Filter.Eq("resolved", false);
             return ticketCRUDDAO.GetCountOfTicketsOnUser(filter);
         }
+
+        public IncidentTicket GetTicketById(ObjectId id)
+        {
+            return new IncidentTicket(ticketCRUDDAO.GetTicket(Builders<BsonDocument>.Filter.Eq("_id", id)));
+        }
     }
 }
