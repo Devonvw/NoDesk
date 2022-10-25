@@ -27,7 +27,7 @@ namespace View.Forms
         {
             foreach (IncidentTicket ticket in ticketsOfUser)
             {
-                ListViewItem li = new ListViewItem(ticket._Id);
+                ListViewItem li = new ListViewItem(ticket._id);
                 li.SubItems.Add(ticket.subject);
                 li.SubItems.Add(ticket.reportedDate.ToString("dd/MM/yyyy"));
                 li.SubItems.Add(ticket.resolved.ToString());

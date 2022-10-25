@@ -41,7 +41,7 @@ namespace View.Forms
             OverviewTicketsLV.Items.Clear();
             foreach (IncidentTicket ticket in tickets)
             {
-                ListViewItem li = new ListViewItem(ticket._Id);
+                ListViewItem li = new ListViewItem(ticket._id);
                 li.SubItems.Add(ticket.subject);
                 li.SubItems.Add(ticket.user);
                 li.SubItems.Add(ticket.reportedDate.ToString("dd/MM/yyyy"));
@@ -96,7 +96,7 @@ namespace View.Forms
                     foreach (ListViewItem item in OverviewTicketsLV.SelectedItems)
                     {
                         IncidentTicket incidentTicket = (IncidentTicket)item.Tag;
-                        ticketCRUDController.DeleteTicket(incidentTicket._Id!);
+                        ticketCRUDController.DeleteTicket(incidentTicket._id!);
                     }
                     FillTables(allIncidentTickets);
                     return;
@@ -174,7 +174,7 @@ namespace View.Forms
             else
             {
                 IncidentTicket incidentTicket = (IncidentTicket)(OverviewTicketsLV.FocusedItem).Tag;
-                MessageBox.Show($"Ticket id : {incidentTicket._Id} send to management \nsubject: {incidentTicket.subject}");
+                MessageBox.Show($"Ticket id : {incidentTicket._id} send to management \nsubject: {incidentTicket.subject}");
 
             }
         }

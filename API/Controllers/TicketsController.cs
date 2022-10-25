@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Model;
 using MongoDB.Bson;
 using MongoDB.Bson.IO;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using System.Diagnostics;
 using System.Net;
@@ -24,66 +25,100 @@ namespace API.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public void DeleteTicket(string id)
+        public IActionResult DeleteTicket(string id)
         {
-            ticketCRUDDAO.DeleteTicket(Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(id)));
+            try
+            {
+                ticketCRUDDAO.DeleteTicket(Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(id)));
+                return StatusCode(200);
+            }
+            catch (Exception ex) { return StatusCode(500, new { msg = "Not able to delete ticket" }); }
         }
 
         [HttpPost]
-        public void CreateTicket([FromBody]IncidentTicket incidentTicket)
+        public IActionResult CreateTicket([FromBody]object incidentTicket)
         {
-            //BsonDocument.Parse(((JsonElement)incidentTicket).GetRawText())
-            ticketCRUDDAO.CreateTicket(IncidentTicketToBson(incidentTicket));
+            try
+            {
+                IncidentTicket ticket = BsonSerializer.Deserialize<IncidentTicket>(((JsonElement)incidentTicket).GetRawText());
+
+                ticketCRUDDAO.CreateTicket(IncidentTicketToBson(ticket));
+                return StatusCode(200);
+            }
+            catch (Exception ex) { return StatusCode(500, new { msg = "Not able to create ticket" }); }
         }
 
         [HttpPut]
-        public void UpdateTicket([FromBody]IncidentTicket incidentTicket)
+        public IActionResult UpdateTicket([FromBody] object incidentTicket)
         {
-            ticketCRUDDAO.UpdateTicket(IncidentTicketToBson(incidentTicket), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._Id)));
+            try
+            {
+                IncidentTicket ticket = BsonSerializer.Deserialize<IncidentTicket>(((JsonElement)incidentTicket).GetRawText());
+
+                ticketCRUDDAO.UpdateTicket(IncidentTicketToBson(ticket), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(ticket._id)));
+                return StatusCode(200);
+            }
+            catch (Exception ex) { return StatusCode(500, new { msg = "Not able to update ticket" }); }
         }
 
         [HttpGet]
         [Route("past-deadline")]
-        public int GetIncidentsPastDeadline()
+        public IActionResult GetIncidentsPastDeadline()
         {
-            return ticketCRUDDAO.GetIncidentsPastDeadline();
+            try
+            {
+                return StatusCode(200, new {incidents = ticketCRUDDAO.GetIncidentsPastDeadline()});
+            }
+            catch (Exception ex) { return StatusCode(500, new { msg = "Not able to retrieve incidents" }); }
         }
 
         [HttpGet]
         [Route("unresolved")]
-        public Tuple<int,int> GetUnresolvedIncidents()
+        public IActionResult GetUnresolvedIncidents()
         {
-            (int total, int unresolved) data =  ticketCRUDDAO.GetUnresolvedIncidents();
-            return new Tuple<int, int>(data.total, data.unresolved);
+            try
+            {
+                (int total, int unresolved) = ticketCRUDDAO.GetUnresolvedIncidents();
+                return StatusCode(200, new { total = total, unresolved = unresolved });
+            }
+            catch (Exception ex) { return StatusCode(500, new { msg = "Not able to retrieve unresolved incidents" }); }
         }
 
         [HttpGet]
-        public List<IncidentTicket> ReadTicketList()
+        public IActionResult ReadTicketList()
         {
-            List<IncidentTicket> incidentTickets = new List<IncidentTicket>();
-            foreach (BsonDocument bsonDocument in ticketCRUDDAO.GetTicketList(Builders<BsonDocument>.Filter.Eq("resolved", false)))
+            try
             {
-                incidentTickets.Add(new IncidentTicket(bsonDocument));
+                List<IncidentTicket> incidentTickets = new List<IncidentTicket>();
+                foreach (BsonDocument bsonDocument in ticketCRUDDAO.GetTicketList(Builders<BsonDocument>.Filter.Eq("resolved", false)))
+                {
+                    incidentTickets.Add(new IncidentTicket(bsonDocument));
+                }
+                return StatusCode(200, new { tickets = incidentTickets });
             }
-            return incidentTickets;
+            catch (Exception ex) { return StatusCode(500, new { msg = "Not able to retrieve tickets" }); }
         }
 
         [HttpGet]
         [Route("{input}")]
-        public List<IncidentTicket> GetAllTicketsBasedOnSearch(string input)
+        public IActionResult GetAllTicketsBasedOnSearch(string input)
         {
-            var filter = Builders<BsonDocument>.Filter.Regex("subject", new BsonRegularExpression(input));
-            filter |= Builders<BsonDocument>.Filter.Regex("description", new BsonRegularExpression(input));
-            filter &= Builders<BsonDocument>.Filter.Eq("resolved", false);
-
-            List<IncidentTicket> incidentTickets = new List<IncidentTicket>();
-
-            foreach (BsonDocument doc in ticketCRUDDAO.GetAllTicketsBasedOnSearch(filter))
+            try
             {
-                incidentTickets.Add(new IncidentTicket(doc));
-            }
+                var filter = Builders<BsonDocument>.Filter.Regex("subject", new BsonRegularExpression(input));
+                filter |= Builders<BsonDocument>.Filter.Regex("description", new BsonRegularExpression(input));
+                filter &= Builders<BsonDocument>.Filter.Eq("resolved", false);
 
-            return incidentTickets;
+                List<IncidentTicket> incidentTickets = new List<IncidentTicket>();
+
+                foreach (BsonDocument doc in ticketCRUDDAO.GetAllTicketsBasedOnSearch(filter))
+                {
+                    incidentTickets.Add(new IncidentTicket(doc));
+                }
+
+                return StatusCode(200, new { tickets = incidentTickets });
+            }
+            catch (Exception ex) { return StatusCode(500, new { msg = "Not able to retrieve tickets" }); }
         }
         private BsonDocument IncidentTicketToBson(IncidentTicket incidentTicket)
         {
