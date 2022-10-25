@@ -10,7 +10,7 @@ namespace Model
 {
     public class IncidentTicket
     {
-        public string? _Id { get; set; }
+        public string? _id { get; set; }
         public DateTime reportedDate { get; set; }
         public string? subject { get; set; }
         public string? type { get; set; }
@@ -28,7 +28,7 @@ namespace Model
                 switch (element.Name)
                 {
                     case "_id":
-                        _Id = element.Value.ToString();
+                        _id = element.Value.ToString();
                         break;
                     case ("reportedDate"):
                         reportedDate = DateTime.Parse(element.Value.ToString()!);

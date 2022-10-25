@@ -19,9 +19,15 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public void ArchiveOldResolvedTicketes()
+        public IActionResult ArchiveOldResolvedTickets()
         {
-            archiveDAO.ArchiveOldResolvedTickets();
+            try
+            {
+                archiveDAO.ArchiveOldResolvedTickets();
+                return StatusCode(200);
+            }
+            catch (Exception ex) { return StatusCode(500, new { msg = ex.Message }); }
+
         }
     }
 }

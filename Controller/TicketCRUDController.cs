@@ -26,7 +26,7 @@ namespace Controller
         }
         public void UpdateTicket(IncidentTicket incidentTicket)
         {
-            ticketCRUDDAO.UpdateTicket(incidentTicket.ToBsonDocument(), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._Id)));
+            ticketCRUDDAO.UpdateTicket(incidentTicket.ToBsonDocument(), Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(incidentTicket._id)));
         }
         public BsonDocument SearchTicket(string userInput)
         {
@@ -86,6 +86,11 @@ namespace Controller
             var filter = Builders<BsonDocument>.Filter.Eq("user", user.FullName);
             filter &= Builders<BsonDocument>.Filter.Eq("resolved", false);
             return ticketCRUDDAO.GetCountOfTicketsOnUser(filter);
+        }
+
+        public IncidentTicket GetTicketById(ObjectId id)
+        {
+            return new IncidentTicket(ticketCRUDDAO.GetTicket(Builders<BsonDocument>.Filter.Eq("_id", id)));
         }
     }
 }

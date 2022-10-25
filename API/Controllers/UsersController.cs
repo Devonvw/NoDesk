@@ -22,39 +22,76 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("{username}")]
-        public object GetUser(string username)
+        public IActionResult GetUser(string username)
         {
-            return BsonTypeMapper.MapToDotNetValue(userDAO.GetUser(Builders<BsonDocument>.Filter.Eq("UserName", username)));
+            try
+            {
+                return StatusCode(200, new {user = BsonTypeMapper.MapToDotNetValue(userDAO.GetUser(Builders<BsonDocument>.Filter.Eq("UserName", username))) });
+            }
+            catch (Exception ex) { return StatusCode(500, new { msg = "Not able to retrieve user" }); }
         }
 
         [HttpPut]
-        public void UpdateUser([FromBody]User user)
+        public IActionResult UpdateUser([FromBody]object userInput)
         {
-            //User user = BsonSerializer.Deserialize<User>(((JsonElement)userInput).GetRawText());
+            try
+            {
+                User user = BsonSerializer.Deserialize<User>(((JsonElement)userInput).GetRawText());
 
-            userDAO.UpdateUser(UserToBsonDocument(user), Builders<BsonDocument>.Filter.Eq("_id", user._id));
+                userDAO.UpdateUser(UserToBsonDocument(user), Builders<BsonDocument>.Filter.Eq("_id", user._id));
+                return StatusCode(200);
+            }
+            catch (Exception ex) { return StatusCode(500, new { msg = "Not able to update user" }); }
         }
 
         [HttpPost]
-        public void CreateUser([FromBody]object userInput)
+        public IActionResult CreateUser([FromBody]object userInput)
         {
-            User user = BsonSerializer.Deserialize<User>(((JsonElement)userInput).GetRawText());
+            try
+            {
+                User user = BsonSerializer.Deserialize<User>(((JsonElement)userInput).GetRawText());
 
-            userDAO.CreateUser(UserToBsonDocument(user));
+                userDAO.CreateUser(UserToBsonDocument(user));
+                return StatusCode(200);
+            }
+            catch (Exception ex) { return StatusCode(500, new { msg = "Not able to create user" }); }
         }
 
         [HttpGet]
-        public List<User> GetUserList()
+        public IActionResult GetUserList()
         {
-            List<User> users = new List<User>();
-
-            foreach (BsonDocument doc in userDAO.GetUserList(Builders<BsonDocument>.Filter.Empty))
+            try
             {
-                users.Add(new User(doc));
-            }
+                List<User> users = new List<User>();
 
-            return users;
+                foreach (BsonDocument doc in userDAO.GetUserList(Builders<BsonDocument>.Filter.Empty))
+                {
+                    users.Add(new User(doc));
+                }
+
+                return StatusCode(200, new { users = users});
+            }
+            catch (Exception ex) { return StatusCode(500, new { msg = "Not able to retrieve users" }); }
         }
+
+        [HttpGet]
+        [Route("email/{email}")]
+        public IActionResult GetUserEmail(string email)
+        {
+            try
+            {
+                List<User> users = new List<User>();
+
+                foreach (BsonDocument doc in userDAO.GetUserList(Builders<BsonDocument>.Filter.Regex("Email", new BsonRegularExpression(email))))
+                {
+                    users.Add(new User(doc));
+                }
+
+                return StatusCode(200, new { user = users });
+            }
+            catch (Exception ex) { return StatusCode(500, new { msg = "Not able to retrieve user" }); }
+        }
+
         private BsonDocument UserToBsonDocument(User user)
         {
             BsonDocument newBsonDocument = new BsonDocument
@@ -70,20 +107,6 @@ namespace API.Controllers
 
             };
             return newBsonDocument;
-        }
-
-        [HttpGet]
-        [Route("email/{email}")]
-        public List<User> GetUserEmail(string email)
-        {
-            List<User> users = new List<User>();
-
-            foreach (BsonDocument doc in userDAO.GetUserList(Builders<BsonDocument>.Filter.Regex("Email", new BsonRegularExpression(email))))
-            {
-                users.Add(new User(doc));
-            }
-
-            return users;
         }
     }
 }
