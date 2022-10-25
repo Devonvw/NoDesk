@@ -15,7 +15,9 @@ Password: Admin123
 
 
 Deze user is gekoppeld aan het email adress Thijs.otter@inholland.nl. Deze kan je gebruiken om het wachtwoord te resseten. (vergeet geen spam te checken)
+
 User: Thijs
+
 Password: Otter123
 
 
