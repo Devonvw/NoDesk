@@ -28,7 +28,7 @@ namespace View.Forms
             InitializeComponent();
             loadComboBox();
 
-            labelShowTicket.Text += $"\nReported date: {ticketToBeEscalated.reportedDate}\nSubject: {ticketToBeEscalated.subject}\nId: {ticketToBeEscalated._Id}";
+            labelShowTicket.Text += $"\nReported date: {ticketToBeEscalated.reportedDate}\nSubject: {ticketToBeEscalated.subject}\nId: {ticketToBeEscalated._id}";
         }
 
 

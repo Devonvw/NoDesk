@@ -173,7 +173,7 @@ namespace View.Forms
             else
             {
                 IncidentTicket incidentTicket = (IncidentTicket)(OverviewTicketsLV.FocusedItem).Tag;
-                MessageBox.Show($"Ticket id : {incidentTicket._Id} send to management \nsubject: {incidentTicket.subject}");
+                MessageBox.Show($"Ticket id : {incidentTicket._id} send to management \nsubject: {incidentTicket.subject}");
 
             }
         }
