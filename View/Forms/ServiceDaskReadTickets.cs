@@ -165,18 +165,5 @@ namespace View.Forms
             transferTicketForm.Show();
         }
 
-        private void btnEscalateTicket_Click(object sender, EventArgs e)
-        {
-            if (OverviewTicketsLV.SelectedItems.Count == 0 || OverviewTicketsLV.SelectedItems.Count >= 2)
-            {
-                MessageBox.Show("Please select one ticket");
-            }
-            else
-            {
-                IncidentTicket incidentTicket = (IncidentTicket)(OverviewTicketsLV.FocusedItem).Tag;
-                MessageBox.Show($"Ticket id : {incidentTicket._Id} send to management \nsubject: {incidentTicket.subject}");
-
-            }
-        }
     }
 }

@@ -38,6 +38,7 @@
             this.lblViewOwnTickets = new System.Windows.Forms.Label();
             this.lblTicketDescription = new System.Windows.Forms.Label();
             this.txtBoxOwnTicketDescription = new System.Windows.Forms.TextBox();
+            this.buttonEscalateTicket = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LstViewOwnTickets
@@ -116,11 +117,22 @@
             this.txtBoxOwnTicketDescription.Size = new System.Drawing.Size(678, 99);
             this.txtBoxOwnTicketDescription.TabIndex = 3;
             // 
+            // buttonEscalateTicket
+            // 
+            this.buttonEscalateTicket.Location = new System.Drawing.Point(738, 38);
+            this.buttonEscalateTicket.Name = "buttonEscalateTicket";
+            this.buttonEscalateTicket.Size = new System.Drawing.Size(72, 65);
+            this.buttonEscalateTicket.TabIndex = 4;
+            this.buttonEscalateTicket.Text = "ESCALTE TICKET";
+            this.buttonEscalateTicket.UseVisualStyleBackColor = true;
+            this.buttonEscalateTicket.Click += new System.EventHandler(this.buttonEscalateTicket_Click);
+            // 
             // ViewOwnTicketsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(809, 450);
+            this.Controls.Add(this.buttonEscalateTicket);
             this.Controls.Add(this.txtBoxOwnTicketDescription);
             this.Controls.Add(this.lblTicketDescription);
             this.Controls.Add(this.lblViewOwnTickets);
@@ -145,5 +157,6 @@
         private ColumnHeader chDeadline;
         private Label lblTicketDescription;
         private TextBox txtBoxOwnTicketDescription;
+        private Button buttonEscalateTicket;
     }
 }
