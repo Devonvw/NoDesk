@@ -97,7 +97,7 @@ namespace View.Forms
             }
             else
             {
-                mainForm.btnAddTicket.Enabled = false;
+                
                 mainForm.btnDashboard.Enabled = false;
                 mainForm.btnViewMyTickets.Enabled = false;
                 mainForm.Show();
