@@ -180,7 +180,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 764);
-            this.Controls.Add(this.btnEscalateTicket);
             this.ClientSize = new System.Drawing.Size(820, 573);
             this.Controls.Add(this.btnTransferTicket);
             this.Controls.Add(this.buttonCloseTicket);
