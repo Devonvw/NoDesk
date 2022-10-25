@@ -55,7 +55,7 @@ namespace View.Forms
 
         private void SortTable()
         {
-            FillTables(GetTableTickets().OrderBy(p=>p.priority).ToList());
+            FillTables(GetTableTickets().OrderByDescending(p=>p.priority).ToList());
         }
 
         private List<IncidentTicket> GetTableTickets()
