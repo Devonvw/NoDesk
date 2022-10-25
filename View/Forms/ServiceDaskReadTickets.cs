@@ -178,5 +178,14 @@ namespace View.Forms
 
             }
         }
+
+        private void OverviewTicketsLV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (updateTicketButton.Enabled == false && deleteTicketButton.Enabled == false)
+            {
+                updateTicketButton.Enabled = true;
+                deleteTicketButton.Enabled = true;
+            }
+        }
     }
 }

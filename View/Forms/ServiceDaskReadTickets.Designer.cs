@@ -76,6 +76,7 @@
             this.OverviewTicketsLV.UseCompatibleStateImageBehavior = false;
             this.OverviewTicketsLV.View = System.Windows.Forms.View.Details;
             this.OverviewTicketsLV.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.OverviewTicketsLV_ColumnClick);
+            this.OverviewTicketsLV.SelectedIndexChanged += new System.EventHandler(this.OverviewTicketsLV_SelectedIndexChanged);
             // 
             // ID
             // 
@@ -112,6 +113,7 @@
             // 
             // deleteTicketButton
             // 
+            this.deleteTicketButton.Enabled = false;
             this.deleteTicketButton.Location = new System.Drawing.Point(428, 171);
             this.deleteTicketButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.deleteTicketButton.Name = "deleteTicketButton";
@@ -123,6 +125,7 @@
             // 
             // updateTicketButton
             // 
+            this.updateTicketButton.Enabled = false;
             this.updateTicketButton.Location = new System.Drawing.Point(254, 170);
             this.updateTicketButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.updateTicketButton.Name = "updateTicketButton";
