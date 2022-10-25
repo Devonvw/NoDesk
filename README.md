@@ -1,17 +1,22 @@
 # NoDesk
 
-LOGIN REGULAR
+LOGIN REGULAR (Login is case sensitve)
 
 User: test
 
 Password: test
 
 
-LOGIN SERVICEDESK
+LOGIN SERVICEDESK 
 
-User: Esa
+User: Admin
 
-Password: test
+Password: Admin123
+
+
+Deze user is gekoppeld aan het email adress Thijs.otter@inholland.nl. Deze kan je gebruiken om het wachtwoord te resseten. (vergeet geen spam te checken)
+User: Thijs
+Password: Otter123
 
 
 API
