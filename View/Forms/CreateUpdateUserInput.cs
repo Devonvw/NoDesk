@@ -25,7 +25,7 @@ namespace View.Forms
 
         private void SetReportedUserName()
         {
-            foreach (String name in ticketCRUDController.getAllNames())
+            foreach (string name in ticketCRUDController.getAllNames())
             {
                 reportedByUserCB.Items.Add(name);
             }
@@ -33,22 +33,22 @@ namespace View.Forms
 
         protected bool CheckValues(RadioButton incidentTypeRB, RadioButton priorityRB)
         {
-            if (subjectOfIncidentTB.Text != string.Empty && reportedByUserCB.Text != string.Empty && descriptionTB.Text != string.Empty && incidentTypeRB != null && priorityRB != null)
+            if (subjectOfIncidentTB.Text == string.Empty || reportedByUserCB.Text == string.Empty || descriptionTB.Text == string.Empty || incidentTypeRB == null || priorityRB == null)
             {
-                if (deadlineFollowUpDTP.Value > DateTime.Now)
-                {
-                    if (deadlineFollowUpDTP.Value > dateTimeReportedDTP.Value)
-                    {
-                        return true;
-                    }
-                    MessageBox.Show("The deadline is earlier than the reported date");
-                    return false;
-                }
+                MessageBox.Show("Please fill in all tables");
+                return false;
+            }
+            if (deadlineFollowUpDTP.Value < DateTime.Now)
+            {
                 MessageBox.Show("The deadline is in the past");
                 return false;
             }
-            MessageBox.Show("Please fill in all tables");
-            return false;
+            else if (deadlineFollowUpDTP.Value < dateTimeReportedDTP.Value)
+            {
+                MessageBox.Show("The deadline is earlier than the reported date");
+                return false;
+            }
+            return true;
         }
 
 
